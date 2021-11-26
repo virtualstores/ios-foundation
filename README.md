@@ -34,6 +34,8 @@ Following our style guide should:
 
 *Note that brevity is not a primary goal.*
 
+[Official Style Guide] (https://github.com/virtualstores/ios-style-guide)
+
 ## Installation
 
 ####Using as a dependency
