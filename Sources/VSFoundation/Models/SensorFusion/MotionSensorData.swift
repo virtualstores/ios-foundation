@@ -10,12 +10,12 @@ import Foundation
 public struct MotionSensorData {
     public let timestampSensor: Int
     public let timestampLocal: Int
-    
+
     public let acceleration: SensorData
     public let gravity: SensorData
     public let rotation: SensorData
-    
-    public init(timestampSensor: Int, timestampLocal: Int, accelerationData: [Float],gravityData: [Float], rotationData: [Float] ){
+
+    public init(timestampSensor: Int, timestampLocal: Int, accelerationData: [Float], gravityData: [Float], rotationData: [Float]) {
         self.timestampSensor = timestampSensor
         self.timestampLocal = timestampLocal
         self.acceleration = SensorData(type: .acceleration, data: accelerationData, timestampSensor: timestampSensor, timestampLocal: timestampLocal)
@@ -23,4 +23,3 @@ public struct MotionSensorData {
         self.rotation = SensorData(type: .rotation, data: rotationData, timestampSensor: timestampSensor, timestampLocal: timestampLocal)
     }
 }
-
