@@ -1,13 +1,13 @@
+// MotionSensorData
+// VSFoundation
 //
-//  File.swift
-//  
-//
-//  Created by CJ on 2021-11-25.
+// Created by CJ on 2021-11-26
+// Copyright Virtual Stores - 2021
 //
 
 import Foundation
 
-public class MotionSensorData {
+public struct MotionSensorData {
     public let timestampSensor: Int
     public let timestampLocal: Int
     
@@ -24,23 +24,3 @@ public class MotionSensorData {
     }
 }
 
-public class SensorData {
-    
-    public let type: SensorDataType
-    public let data: [Float]
-    public let timestampSensor: Int
-    public let timestampLocal: Int
-    
-    public init(type: SensorDataType, data: [Float], timestampSensor: Int, timestampLocal: Int){
-        self.type = type
-        self.data = data
-        self.timestampSensor = timestampSensor
-        self.timestampLocal = timestampLocal
-    }
-}
-
-public enum SensorDataType{
-    case acceleration
-    case gravity
-    case rotation
-}
