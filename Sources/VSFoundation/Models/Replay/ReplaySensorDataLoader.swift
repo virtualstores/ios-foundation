@@ -6,7 +6,10 @@
 
 import Foundation
 
-final class ReplaySensorDataLoader: IReplaySensorDataLoader {
+public final class ReplaySensorDataLoader: IReplaySensorDataLoader {
+
+  public init(){}
+
   func loadFileFrom(path: String, inDirectory: FileManager.SearchPathDirectory) -> [MotionSensorData]? {
     let DocumentDirURL = try! FileManager.default.url(for: inDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
 
