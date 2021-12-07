@@ -6,6 +6,6 @@
 
 import Foundation
 
-protocol IReplaySensorDataLoader {
+public protocol IReplaySensorDataLoader {
   func loadFileFrom(path: String, inDirectory: FileManager.SearchPathDirectory) -> [MotionSensorData]?
 }

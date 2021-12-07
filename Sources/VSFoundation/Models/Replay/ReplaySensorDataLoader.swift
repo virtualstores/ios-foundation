@@ -10,7 +10,7 @@ public final class ReplaySensorDataLoader: IReplaySensorDataLoader {
 
   public init(){}
 
-  func loadFileFrom(path: String, inDirectory: FileManager.SearchPathDirectory) -> [MotionSensorData]? {
+  public func loadFileFrom(path: String, inDirectory: FileManager.SearchPathDirectory) -> [MotionSensorData]? {
     let DocumentDirURL = try! FileManager.default.url(for: inDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
 
     let fileURL = DocumentDirURL.appendingPathComponent(path).appendingPathExtension("json")
