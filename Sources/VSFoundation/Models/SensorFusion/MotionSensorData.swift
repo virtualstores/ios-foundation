@@ -15,7 +15,7 @@ public struct MotionSensorData {
     public let gravity: SensorData
     public let rotation: SensorData
 
-    public init(timestampSensor: Int, timestampLocal: Int, accelerationData: [Float], gravityData: [Float], rotationData: [Float]) {
+    public init(timestampSensor: Int, timestampLocal: Int, accelerationData: [Double], gravityData: [Double], rotationData: [Double]) {
         self.timestampSensor = timestampSensor
         self.timestampLocal = timestampLocal
         self.acceleration = SensorData(type: .acceleration, data: accelerationData, timestampSensor: timestampSensor, timestampLocal: timestampLocal)

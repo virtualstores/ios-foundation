@@ -10,11 +10,11 @@ import Foundation
 public struct SensorData {
 
     public let type: SensorDataType
-    public let data: [Float]
+    public let data: [Double]
     public let timestampSensor: Int
     public let timestampLocal: Int
 
-    public init(type: SensorDataType, data: [Float], timestampSensor: Int, timestampLocal: Int) {
+    public init(type: SensorDataType, data: [Double], timestampSensor: Int, timestampLocal: Int) {
         self.type = type
         self.data = data
         self.timestampSensor = timestampSensor
