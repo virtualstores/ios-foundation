@@ -26,7 +26,7 @@ public class InjectorOptions<T> {
 
     @discardableResult
     public final func implements<Protocol>(_ type: Protocol.Type, name: Injector.Name? = nil) -> InjectorOptions<T> {
-        injector?.map(type.self, name: name) { r, _ in r.resolve(T.self) as? Protocol }
+        injector?.map(type.self, name: name) { result, _ in result.resolve(T.self) as? Protocol }
         return self
     }
 
