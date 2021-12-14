@@ -109,6 +109,7 @@ import SwiftUI
     }
 }
 
+@available(macOS 10.15, *)
 @propertyWrapper public struct InjectObject<T>: DynamicProperty where T: ObservableObject {
     @ObservedObject private var injection: T
     public init() {
