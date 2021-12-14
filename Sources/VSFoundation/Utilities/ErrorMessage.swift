@@ -6,7 +6,7 @@
 
 import Foundation
 
-class ErrorMessage {
+public class ErrorMessage {
   static func methodOverride(fileName: String, methodName: String) -> String {
     return "You have to override method: \((fileName as NSString).lastPathComponent):\(methodName)"
   }
