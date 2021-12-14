@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Double {
+pulblic extension Double {
   var asFloat: Float {
     get {
       Float(self)
