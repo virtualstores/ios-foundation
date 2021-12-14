@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Logger {
+public extension Logger {
   static func createTag(fileName: String, functionName: String) -> String {
     return "\((fileName as NSString).lastPathComponent):\(functionName)"
   }
