@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Double {
+public extension Double {
   var asFloat: Float {
     get {
       Float(self)

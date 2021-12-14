@@ -6,12 +6,15 @@
 
 import Foundation
 
-class ErrorMessage {
-  static func methodOverride(fileName: String, methodName: String) -> String {
+public class ErrorMessage {
+
+  public init(){}
+
+  static public func methodOverride(fileName: String, methodName: String) -> String {
     return "You have to override method: \((fileName as NSString).lastPathComponent):\(methodName)"
   }
 
-  static func functionName(fileName: String, methodName: String) -> String {
+  static public func functionName(fileName: String, methodName: String) -> String {
     return "\((fileName as NSString).lastPathComponent):\(methodName)"
   }
 }

@@ -7,7 +7,7 @@
 
 import Foundation
 
-extension Array where Element == Double {
+public extension Array where Element == Double {
   func copy() -> [Double] {
     self.map { $0 }
   }
