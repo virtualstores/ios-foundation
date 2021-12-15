@@ -22,7 +22,7 @@ public enum Verbosity {
 
 public protocol Loggable {
     var verbosity: Verbosity { get set }
-    func log(message: String)
+    func log(tag: String, message: String)
 }
 
 public struct Logger: Loggable {
@@ -32,24 +32,24 @@ public struct Logger: Loggable {
         self.verbosity = verbosity
     }
     
-    public func log(message: String) {
+    public func log(tag: String, message: String) {
         switch verbosity {
         case .debug:
-            print("DEBUG: \(message)")
+            print("DEBUG: \(tag): \(message)")
         case .info:
-            print("INFO: \(message)")
+            print("INFO: \(tag): \(message)")
         case .notice:
-            print("NOTICE: \(message)")
+            print("NOTICE: \(tag): \(message)")
         case .warning:
-            print("WARNING: \(message)")
+            print("WARNING: \(tag): \(message)")
         case .error:
-            print("ERROR: \(message)")
+            print("ERROR: \(tag): \(message)")
         case .critical:
-            print("CRITIAL: \(message)")
+            print("CRITIAL: \(tag): \(message)")
         case .alert:
-            print("ALERT: \(message)")
+            print("ALERT: \(tag): \(message)")
         case .emergency:
-            print("EMERGENCY: \(message)")
+            print("EMERGENCY: \(tag): \(message)")
         case .silent:
             // no message
             break

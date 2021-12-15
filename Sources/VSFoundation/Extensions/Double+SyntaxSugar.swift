@@ -1,4 +1,4 @@
-// Float+SyntaxSugar.swift
+// Double+SyntaxSugar.swift
 // VSFoundation
 //
 // Created by CJ on 2021-12-09
@@ -7,8 +7,10 @@
 
 import Foundation
 
-extension Float {
-  var asDouble: Double {
-    get { return Double(self) }
+public extension Double {
+  var asFloat: Float {
+    get {
+      Float(self)
+    }
   }
 }
