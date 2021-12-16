@@ -12,3 +12,8 @@ public extension Array where Element == Double {
     self.map { $0 }
   }
 }
+public extension Array where Element == [Double] {
+  func copy() -> [[Double]] {
+    self.map { $0 }
+  }
+}
