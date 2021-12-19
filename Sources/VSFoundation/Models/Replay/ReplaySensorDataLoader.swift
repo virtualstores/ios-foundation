@@ -5,40 +5,32 @@
 // Copyright (c) 2021 Virtual Stores
 
 import Foundation
+import TabularData
 
 public final class ReplaySensorDataLoader: IReplaySensorDataLoader {
 
   public init() {}
 
-  public func loadFileFromBundle(path: String, withExtension: String) -> [MotionSensorData]? {
-    if let fileURL = Bundle.main.url(forResource: path, withExtension: withExtension) {
-      // we found the file in our bundle!
-      if let fileContents = try? String(contentsOf: fileURL) {
-        // we loaded the file into a string!
+  public func decodeFileFrom(url: URL) -> [MotionSensorData]? {
+    // we found the file in our bundle!
+    if let fileContents = try? String(contentsOf: url) {
+      // we loaded the file into a string!
       do {
         return try decodeReplayData(data: Data(fileContents.utf8))
       } catch let error as NSError {
         Logger(verbosity: .error)
           .log(
             tag: "ReplaySensorDataLoader.loadFileFromBundle",
-            message: "Failed decoding file: \(path + withExtension), Error: " + error.localizedDescription
+            message: "Failed decoding file: \(url), Error: " + error.localizedDescription
           )
         return nil
       }
 
-      } else {
-        Logger(verbosity: .error)
-          .log(
-            tag: "ReplaySensorDataLoader.loadFileFromBundle",
-            message: "Could not read file content for file: \(path + withExtension)"
-          )
-        return nil
-      }
     } else {
       Logger(verbosity: .error)
         .log(
           tag: "ReplaySensorDataLoader.loadFileFromBundle",
-          message: "File not found in bundle: \(path + withExtension)"
+          message: "Could not read file content for file: \(url)"
         )
       return nil
     }
@@ -55,7 +47,7 @@ public final class ReplaySensorDataLoader: IReplaySensorDataLoader {
       Logger(verbosity: .error)
         .log(
           tag: "ReplaySensorDataLoader.loadFileFromBundle",
-          message: "Failed decoding file: \(path + withExtension), Error: " + error.localizedDescription
+          message: "Failed decoding file: \(path + "." + withExtension), Error: " + error.localizedDescription
         )
       return nil
     }
