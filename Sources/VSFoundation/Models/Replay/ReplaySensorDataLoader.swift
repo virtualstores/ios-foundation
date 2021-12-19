@@ -12,9 +12,7 @@ public final class ReplaySensorDataLoader: IReplaySensorDataLoader {
   public init() {}
 
   public func decodeFileFrom(url: URL) -> [MotionSensorData]? {
-    // we found the file in our bundle!
     if let fileContents = try? String(contentsOf: url) {
-      // we loaded the file into a string!
       do {
         return try decodeReplayData(data: Data(fileContents.utf8))
       } catch let error as NSError {
@@ -35,24 +33,6 @@ public final class ReplaySensorDataLoader: IReplaySensorDataLoader {
       return nil
     }
   }
-
-  public func loadFileFrom(path: String, withExtension: String, inDirectory: FileManager.SearchPathDirectory) -> [MotionSensorData]? {
-    let DocumentDirURL = try! FileManager.default.url(for: inDirectory, in: .userDomainMask, appropriateFor: nil, create: true)
-
-    let fileURL = DocumentDirURL.appendingPathComponent(path).appendingPathExtension(withExtension)
-
-    do {
-      return try decodeReplayData(data: Data(String(contentsOf: fileURL).utf8))
-    } catch let error as NSError {
-      Logger(verbosity: .error)
-        .log(
-          tag: "ReplaySensorDataLoader.loadFileFromBundle",
-          message: "Failed decoding file: \(path + "." + withExtension), Error: " + error.localizedDescription
-        )
-      return nil
-    }
-  }
-
 
   private func decodeReplayData(data: Data) throws -> [MotionSensorData]? {
     let decoder = JSONDecoder()
