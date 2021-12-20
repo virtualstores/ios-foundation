@@ -6,7 +6,9 @@ import PackageDescription
 let package = Package(
     name: "VSFoundation",
     platforms: [
-            .iOS(.v13)
+        .iOS(.v13),
+        .macOS(.v11),
+        .watchOS(.v6)
     ],
     products: [
         .library(

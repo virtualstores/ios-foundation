@@ -5,7 +5,6 @@
 // Copyright (c) 2021 Virtual Stores
 
 import Foundation
-import TabularData
 
 public final class ReplaySensorDataLoader: IReplaySensorDataLoader {
 
