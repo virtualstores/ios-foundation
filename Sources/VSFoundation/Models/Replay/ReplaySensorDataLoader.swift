@@ -42,14 +42,14 @@ public final class ReplaySensorDataLoader: IReplaySensorDataLoader {
     var result = [MotionSensorData]()
     if replayData.replayData.ACCELERATION.count == replayData.replayData.ROTATION.count &&
          replayData.replayData.ACCELERATION.count == replayData.replayData.GRAVITY.count {
-      for i in replayData.replayData.ACCELERATION.indices {
+      for index in replayData.replayData.ACCELERATION.indices {
         result.append(
           MotionSensorData(
-            timestampSensor: replayData.replayData.ACCELERATION[i].sensorTimestamp,
-            timestampLocal: replayData.replayData.ACCELERATION[i].systemTimestamp,
-            accelerationData: replayData.replayData.ACCELERATION[i].values.map { $0.asDouble },
-            gravityData: replayData.replayData.GRAVITY[i].values.map { $0.asDouble },
-            rotationData: replayData.replayData.ROTATION[i].values.map { $0.asDouble }
+            timestampSensor: replayData.replayData.ACCELERATION[index].sensorTimestamp,
+            timestampLocal: replayData.replayData.ACCELERATION[index].systemTimestamp,
+            accelerationData: replayData.replayData.ACCELERATION[index].values.map { $0.asDouble },
+            gravityData: replayData.replayData.GRAVITY[index].values.map { $0.asDouble },
+            rotationData: replayData.replayData.ROTATION[index].values.map { $0.asDouble }
           )
         )
       }
@@ -57,5 +57,3 @@ public final class ReplaySensorDataLoader: IReplaySensorDataLoader {
     return result
   }
 }
-
-

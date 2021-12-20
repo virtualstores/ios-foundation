@@ -27,11 +27,11 @@ public protocol Loggable {
 
 public struct Logger: Loggable {
     public var verbosity: Verbosity
-    
+
     public init(verbosity: Verbosity = .silent) {
         self.verbosity = verbosity
     }
-    
+
     public func log(tag: String, message: String) {
         switch verbosity {
         case .debug:
@@ -55,4 +55,4 @@ public struct Logger: Loggable {
             break
         }
     }
-}   
+}

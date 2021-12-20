@@ -9,8 +9,6 @@ import Foundation
 
 public extension Double {
   var asFloat: Float {
-    get {
-      Float(self)
-    }
+    Float(self)
   }
 }

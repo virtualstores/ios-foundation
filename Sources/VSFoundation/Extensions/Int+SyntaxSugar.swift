@@ -9,10 +9,10 @@ import Foundation
 
 public extension Int {
   var asFloat: Float {
-    get { return Float(self) }
+    return Float(self)
   }
 
   var asDouble: Double {
-    get { return Double(self) }
+    return Double(self)
   }
 }
