@@ -6,6 +6,9 @@
 // Copyright Virtual Stores - 2021
 //
 
+import Foundation
+import CoreGraphics
+
 public struct PositionBundle {
     public let position: CGPoint
     public let std: Double
