@@ -12,4 +12,9 @@ import CoreGraphics
 public struct PositionBundle {
     public let position: CGPoint
     public let std: Double
+    
+    public init(position: CGPoint, std: Double) {
+        self.position = position
+        self.std = std
+    }
 }
