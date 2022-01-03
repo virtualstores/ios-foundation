@@ -51,9 +51,9 @@ public final class ReplaySensorDataLoader: IReplaySensorDataLoader {
           MotionSensorData(
             timestampSensor: replayData.sensorData.ACCELERATION[index].first,
             timestampLocal: 0,
-            accelerationData: replayData.sensorData.ACCELERATION[index].second.map{$0.asDouble},
-            gravityData: replayData.sensorData.GRAVITY[index].second.map{$0.asDouble},
-            rotationData: replayData.sensorData.ROTATION[index].second.map{$0.asDouble}
+            accelerationData: replayData.sensorData.ACCELERATION[index].second,
+            gravityData: replayData.sensorData.GRAVITY[index].second,
+            rotationData: replayData.sensorData.ROTATION[index].second
           )
         )
       }
@@ -74,9 +74,9 @@ public final class ReplaySensorDataLoader: IReplaySensorDataLoader {
           MotionSensorData(
             timestampSensor: replayData.replayData.ACCELERATION[index].sensorTimestamp,
             timestampLocal: replayData.replayData.ACCELERATION[index].systemTimestamp,
-            accelerationData: replayData.replayData.ACCELERATION[index].values.map{$0.asDouble},
-            gravityData: replayData.replayData.GRAVITY[index].values.map{$0.asDouble},
-            rotationData: replayData.replayData.ROTATION[index].values.map{$0.asDouble}
+            accelerationData: replayData.replayData.ACCELERATION[index].values,
+            gravityData: replayData.replayData.GRAVITY[index].values,
+            rotationData: replayData.replayData.ROTATION[index].values
           )
         )
       }
@@ -97,9 +97,9 @@ public final class ReplaySensorDataLoader: IReplaySensorDataLoader {
           MotionSensorData(
             timestampSensor: replayData.replayData.ACCELERATION[index].sensorTimestamp,
             timestampLocal: replayData.replayData.ACCELERATION[index].systemTimestamp,
-            accelerationData: replayData.replayData.ACCELERATION[index].values.map{$0.asDouble},
-            gravityData: replayData.replayData.GRAVITY[index].values.map{$0.asDouble},
-            rotationData: replayData.replayData.ROTATION[index].values.map{$0.asDouble}
+            accelerationData: replayData.replayData.ACCELERATION[index].values,
+            gravityData: replayData.replayData.GRAVITY[index].values,
+            rotationData: replayData.replayData.ROTATION[index].values
           )
         )
       }

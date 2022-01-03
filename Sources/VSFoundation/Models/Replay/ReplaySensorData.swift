@@ -20,7 +20,7 @@ struct ReplayDataV2: Codable {
 
 struct ReplaySensorDataV2: Codable {
   let first: Int
-  let second: [Float]
+  let second: [Double]
 }
 
 struct ReplaySensorDataFileV4: Codable {
@@ -39,7 +39,7 @@ struct ReplayDataV4: Codable {
 struct ReplaySensorDataV4: Codable {
   let sensorTimestamp: Int
   let systemTimestamp: Int
-  let values: [Float]
+  let values: [Double]
 }
 
 
@@ -59,6 +59,6 @@ struct ReplayDataV5: Codable {
 struct ReplaySensorDataV5: Codable {
   let sensorTimestamp: Int
   let systemTimestamp: Int
-  let values: [Float]
+  let values: [Double]
   let sensorAccuracy: Int
 }
