@@ -14,8 +14,10 @@ public final class ReplaySensorDataLoader: IReplaySensorDataLoader {
     if let fileContents = try? String(contentsOf: url) {
       do {
         switch fileVersion {
-        case .v4: return try decodeReplayDataV5(data: Data(fileContents.utf8))
-        case .v5: return try decodeReplayDataV4(data: Data(fileContents.utf8))
+        case .v2: return try decodeReplayDataV2(data: Data(fileContents.utf8))
+        case .v3: return try decodeReplayDataV4(data: Data(fileContents.utf8))
+        case .v4: return try decodeReplayDataV4(data: Data(fileContents.utf8))
+        case .v5: return try decodeReplayDataV5(data: Data(fileContents.utf8))
         }
       } catch let error as NSError {
         Logger(verbosity: .error)
@@ -36,6 +38,29 @@ public final class ReplaySensorDataLoader: IReplaySensorDataLoader {
     }
   }
 
+  private func decodeReplayDataV2(data: Data) throws -> [MotionSensorData]? {
+    let decoder = JSONDecoder()
+
+    let replayData = try decoder.decode(ReplaySensorDataFileV2.self, from: data)
+
+    var result = [MotionSensorData]()
+    if replayData.sensorData.ACCELERATION.count == replayData.sensorData.ROTATION.count &&
+         replayData.sensorData.ACCELERATION.count == replayData.sensorData.GRAVITY.count {
+      for index in replayData.sensorData.ACCELERATION.indices {
+        result.append(
+          MotionSensorData(
+            timestampSensor: replayData.sensorData.ACCELERATION[index].first,
+            timestampLocal: 0,
+            accelerationData: replayData.sensorData.ACCELERATION[index].second.map{$0.asDouble},
+            gravityData: replayData.sensorData.GRAVITY[index].second.map{$0.asDouble},
+            rotationData: replayData.sensorData.ROTATION[index].second.map{$0.asDouble}
+          )
+        )
+      }
+    }
+    return result
+  }
+
   private func decodeReplayDataV4(data: Data) throws -> [MotionSensorData]? {
     let decoder = JSONDecoder()
 
@@ -49,9 +74,9 @@ public final class ReplaySensorDataLoader: IReplaySensorDataLoader {
           MotionSensorData(
             timestampSensor: replayData.replayData.ACCELERATION[index].sensorTimestamp,
             timestampLocal: replayData.replayData.ACCELERATION[index].systemTimestamp,
-            accelerationData: replayData.replayData.ACCELERATION[index].values.map { $0.asDouble },
-            gravityData: replayData.replayData.GRAVITY[index].values.map { $0.asDouble },
-            rotationData: replayData.replayData.ROTATION[index].values.map { $0.asDouble }
+            accelerationData: replayData.replayData.ACCELERATION[index].values.map{$0.asDouble},
+            gravityData: replayData.replayData.GRAVITY[index].values.map{$0.asDouble},
+            rotationData: replayData.replayData.ROTATION[index].values.map{$0.asDouble}
           )
         )
       }
@@ -72,9 +97,9 @@ public final class ReplaySensorDataLoader: IReplaySensorDataLoader {
           MotionSensorData(
             timestampSensor: replayData.replayData.ACCELERATION[index].sensorTimestamp,
             timestampLocal: replayData.replayData.ACCELERATION[index].systemTimestamp,
-            accelerationData: replayData.replayData.ACCELERATION[index].values.map { $0.asDouble },
-            gravityData: replayData.replayData.GRAVITY[index].values.map { $0.asDouble },
-            rotationData: replayData.replayData.ROTATION[index].values.map { $0.asDouble }
+            accelerationData: replayData.replayData.ACCELERATION[index].values.map{$0.asDouble},
+            gravityData: replayData.replayData.GRAVITY[index].values.map{$0.asDouble},
+            rotationData: replayData.replayData.ROTATION[index].values.map{$0.asDouble}
           )
         )
       }

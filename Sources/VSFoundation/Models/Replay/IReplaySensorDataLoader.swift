@@ -8,11 +8,11 @@ import Foundation
 
 public protocol IReplaySensorDataLoader {
   func decodeFileFrom(url: URL, fileVersion: ReplayFileVersion) -> [MotionSensorData]?
-
-
 }
 
 public enum ReplayFileVersion {
+  case v2
+  case v3
   case v4
   case v5
 }
