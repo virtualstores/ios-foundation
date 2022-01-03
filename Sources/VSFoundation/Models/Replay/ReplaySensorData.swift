@@ -6,7 +6,7 @@
 
 import Foundation
 
-struct ReplaySensorData: Codable {
+struct ReplaySensorDataFileV5: Codable {
   let qpsValues: String
   let versionOfVPS: String
   let systemType: String
@@ -24,4 +24,23 @@ struct ReplaySensorDataV5: Codable {
   let systemTimestamp: Int
   let values: [Float]
   let sensorAccuracy: Int
+}
+
+struct ReplaySensorDataFileV4: Codable {
+  let qpsValues: String
+  let versionOfVPS: String
+  let systemType: String
+  let replayData: ReplayDataV4
+}
+
+struct ReplayDataV4: Codable {
+  let ACCELERATION: [ReplaySensorDataV4]
+  let ROTATION: [ReplaySensorDataV4]
+  let GRAVITY: [ReplaySensorDataV4]
+}
+
+struct ReplaySensorDataV4: Codable {
+  let sensorTimestamp: Int
+  let systemTimestamp: Int
+  let values: [Float]
 }
