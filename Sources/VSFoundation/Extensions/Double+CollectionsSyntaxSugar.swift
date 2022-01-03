@@ -11,6 +11,14 @@ public extension Array where Element == Double {
   func copy() -> [Double] {
     self.map { $0 }
   }
+
+  func sum() -> Double {
+    self.reduce(0, +)
+  }
+
+  func average() -> Double {
+    sum() / count.asDouble
+  }
 }
 public extension Array where Element == [Double] {
   func copy() -> [[Double]] {
