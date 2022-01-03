@@ -13,12 +13,7 @@ public final class ReplaySensorDataLoader: IReplaySensorDataLoader {
   public func decodeFileFrom(url: URL, fileVersion: ReplayFileVersion) -> [MotionSensorData]? {
     if let fileContents = try? String(contentsOf: url) {
       do {
-        switch fileVersion {
-        case .v2: return try decodeReplayDataV2(data: Data(fileContents.utf8))
-        case .v3: return try decodeReplayDataV4(data: Data(fileContents.utf8))
-        case .v4: return try decodeReplayDataV4(data: Data(fileContents.utf8))
-        case .v5: return try decodeReplayDataV5(data: Data(fileContents.utf8))
-        }
+        return try decodeReplayData(data: Data(fileContents.utf8), fileVersion: fileVersion)
       } catch let error as NSError {
         Logger(verbosity: .error)
           .log(
@@ -38,72 +33,21 @@ public final class ReplaySensorDataLoader: IReplaySensorDataLoader {
     }
   }
 
-  private func decodeReplayDataV2(data: Data) throws -> [MotionSensorData]? {
+  private func decodeReplayData(data: Data, fileVersion: ReplayFileVersion) throws -> [MotionSensorData]? {
     let decoder = JSONDecoder()
-
-    let replayData = try decoder.decode(ReplaySensorDataFileV2.self, from: data)
-
-    var result = [MotionSensorData]()
-    if replayData.sensorData.ACCELERATION.count == replayData.sensorData.ROTATION.count &&
-         replayData.sensorData.ACCELERATION.count == replayData.sensorData.GRAVITY.count {
-      for index in replayData.sensorData.ACCELERATION.indices {
-        result.append(
-          MotionSensorData(
-            timestampSensor: replayData.sensorData.ACCELERATION[index].first,
-            timestampLocal: 0,
-            accelerationData: replayData.sensorData.ACCELERATION[index].second,
-            gravityData: replayData.sensorData.GRAVITY[index].second,
-            rotationData: replayData.sensorData.ROTATION[index].second
-          )
-        )
-      }
+    var result: [MotionSensorData]?
+    switch fileVersion {
+    case .v2: result = try decoder.decode(ReplaySensorDataFileV2.self, from: data).asMotionSensorData()
+    // ReplayDataV4 supports decoding ReplayDataV3
+    case .v3: result = try decoder.decode(ReplaySensorDataFileV4.self, from: data).asMotionSensorData()
+    case .v4: result = try decoder.decode(ReplaySensorDataFileV4.self, from: data).asMotionSensorData()
+    case .v5: result = try decoder.decode(ReplaySensorDataFileV5.self, from: data).asMotionSensorData()
     }
-    return result
-  }
 
-  private func decodeReplayDataV4(data: Data) throws -> [MotionSensorData]? {
-    let decoder = JSONDecoder()
-
-    let replayData = try decoder.decode(ReplaySensorDataFileV4.self, from: data)
-
-    var result = [MotionSensorData]()
-    if replayData.replayData.ACCELERATION.count == replayData.replayData.ROTATION.count &&
-         replayData.replayData.ACCELERATION.count == replayData.replayData.GRAVITY.count {
-      for index in replayData.replayData.ACCELERATION.indices {
-        result.append(
-          MotionSensorData(
-            timestampSensor: replayData.replayData.ACCELERATION[index].sensorTimestamp,
-            timestampLocal: replayData.replayData.ACCELERATION[index].systemTimestamp,
-            accelerationData: replayData.replayData.ACCELERATION[index].values,
-            gravityData: replayData.replayData.GRAVITY[index].values,
-            rotationData: replayData.replayData.ROTATION[index].values
-          )
-        )
-      }
+    guard let result = result else {
+      throw "File data corrupt, number of sensor values not equal for ACCELERATON, GRAVITY and ROTATION. Possible cause: Tried to load ReplayData file recorded on Android device"
     }
-    return result
-  }
 
-  private func decodeReplayDataV5(data: Data) throws -> [MotionSensorData]? {
-    let decoder = JSONDecoder()
-
-    let replayData = try decoder.decode(ReplaySensorDataFileV5.self, from: data)
-
-    var result = [MotionSensorData]()
-    if replayData.replayData.ACCELERATION.count == replayData.replayData.ROTATION.count &&
-         replayData.replayData.ACCELERATION.count == replayData.replayData.GRAVITY.count {
-      for index in replayData.replayData.ACCELERATION.indices {
-        result.append(
-          MotionSensorData(
-            timestampSensor: replayData.replayData.ACCELERATION[index].sensorTimestamp,
-            timestampLocal: replayData.replayData.ACCELERATION[index].systemTimestamp,
-            accelerationData: replayData.replayData.ACCELERATION[index].values,
-            gravityData: replayData.replayData.GRAVITY[index].values,
-            rotationData: replayData.replayData.ROTATION[index].values
-          )
-        )
-      }
-    }
     return result
   }
 }
