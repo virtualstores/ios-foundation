@@ -37,8 +37,6 @@ struct ReplaySensorDataV5: Codable {
   let sensorAccuracy: Int
 }
 
-
-
 extension ReplayDataV5 {
   func asMotionSensorData() -> [MotionSensorData]? {
     var result = [MotionSensorData]()
