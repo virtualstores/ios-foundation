@@ -10,10 +10,10 @@ public final class ReplaySensorDataLoader: IReplaySensorDataLoader {
 
   public init() {}
 
-  public func decodeFileFrom(url: URL, fileVersion: ReplayFileVersion) -> [MotionSensorData]? {
+  public func decodeFileFrom(url: URL, fileVersion: ReplayFileVersion, trimStrategy: TrimStrategy = .end) -> [MotionSensorData]? {
     if let fileContents = try? String(contentsOf: url) {
       do {
-        return try decodeReplayData(data: Data(fileContents.utf8), fileVersion: fileVersion)
+        return try decodeReplayData(data: Data(fileContents.utf8), fileVersion: fileVersion, trimStrategy: trimStrategy)
       } catch let error as NSError {
         Logger(verbosity: .error)
           .log(
@@ -33,15 +33,15 @@ public final class ReplaySensorDataLoader: IReplaySensorDataLoader {
     }
   }
 
-  private func decodeReplayData(data: Data, fileVersion: ReplayFileVersion) throws -> [MotionSensorData]? {
+  private func decodeReplayData(data: Data, fileVersion: ReplayFileVersion, trimStrategy: TrimStrategy) throws -> [MotionSensorData]? {
     let decoder = JSONDecoder()
     var result: [MotionSensorData]?
     switch fileVersion {
-    case .v2: result = try decoder.decode(ReplaySensorDataFileV2.self, from: data).asMotionSensorData()
+    case .v2: result = try decoder.decode(ReplaySensorDataFileV2.self, from: data).sensorData.trim(trimStrategy: trimStrategy).asMotionSensorData()
     // ReplayDataV4 supports decoding ReplayDataV3
-    case .v3: result = try decoder.decode(ReplaySensorDataFileV4.self, from: data).asMotionSensorData()
-    case .v4: result = try decoder.decode(ReplaySensorDataFileV4.self, from: data).asMotionSensorData()
-    case .v5: result = try decoder.decode(ReplaySensorDataFileV5.self, from: data).asMotionSensorData()
+    case .v3: result = try decoder.decode(ReplaySensorDataFileV4.self, from: data).replayData.trim(trimStrategy: trimStrategy).asMotionSensorData()
+    case .v4: result = try decoder.decode(ReplaySensorDataFileV4.self, from: data).replayData.trim(trimStrategy: trimStrategy).asMotionSensorData()
+    case .v5: result = try decoder.decode(ReplaySensorDataFileV5.self, from: data).replayData.trim(trimStrategy: trimStrategy).asMotionSensorData()
     }
 
     guard let result = result else {
