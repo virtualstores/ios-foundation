@@ -17,6 +17,17 @@ struct ReplayDataV5: Codable {
   let ACCELERATION: [ReplaySensorDataV5]
   let ROTATION: [ReplaySensorDataV5]
   let GRAVITY: [ReplaySensorDataV5]
+
+  func trim(trimStrategy: TrimStrategy) -> ReplayDataV5 {
+
+    let largest = max(max(ACCELERATION.count, ROTATION.count), GRAVITY.count)
+
+    return ReplayDataV5(
+      ACCELERATION: ACCELERATION.trim(trimSize: (largest - ACCELERATION.count), trimStrategy: trimStrategy),
+      ROTATION: ROTATION.trim(trimSize: (largest - ROTATION.count), trimStrategy: trimStrategy),
+      GRAVITY: GRAVITY.trim(trimSize: (largest - GRAVITY.count), trimStrategy: trimStrategy)
+    )
+  }
 }
 
 struct ReplaySensorDataV5: Codable {
@@ -26,19 +37,21 @@ struct ReplaySensorDataV5: Codable {
   let sensorAccuracy: Int
 }
 
-extension ReplaySensorDataFileV5 {
+
+
+extension ReplayDataV5 {
   func asMotionSensorData() -> [MotionSensorData]? {
     var result = [MotionSensorData]()
-    if replayData.ACCELERATION.count == replayData.ROTATION.count &&
-         replayData.ACCELERATION.count == replayData.GRAVITY.count {
-      for index in replayData.ACCELERATION.indices {
+    if ACCELERATION.count == ROTATION.count &&
+         ACCELERATION.count == GRAVITY.count {
+      for index in ACCELERATION.indices {
         result.append(
           MotionSensorData(
-            timestampSensor: replayData.ACCELERATION[index].sensorTimestamp,
-            timestampLocal: replayData.ACCELERATION[index].systemTimestamp,
-            accelerationData: replayData.ACCELERATION[index].values,
-            gravityData: replayData.GRAVITY[index].values,
-            rotationData: replayData.ROTATION[index].values
+            timestampSensor: ACCELERATION[index].sensorTimestamp,
+            timestampLocal: ACCELERATION[index].systemTimestamp,
+            accelerationData: ACCELERATION[index].values,
+            gravityData: GRAVITY[index].values,
+            rotationData:ROTATION[index].values
           )
         )
       }
