@@ -6,7 +6,7 @@
 import Foundation
 
 public protocol IUserSettings {
-  var userHeight: Double { get }
-  var speedRegressionSlope: Double { get }
-  var speedRegressionIntercept: Double { get }
+  var userHeight: Double? { get }
+  var speedRegressionSlope: Double? { get }
+  var speedRegressionIntercept: Double? { get }
 }
