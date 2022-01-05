@@ -45,7 +45,7 @@ public final class ReplaySensorDataLoader: IReplaySensorDataLoader {
     }
 
     guard let result = result else {
-      throw "File data corrupt, number of sensor values not equal for ACCELERATON, GRAVITY and ROTATION. Possible cause: Tried to load ReplayData file recorded on Android device"
+      throw "File data corrupt, FileVersion: \(fileVersion), number of sensor values not equal for ACCELERATON, GRAVITY and ROTATION. Possible cause: Tried to load ReplayData file recorded on Android device"
     }
 
     return result
