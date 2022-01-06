@@ -39,8 +39,8 @@ public final class ReplaySensorDataLoader: IReplaySensorDataLoader {
     switch fileVersion {
     case .v2: result = try decoder.decode(ReplaySensorDataFileV2.self, from: data).sensorData.trim(trimStrategy: trimStrategy).asMotionSensorData()
     // ReplayDataV4 supports decoding ReplayDataV3
-    case .v3: result = try decoder.decode(ReplaySensorDataFileV4.self, from: data).replayData.trim(trimStrategy: trimStrategy).asMotionSensorData()
-    case .v4: result = try decoder.decode(ReplaySensorDataFileV4.self, from: data).replayData.trim(trimStrategy: trimStrategy).asMotionSensorData()
+    case .v3: result = try decoder.decode(ReplaySensorDataFileV4.self, from: data).sensorData.trim(trimStrategy: trimStrategy).asMotionSensorData()
+    case .v4: result = try decoder.decode(ReplaySensorDataFileV4.self, from: data).sensorData.trim(trimStrategy: trimStrategy).asMotionSensorData()
     case .v5: result = try decoder.decode(ReplaySensorDataFileV5.self, from: data).replayData.trim(trimStrategy: trimStrategy).asMotionSensorData()
     }
 

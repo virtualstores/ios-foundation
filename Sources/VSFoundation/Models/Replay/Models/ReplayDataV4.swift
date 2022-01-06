@@ -10,7 +10,7 @@ struct ReplaySensorDataFileV4: Codable {
   let qpsValues: String
   let versionOfVPS: String
   let systemType: String
-  let replayData: ReplayDataV4
+  let sensorData: ReplayDataV4
 }
 
 struct ReplayDataV4: Codable {
