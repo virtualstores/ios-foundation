@@ -15,16 +15,27 @@ final class ReplayDataLoaderTest: XCTestCase {
     if let v2Url = URL.ReplayDataLoaderTests.replayDataV2,
         let v3_v4Url = URL.ReplayDataLoaderTests.replayDataV3andV4,
        let v5Url = URL.ReplayDataLoaderTests.replayDataV5 {
-      XCTAssertNotNil(loadReplayDataFrom(url: v2Url, fileVersion: .v2))
-      XCTAssertNotNil(loadReplayDataFrom(url: v3_v4Url, fileVersion: .v3))
-      XCTAssertNotNil(loadReplayDataFrom(url: v3_v4Url, fileVersion: .v4))
-      XCTAssertNotNil(loadReplayDataFrom(url: v5Url, fileVersion: .v5))
+
+      let dataV2 = loadReplayDataFrom(url: v2Url, fileVersion: .v2)
+      let dataV3 = loadReplayDataFrom(url: v3_v4Url, fileVersion: .v3)
+      let dataV4 = loadReplayDataFrom(url: v3_v4Url, fileVersion: .v4)
+      let dataV5 = loadReplayDataFrom(url: v5Url, fileVersion: .v5)
+
+      XCTAssertNotNil(dataV2?.sensorData)
+      XCTAssertNotNil(dataV2?.startPosition)
+      XCTAssertNotNil(dataV3?.sensorData)
+      XCTAssertNotNil(dataV3?.startPosition)
+      XCTAssertNotNil(dataV4?.sensorData)
+      XCTAssertNotNil(dataV4?.startPosition)
+      XCTAssertNotNil(dataV5?.sensorData)
+      XCTAssertNotNil(dataV5?.startPosition)
+
     } else {
       XCTAssertTrue(false)
     }
   }
 
-  private func loadReplayDataFrom(url: URL, fileVersion: ReplayFileVersion) -> [MotionSensorData]? {
+  private func loadReplayDataFrom(url: URL, fileVersion: ReplayFileVersion) -> ReplayData? {
     return ReplaySensorDataLoader().decodeFileFrom(url: url, fileVersion: fileVersion)
   }
 }

@@ -11,6 +11,7 @@ struct ReplaySensorDataFileV5: Codable {
   let versionOfVPS: String
   let systemType: String
   let replayData: ReplayDataV5
+  let startPosition: ReplayStartPosition
 }
 
 struct ReplayDataV5: Codable {
