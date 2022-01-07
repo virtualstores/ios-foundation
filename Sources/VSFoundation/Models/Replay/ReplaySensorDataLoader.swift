@@ -10,7 +10,7 @@ public final class ReplaySensorDataLoader: IReplaySensorDataLoader {
 
   public init() {}
 
-  public func decodeFileFrom(url: URL, fileVersion: ReplayFileVersion, trimStrategy: TrimStrategy = .end) -> [MotionSensorData]? {
+  public func decodeFileFrom(url: URL, fileVersion: ReplayFileVersion, trimStrategy: TrimStrategy = .end) -> ReplayData? {
     if let fileContents = try? String(contentsOf: url) {
       do {
         return try decodeReplayData(data: Data(fileContents.utf8), fileVersion: fileVersion, trimStrategy: trimStrategy)
@@ -33,20 +33,36 @@ public final class ReplaySensorDataLoader: IReplaySensorDataLoader {
     }
   }
 
-  private func decodeReplayData(data: Data, fileVersion: ReplayFileVersion, trimStrategy: TrimStrategy) throws -> [MotionSensorData]? {
+  private func decodeReplayData(data: Data, fileVersion: ReplayFileVersion, trimStrategy: TrimStrategy) throws -> ReplayData {
     let decoder = JSONDecoder()
-    var result: [MotionSensorData]?
+    var sensorData: [MotionSensorData]?
+    var startPosition: ReplayStartPosition?
     switch fileVersion {
-    case .v2: result = try decoder.decode(ReplaySensorDataFileV2.self, from: data).sensorData.trim(trimStrategy: trimStrategy).asMotionSensorData()
-    // ReplayDataV4 supports decoding ReplayDataV3
-    case .v3: result = try decoder.decode(ReplaySensorDataFileV4.self, from: data).sensorData.trim(trimStrategy: trimStrategy).asMotionSensorData()
-    case .v4: result = try decoder.decode(ReplaySensorDataFileV4.self, from: data).sensorData.trim(trimStrategy: trimStrategy).asMotionSensorData()
-    case .v5: result = try decoder.decode(ReplaySensorDataFileV5.self, from: data).replayData.trim(trimStrategy: trimStrategy).asMotionSensorData()
+    case .v2:
+      let replayData = try decoder.decode(ReplaySensorDataFileV2.self, from: data)
+      sensorData = replayData.sensorData.trim(trimStrategy: trimStrategy).asMotionSensorData()
+      startPosition = replayData.startPosition
+      // ReplayDataV4 supports decoding ReplayDataV3
+    case .v3:
+      let replayData = try decoder.decode(ReplaySensorDataFileV4.self, from: data)
+      sensorData = replayData.sensorData.trim(trimStrategy: trimStrategy).asMotionSensorData()
+      startPosition = replayData.startPosition
+    case .v4:
+      let replayData = try decoder.decode(ReplaySensorDataFileV4.self, from: data)
+      sensorData = replayData.sensorData.trim(trimStrategy: trimStrategy).asMotionSensorData()
+      startPosition = replayData.startPosition
+    case .v5:
+      let replayData = try decoder.decode(ReplaySensorDataFileV5.self, from: data)
+      sensorData = replayData.replayData.trim(trimStrategy: trimStrategy).asMotionSensorData()
+      startPosition = replayData.startPosition
     }
 
-    guard let result = result else {
+    guard let sensorData = sensorData, let startPosition = startPosition else {
       throw "File data corrupt, FileVersion: \(fileVersion), number of sensor values not equal for ACCELERATON, GRAVITY and ROTATION. Possible cause: Tried to load ReplayData file recorded on Android device"
     }
+    let result = ReplayData(
+      sensorData: sensorData,
+      startPosition: startPosition)
 
     return result
   }

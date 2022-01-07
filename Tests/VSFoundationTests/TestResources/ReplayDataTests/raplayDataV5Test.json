@@ -1,365 +1,374 @@
 {
-    "qpsValues": "se.virtualstores.qps.GlobalQPSValues@8096bb20",
-    "versionOfVPS": "0.1.35-1-SNAPSHOT",
-    "systemType": "IOS",
-    "replayData": {
-        "ACCELERATION": [
-            {
-                "sensorTimestamp": 693302801,
-                "systemTimestamp": 1638783308766,
-                "values": [
-                    -0.049544334,
-                    -0.06305169,
-                    -0.22331862
-                ],
-                "sensorAccuracy": 0.0
-            },
-            {
-                "sensorTimestamp": 693302811,
-                "systemTimestamp": 1638783308782,
-                "values": [
-                    -0.11760097,
-                    -0.07308734,
-                    -0.12160572
-                ],
-                "sensorAccuracy": 0.0
-            },
-            {
-                "sensorTimestamp": 693302821,
-                "systemTimestamp": 1638783308785,
-                "values": [
-                    -0.11104221,
-                    -0.07938699,
-                    -0.020670492
-                ],
-                "sensorAccuracy": 0.0
-            },
-            {
-                "sensorTimestamp": 693302831,
-                "systemTimestamp": 1638783308795,
-                "values": [
-                    -0.07979931,
-                    -0.14679705,
-                    -0.073695384
-                ],
-                "sensorAccuracy": 0.0
-            },
-            {
-                "sensorTimestamp": 693302841,
-                "systemTimestamp": 1638783308805,
-                "values": [
-                    -0.19159627,
-                    -0.28654537,
-                    -0.23882484
-                ],
-                "sensorAccuracy": 0.0
-            },
-            {
-                "sensorTimestamp": 693302851,
-                "systemTimestamp": 1638783308815,
-                "values": [
-                    -0.26927924,
-                    -0.3601936,
-                    -0.25888488
-                ],
-                "sensorAccuracy": 0.0
-            },
-            {
-                "sensorTimestamp": 693302861,
-                "systemTimestamp": 1638783308825,
-                "values": [
-                    -0.24695192,
-                    -0.33639404,
-                    -0.008490742
-                ],
-                "sensorAccuracy": 0.0
-            }
+  "qpsValues": "se.virtualstores.qps.GlobalQPSValues@8096bb20",
+  "versionOfVPS": "0.1.35-1-SNAPSHOT",
+  "systemType": "IOS",
+  "replayData": {
+    "ACCELERATION": [
+      {
+        "sensorTimestamp": 693302801,
+        "systemTimestamp": 1638783308766,
+        "values": [
+          -0.049544334,
+          -0.06305169,
+          -0.22331862
         ],
-        "ROTATION": [
-            {
-                "sensorTimestamp": 693302801,
-                "systemTimestamp": 1638783308766,
-                "values": [
-                    0.0488523,
-                    0.0099887485,
-                    0.0050934437,
-                    0.9987431
-                ],
-                "sensorAccuracy": 0.0
-            },
-            {
-                "sensorTimestamp": 693302811,
-                "systemTimestamp": 1638783308782,
-                "values": [
-                    0.048941314,
-                    0.010125884,
-                    0.0052850978,
-                    0.9987365
-                ],
-                "sensorAccuracy": 0.0
-            },
-            {
-                "sensorTimestamp": 693302821,
-                "systemTimestamp": 1638783308785,
-                "values": [
-                    0.04915131,
-                    0.010497124,
-                    0.0054787016,
-                    0.99872124
-                ],
-                "sensorAccuracy": 0.0
-            },
-            {
-                "sensorTimestamp": 693302831,
-                "systemTimestamp": 1638783308795,
-                "values": [
-                    0.0494591,
-                    0.010943125,
-                    0.0056101047,
-                    0.9987005
-                ],
-                "sensorAccuracy": 0.0
-            },
-            {
-                "sensorTimestamp": 693302841,
-                "systemTimestamp": 1638783308805,
-                "values": [
-                    0.049851306,
-                    0.011302093,
-                    0.0055800257,
-                    0.99867713
-                ],
-                "sensorAccuracy": 0.0
-            },
-            {
-                "sensorTimestamp": 693302851,
-                "systemTimestamp": 1638783308815,
-                "values": [
-                    0.050335433,
-                    0.011521508,
-                    0.0053322683,
-                    0.9986518
-                ],
-                "sensorAccuracy": 0.0
-            },
-            {
-                "sensorTimestamp": 693302861,
-                "systemTimestamp": 1638783308825,
-                "values": [
-                    0.05090616,
-                    0.011738397,
-                    0.0048982627,
-                    0.9986225
-                ],
-                "sensorAccuracy": 0.0
-            },
-            {
-                "sensorTimestamp": 693302871,
-                "systemTimestamp": 1638783308835,
-                "values": [
-                    0.051499024,
-                    0.012083249,
-                    0.0043966537,
-                    0.9985903
-                ],
-                "sensorAccuracy": 0.0
-            },
-            {
-                "sensorTimestamp": 693302881,
-                "systemTimestamp": 1638783308845,
-                "values": [
-                    0.05200513,
-                    0.012609634,
-                    0.0039402028,
-                    0.9985594
-                ],
-                "sensorAccuracy": 0.0
-            },
-            {
-                "sensorTimestamp": 693302891,
-                "systemTimestamp": 1638783308855,
-                "values": [
-                    0.052301195,
-                    0.013167291,
-                    0.0036187177,
-                    0.99853814
-                ],
-                "sensorAccuracy": 0.0
-            },
-            {
-                "sensorTimestamp": 693302901,
-                "systemTimestamp": 1638783308865,
-                "values": [
-                    0.0523313,
-                    0.013514354,
-                    0.0034229578,
-                    0.99853253
-                ],
-                "sensorAccuracy": 0.0
-            },
-            {
-                "sensorTimestamp": 693302911,
-                "systemTimestamp": 1638783308875,
-                "values": [
-                    0.052179,
-                    0.013486774,
-                    0.0032848269,
-                    0.9985413
-                ],
-                "sensorAccuracy": 0.0
-            }
+        "sensorAccuracy": 0.0
+      },
+      {
+        "sensorTimestamp": 693302811,
+        "systemTimestamp": 1638783308782,
+        "values": [
+          -0.11760097,
+          -0.07308734,
+          -0.12160572
         ],
-        "GRAVITY": [
-            {
-                "sensorTimestamp": 693302801,
-                "systemTimestamp": 1638783308766,
-                "values": [
-                    -0.19085096,
-                    0.9582756,
-                    9.761218
-                ],
-                "sensorAccuracy": 0.0
-            },
-            {
-                "sensorTimestamp": 693302811,
-                "systemTimestamp": 1638783308782,
-                "values": [
-                    -0.19334391,
-                    0.9600653,
-                    9.760993
-                ],
-                "sensorAccuracy": 0.0
-            },
-            {
-                "sensorTimestamp": 693302821,
-                "systemTimestamp": 1638783308785,
-                "values": [
-                    -0.20040683,
-                    0.96424377,
-                    9.760439
-                ],
-                "sensorAccuracy": 0.0
-            },
-            {
-                "sensorTimestamp": 693302831,
-                "systemTimestamp": 1638783308795,
-                "values": [
-                    -0.20898111,
-                    0.970331,
-                    9.759656
-                ],
-                "sensorAccuracy": 0.0
-            },
-            {
-                "sensorTimestamp": 693302841,
-                "systemTimestamp": 1638783308805,
-                "values": [
-                    -0.21599598,
-                    0.9780261,
-                    9.758735
-                ],
-                "sensorAccuracy": 0.0
-            },
-            {
-                "sensorTimestamp": 693302851,
-                "systemTimestamp": 1638783308815,
-                "values": [
-                    -0.22048119,
-                    0.9874551,
-                    9.757685
-                ],
-                "sensorAccuracy": 0.0
-            },
-            {
-                "sensorTimestamp": 693302861,
-                "systemTimestamp": 1638783308825,
-                "values": [
-                    -0.2250978,
-                    0.99853116,
-                    9.756453
-                ],
-                "sensorAccuracy": 0.0
-            },
-            {
-                "sensorTimestamp": 693302871,
-                "systemTimestamp": 1638783308835,
-                "values": [
-                    -0.23229672,
-                    1.0100288,
-                    9.7551
-                ],
-                "sensorAccuracy": 0.0
-            },
-            {
-                "sensorTimestamp": 693302881,
-                "systemTimestamp": 1638783308845,
-                "values": [
-                    -0.24302426,
-                    1.0198456,
-                    9.753818
-                ],
-                "sensorAccuracy": 0.0
-            },
-            {
-                "sensorTimestamp": 693302891,
-                "systemTimestamp": 1638783308855,
-                "values": [
-                    -0.25425124,
-                    1.0255842,
-                    9.75293
-                ],
-                "sensorAccuracy": 0.0
-            },
-            {
-                "sensorTimestamp": 693302901,
-                "systemTimestamp": 1638783308865,
-                "values": [
-                    -0.26124802,
-                    1.0261409,
-                    9.7526865
-                ],
-                "sensorAccuracy": 0.0
-            },
-            {
-                "sensorTimestamp": 693302911,
-                "systemTimestamp": 1638783308875,
-                "values": [
-                    -0.26086167,
-                    1.0231279,
-                    9.753013
-                ],
-                "sensorAccuracy": 0.0
-            },
-            {
-                "sensorTimestamp": 693302921,
-                "systemTimestamp": 1638783308885,
-                "values": [
-                    -0.2546192,
-                    1.0196615,
-                    9.753541
-                ],
-                "sensorAccuracy": 0.0
-            },
-            {
-                "sensorTimestamp": 693302931,
-                "systemTimestamp": 1638783308895,
-                "values": [
-                    -0.24823868,
-                    1.0180588,
-                    9.753873
-                ],
-                "sensorAccuracy": 0.0
-            },
-            {
-                "sensorTimestamp": 693302940,
-                "systemTimestamp": 1638783308904,
-                "values": [
-                    -0.24675979,
-                    1.0184281,
-                    9.753872
-                ],
-                "sensorAccuracy": 0.0
-            }
-        ]
-    }
+        "sensorAccuracy": 0.0
+      },
+      {
+        "sensorTimestamp": 693302821,
+        "systemTimestamp": 1638783308785,
+        "values": [
+          -0.11104221,
+          -0.07938699,
+          -0.020670492
+        ],
+        "sensorAccuracy": 0.0
+      },
+      {
+        "sensorTimestamp": 693302831,
+        "systemTimestamp": 1638783308795,
+        "values": [
+          -0.07979931,
+          -0.14679705,
+          -0.073695384
+        ],
+        "sensorAccuracy": 0.0
+      },
+      {
+        "sensorTimestamp": 693302841,
+        "systemTimestamp": 1638783308805,
+        "values": [
+          -0.19159627,
+          -0.28654537,
+          -0.23882484
+        ],
+        "sensorAccuracy": 0.0
+      },
+      {
+        "sensorTimestamp": 693302851,
+        "systemTimestamp": 1638783308815,
+        "values": [
+          -0.26927924,
+          -0.3601936,
+          -0.25888488
+        ],
+        "sensorAccuracy": 0.0
+      },
+      {
+        "sensorTimestamp": 693302861,
+        "systemTimestamp": 1638783308825,
+        "values": [
+          -0.24695192,
+          -0.33639404,
+          -0.008490742
+        ],
+        "sensorAccuracy": 0.0
+      }
+    ],
+    "ROTATION": [
+      {
+        "sensorTimestamp": 693302801,
+        "systemTimestamp": 1638783308766,
+        "values": [
+          0.0488523,
+          0.0099887485,
+          0.0050934437,
+          0.9987431
+        ],
+        "sensorAccuracy": 0.0
+      },
+      {
+        "sensorTimestamp": 693302811,
+        "systemTimestamp": 1638783308782,
+        "values": [
+          0.048941314,
+          0.010125884,
+          0.0052850978,
+          0.9987365
+        ],
+        "sensorAccuracy": 0.0
+      },
+      {
+        "sensorTimestamp": 693302821,
+        "systemTimestamp": 1638783308785,
+        "values": [
+          0.04915131,
+          0.010497124,
+          0.0054787016,
+          0.99872124
+        ],
+        "sensorAccuracy": 0.0
+      },
+      {
+        "sensorTimestamp": 693302831,
+        "systemTimestamp": 1638783308795,
+        "values": [
+          0.0494591,
+          0.010943125,
+          0.0056101047,
+          0.9987005
+        ],
+        "sensorAccuracy": 0.0
+      },
+      {
+        "sensorTimestamp": 693302841,
+        "systemTimestamp": 1638783308805,
+        "values": [
+          0.049851306,
+          0.011302093,
+          0.0055800257,
+          0.99867713
+        ],
+        "sensorAccuracy": 0.0
+      },
+      {
+        "sensorTimestamp": 693302851,
+        "systemTimestamp": 1638783308815,
+        "values": [
+          0.050335433,
+          0.011521508,
+          0.0053322683,
+          0.9986518
+        ],
+        "sensorAccuracy": 0.0
+      },
+      {
+        "sensorTimestamp": 693302861,
+        "systemTimestamp": 1638783308825,
+        "values": [
+          0.05090616,
+          0.011738397,
+          0.0048982627,
+          0.9986225
+        ],
+        "sensorAccuracy": 0.0
+      },
+      {
+        "sensorTimestamp": 693302871,
+        "systemTimestamp": 1638783308835,
+        "values": [
+          0.051499024,
+          0.012083249,
+          0.0043966537,
+          0.9985903
+        ],
+        "sensorAccuracy": 0.0
+      },
+      {
+        "sensorTimestamp": 693302881,
+        "systemTimestamp": 1638783308845,
+        "values": [
+          0.05200513,
+          0.012609634,
+          0.0039402028,
+          0.9985594
+        ],
+        "sensorAccuracy": 0.0
+      },
+      {
+        "sensorTimestamp": 693302891,
+        "systemTimestamp": 1638783308855,
+        "values": [
+          0.052301195,
+          0.013167291,
+          0.0036187177,
+          0.99853814
+        ],
+        "sensorAccuracy": 0.0
+      },
+      {
+        "sensorTimestamp": 693302901,
+        "systemTimestamp": 1638783308865,
+        "values": [
+          0.0523313,
+          0.013514354,
+          0.0034229578,
+          0.99853253
+        ],
+        "sensorAccuracy": 0.0
+      },
+      {
+        "sensorTimestamp": 693302911,
+        "systemTimestamp": 1638783308875,
+        "values": [
+          0.052179,
+          0.013486774,
+          0.0032848269,
+          0.9985413
+        ],
+        "sensorAccuracy": 0.0
+      }
+    ],
+    "GRAVITY": [
+      {
+        "sensorTimestamp": 693302801,
+        "systemTimestamp": 1638783308766,
+        "values": [
+          -0.19085096,
+          0.9582756,
+          9.761218
+        ],
+        "sensorAccuracy": 0.0
+      },
+      {
+        "sensorTimestamp": 693302811,
+        "systemTimestamp": 1638783308782,
+        "values": [
+          -0.19334391,
+          0.9600653,
+          9.760993
+        ],
+        "sensorAccuracy": 0.0
+      },
+      {
+        "sensorTimestamp": 693302821,
+        "systemTimestamp": 1638783308785,
+        "values": [
+          -0.20040683,
+          0.96424377,
+          9.760439
+        ],
+        "sensorAccuracy": 0.0
+      },
+      {
+        "sensorTimestamp": 693302831,
+        "systemTimestamp": 1638783308795,
+        "values": [
+          -0.20898111,
+          0.970331,
+          9.759656
+        ],
+        "sensorAccuracy": 0.0
+      },
+      {
+        "sensorTimestamp": 693302841,
+        "systemTimestamp": 1638783308805,
+        "values": [
+          -0.21599598,
+          0.9780261,
+          9.758735
+        ],
+        "sensorAccuracy": 0.0
+      },
+      {
+        "sensorTimestamp": 693302851,
+        "systemTimestamp": 1638783308815,
+        "values": [
+          -0.22048119,
+          0.9874551,
+          9.757685
+        ],
+        "sensorAccuracy": 0.0
+      },
+      {
+        "sensorTimestamp": 693302861,
+        "systemTimestamp": 1638783308825,
+        "values": [
+          -0.2250978,
+          0.99853116,
+          9.756453
+        ],
+        "sensorAccuracy": 0.0
+      },
+      {
+        "sensorTimestamp": 693302871,
+        "systemTimestamp": 1638783308835,
+        "values": [
+          -0.23229672,
+          1.0100288,
+          9.7551
+        ],
+        "sensorAccuracy": 0.0
+      },
+      {
+        "sensorTimestamp": 693302881,
+        "systemTimestamp": 1638783308845,
+        "values": [
+          -0.24302426,
+          1.0198456,
+          9.753818
+        ],
+        "sensorAccuracy": 0.0
+      },
+      {
+        "sensorTimestamp": 693302891,
+        "systemTimestamp": 1638783308855,
+        "values": [
+          -0.25425124,
+          1.0255842,
+          9.75293
+        ],
+        "sensorAccuracy": 0.0
+      },
+      {
+        "sensorTimestamp": 693302901,
+        "systemTimestamp": 1638783308865,
+        "values": [
+          -0.26124802,
+          1.0261409,
+          9.7526865
+        ],
+        "sensorAccuracy": 0.0
+      },
+      {
+        "sensorTimestamp": 693302911,
+        "systemTimestamp": 1638783308875,
+        "values": [
+          -0.26086167,
+          1.0231279,
+          9.753013
+        ],
+        "sensorAccuracy": 0.0
+      },
+      {
+        "sensorTimestamp": 693302921,
+        "systemTimestamp": 1638783308885,
+        "values": [
+          -0.2546192,
+          1.0196615,
+          9.753541
+        ],
+        "sensorAccuracy": 0.0
+      },
+      {
+        "sensorTimestamp": 693302931,
+        "systemTimestamp": 1638783308895,
+        "values": [
+          -0.24823868,
+          1.0180588,
+          9.753873
+        ],
+        "sensorAccuracy": 0.0
+      },
+      {
+        "sensorTimestamp": 693302940,
+        "systemTimestamp": 1638783308904,
+        "values": [
+          -0.24675979,
+          1.0184281,
+          9.753872
+        ],
+        "sensorAccuracy": 0.0
+      }
+    ]
+  },
+  "startPosition": {
+    "timestamp":-332976740914305233,
+    "position":{
+      "x":28.896938,
+      "y":39.722446
+
+    },
+    "angle":90.13162138777182
+  }
 }
