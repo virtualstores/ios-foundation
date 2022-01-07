@@ -7,12 +7,12 @@
 import Foundation
 
 public struct ReplayStartPosition: Codable {
-  let timestamp: Int
-  let position: StartPosition
-  let angle: Double
+  public let timestamp: Int
+  public let position: StartPosition
+  public let angle: Double
 }
 
 public struct StartPosition: Codable {
-  let x: Double
-  let y: Double
+  public let x: Double
+  public let y: Double
 }
