@@ -7,6 +7,6 @@
 import Foundation
 
 public struct ReplayData {
-  let sensorData: [MotionSensorData]
-  let startPosition: ReplayStartPosition
+  public let sensorData: [MotionSensorData]
+  public let startPosition: ReplayStartPosition
 }
