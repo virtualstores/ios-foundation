@@ -45,8 +45,8 @@ extension ReplayDataV4 {
       for index in ACCELERATION.indices {
         result.append(
           MotionSensorData(
-            timestampSensor: ACCELERATION[index].sensorTimestamp,
-            timestampLocal: ACCELERATION[index].systemTimestamp,
+            timestampSensor: ROTATION[index].sensorTimestamp,
+            timestampLocal: ROTATION[index].systemTimestamp,
             accelerationData: ACCELERATION[index].values,
             gravityData: GRAVITY[index].values,
             rotationData: ROTATION[index].values
