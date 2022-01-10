@@ -42,24 +42,33 @@ public enum Verbosity {
 
 public protocol Loggable {
     /// @abstract The desired verbosity
-    var verbosity: Verbosity { get set }
+    static var verbosity: Verbosity? { get set }
     
     /// Method that triggers the logging procedure
     /// - Author: Gabriel Sabadin
     ///
     /// - Parameter tag: A String to determine a tag for the logging (in case you want to create a classifier)
     /// - Parameter message: A String to determine the message you want to be logged
-    func log(tag: String, message: String)
+    static func log(tag: String, message: String)
 }
 
 public struct Logger: Loggable {
-    public var verbosity: Verbosity
-
-    public init(verbosity: Verbosity = .silent) {
-        self.verbosity = verbosity
+    public static var verbosity: Verbosity?
+    public static func setVerbosityLevel(with newValue: Verbosity?) {
+        verbosity = newValue
     }
 
-    public func log(tag: String = "", message: String) {
+    public static var level: Verbosity {
+        guard let verbosity = verbosity else {
+            return Verbosity.silent
+        }
+
+        return verbosity
+    }
+
+    public static func log(tag: String = "", message: String) {
+        guard let verbosity = verbosity else { return }
+        
         switch verbosity {
         case .debug:
             print("🕵️‍♀️ DEBUG: \(tag): \(message)")

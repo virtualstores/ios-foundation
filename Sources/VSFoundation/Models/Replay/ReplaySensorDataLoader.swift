@@ -15,8 +15,8 @@ public final class ReplaySensorDataLoader: IReplaySensorDataLoader {
       do {
         return try decodeReplayData(data: Data(fileContents.utf8), fileVersion: fileVersion, trimStrategy: trimStrategy)
       } catch let error as NSError {
-        Logger(verbosity: .error)
-          .log(
+          Logger.setVerbosityLevel(with: .error)
+          Logger.log(
             tag: "ReplaySensorDataLoader.loadFileFromBundle",
             message: "Failed decoding file: \(url), Error: " + error.localizedDescription
           )
@@ -24,8 +24,8 @@ public final class ReplaySensorDataLoader: IReplaySensorDataLoader {
       }
 
     } else {
-      Logger(verbosity: .error)
-        .log(
+        Logger.setVerbosityLevel(with: .error)
+        Logger.log(
           tag: "ReplaySensorDataLoader.loadFileFromBundle",
           message: "Could not read file content for file: \(url)"
         )
