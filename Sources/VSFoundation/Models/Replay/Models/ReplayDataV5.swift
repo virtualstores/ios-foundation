@@ -27,7 +27,7 @@ struct ReplayDataV5: Codable {
       ACCELERATION: ACCELERATION.trim(trimSize: (ACCELERATION.count - min), trimStrategy: trimStrategy),
       ROTATION: ROTATION.trim(trimSize: (ROTATION.count - min), trimStrategy: trimStrategy),
       GRAVITY: GRAVITY.trim(trimSize: (GRAVITY.count - min), trimStrategy: trimStrategy),
-      ALTITUDE: ALTITUDE.trim(trimSize: (ALTITUDE.count - min), trimStrategy: trimStrategy)
+      ALTITUDE: ALTITUDE // altitude does not trim
     )
   }
 }
