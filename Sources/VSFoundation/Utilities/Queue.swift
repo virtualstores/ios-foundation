@@ -41,7 +41,7 @@ open class Queue<T>: CustomStringConvertible {
     self.maxSize = maxSize
   }
 
-  var isEmpty: Bool {
+  public var isEmpty: Bool {
     front == nil
   }
 
