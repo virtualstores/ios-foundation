@@ -9,4 +9,5 @@ import Foundation
 public struct ReplayData {
   public let sensorData: [MotionSensorData]
   public let startPosition: ReplayStartPosition
+  public let altitudeData: [AltitudeSensorData]?
 }

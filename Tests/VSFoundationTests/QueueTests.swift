@@ -6,7 +6,7 @@
 
 import XCTest
 import Foundation
-@testable import VSFoundationt
+@testable import VSFoundation
 
 final class QueueTests: XCTestCase {
 

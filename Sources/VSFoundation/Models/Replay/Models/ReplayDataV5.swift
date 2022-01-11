@@ -18,6 +18,7 @@ struct ReplayDataV5: Codable {
   let ACCELERATION: [ReplaySensorDataV5]
   let ROTATION: [ReplaySensorDataV5]
   let GRAVITY: [ReplaySensorDataV5]
+  let ALTITUDE: [ReplaySensorDataV5]
 
   func trim(trimStrategy: TrimStrategy) -> ReplayDataV5 {
     let min = min(min(ACCELERATION.count, ROTATION.count), GRAVITY.count)
@@ -25,7 +26,8 @@ struct ReplayDataV5: Codable {
     return ReplayDataV5(
       ACCELERATION: ACCELERATION.trim(trimSize: (ACCELERATION.count - min), trimStrategy: trimStrategy),
       ROTATION: ROTATION.trim(trimSize: (ROTATION.count - min), trimStrategy: trimStrategy),
-      GRAVITY: GRAVITY.trim(trimSize: (GRAVITY.count - min), trimStrategy: trimStrategy)
+      GRAVITY: GRAVITY.trim(trimSize: (GRAVITY.count - min), trimStrategy: trimStrategy),
+      ALTITUDE: ALTITUDE.trim(trimSize: (ALTITUDE.count - min), trimStrategy: trimStrategy)
     )
   }
 }
@@ -59,5 +61,20 @@ extension ReplayDataV5 {
       return result
     }
     return nil
+  }
+
+  func asAltitudeSensorData() -> [AltitudeSensorData]? {
+    var result = [AltitudeSensorData]()
+
+    for index in ALTITUDE.indices {
+      result.append(
+        AltitudeSensorData(
+          timestampSensor: ALTITUDE[index].sensorTimestamp,
+          timestampLocal: ALTITUDE[index].systemTimestamp,
+          altitudenData: ALTITUDE[index].values
+        )
+      )
+    }
+    return result
   }
 }
