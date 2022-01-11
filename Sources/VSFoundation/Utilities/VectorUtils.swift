@@ -8,11 +8,11 @@ import Foundation
 
 public class VectorUtils {
 
-  static func dotProduct(vector1: [Double], vector2: [Double]) -> Double {
+  public static func dotProduct(vector1: [Double], vector2: [Double]) -> Double {
     return vector1[0] * vector2[0] + vector1[1] * vector2[1] + vector1[2] * vector2[2]
   }
 
-  static func vectorAddition(vector1: [Double], vector2: [Double]) -> [Double] {
+  public static func vectorAddition(vector1: [Double], vector2: [Double]) -> [Double] {
     if vector1.count != vector2.count {
       fatalError("Trying to add vectors of different lengths. Vector1.count = \(vector1.count), Vector2.count = \(vector2.count)")
     }
@@ -24,7 +24,7 @@ public class VectorUtils {
     return result
   }
 
-  static func vectorSubtraction(vector1: [Double], vector2: [Double]) -> [Double] {
+  public static func vectorSubtraction(vector1: [Double], vector2: [Double]) -> [Double] {
     if vector1.count != vector2.count {
       fatalError("Trying to subtract vectors of different lengths. Vector1.count = \(vector1.count), Vector2.count = \(vector2.count)")
     }
@@ -36,7 +36,7 @@ public class VectorUtils {
     return result
   }
 
-  static func scalarMultiplication(vector: [Double], scalar: Double) -> [Double] {
+  public static func scalarMultiplication(vector: [Double], scalar: Double) -> [Double] {
     var result = [Double](repeating: 0, count: vector.count)
     for (i, _) in vector.enumerated() {
       result[i] = scalar * vector[i]
@@ -44,7 +44,7 @@ public class VectorUtils {
     return result
   }
 
-  static func normalize(vector: [Double]) -> [Double] {
+  public static func normalize(vector: [Double]) -> [Double] {
     let m = vectorMagnitude(v: vector)
     if m == 0 {
       return vector
@@ -52,11 +52,11 @@ public class VectorUtils {
     return scalarMultiplication(vector: vector, scalar: 1 / m)
   }
 
-  static func vectorMagnitude(v: [Double]) -> Double {
+  public static func vectorMagnitude(v: [Double]) -> Double {
     return sqrt(v[0] * v[0] + v[1] * v[1] + v[2] * v[2])
   }
 
-  static func crossProduct(vector1: [Double], vector2: [Double], normed: Bool = false) -> [Double] {
+  public static func crossProduct(vector1: [Double], vector2: [Double], normed: Bool = false) -> [Double] {
     var vector = [Double](repeating: 0, count: 3)
     var result = [Double]()
     if normed {
@@ -76,7 +76,7 @@ public class VectorUtils {
     return result
   }
 
-  static func multiplyMV2(matrix: [[Double]], vector: [Double]) -> [Double] {
+  public static func multiplyMV2(matrix: [[Double]], vector: [Double]) -> [Double] {
     var result = [Double](repeating: 0, count: 3)
 
     for i in 0...2 {
@@ -90,7 +90,7 @@ public class VectorUtils {
     return result
   }
 
-  static func getRotationMatrixFromVector(rotationVector: [Double], nDim: Int) -> [Double] {
+  public static func getRotationMatrixFromVector(rotationVector: [Double], nDim: Int) -> [Double] {
     var result = [Double](repeating: 0, count: nDim)
 
     var q0: Double
@@ -157,7 +157,7 @@ public class VectorUtils {
     return result
   }
 
-  static func matrixMultiplication(matrix: [[Double]], vector: [Double]) -> [Double] {
+  public static func matrixMultiplication(matrix: [[Double]], vector: [Double]) -> [Double] {
     var newV = [Double]()
     for i in matrix[0].indices {
       var value = 0.0
@@ -169,7 +169,7 @@ public class VectorUtils {
     return newV
   }
 
-  static func getRotatedAxisAngleOnPlane(rotationVector: [Double], axis: [Double]) -> Double {
+  public static func getRotatedAxisAngleOnPlane(rotationVector: [Double], axis: [Double]) -> Double {
     let rotatedYAxis = VectorUtils.multiplyMV2(
       matrix: getRotationMatrixFromVector(rotationVector: rotationVector, nDim: 9).asMatrix,
       vector: axis
@@ -184,7 +184,7 @@ public class VectorUtils {
     return resultingAngle
   }
 
-  static func vectorAbs(vector: [Double]) -> [Double] {
+  public static func vectorAbs(vector: [Double]) -> [Double] {
     var result = [Double](repeating: 0, count: vector.count)
     for i in vector.indices {
       result[i] = abs(vector[i])
@@ -192,7 +192,7 @@ public class VectorUtils {
     return result
   }
 
-  static func projectOn(matrix: [[Double]], direction: [Double]) -> [Double] {
+  public static func projectOn(matrix: [[Double]], direction: [Double]) -> [Double] {
     // This is matrix multiplication
     var ret = [Double]()
     matrix.forEach { ret.append($0.dot(vector: direction)) }
