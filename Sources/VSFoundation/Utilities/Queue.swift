@@ -6,7 +6,7 @@
 
 import Foundation
 
-public class Queue<T>: CustomStringConvertible {
+open class Queue<T>: CustomStringConvertible {
 
   public class Node<T>: CustomStringConvertible {
     public var value: T
@@ -45,16 +45,16 @@ public class Queue<T>: CustomStringConvertible {
     front == nil
   }
 
-  public var description: String {
+  open var description: String {
     guard let front = self.front else { return "Empty Queue" }
     return String(describing: front)
   }
 
-  public var peek: T? {
+  open var peek: T? {
     front?.value
   }
 
-  public var peekLast: T? {
+  open var peekLast: T? {
     rear?.value
   }
 
@@ -65,13 +65,13 @@ public class Queue<T>: CustomStringConvertible {
     }
   }
 
-  public func clear() {
+  open func clear() {
     front = nil
     rear = nil
     count = 0
   }
 
-  public func enqueue(_ value: T, timestamp: Int? = nil) {
+  open func enqueue(_ value: T, timestamp: Int? = nil) {
     if isEmpty {
       push(value, timestamp: timestamp)
       count += 1
@@ -96,7 +96,7 @@ public class Queue<T>: CustomStringConvertible {
 
   }
 
-  public func dequeue() -> T? {
+  open func dequeue() -> T? {
     defer {
       front = front?.next
       front?.previous = nil
@@ -108,7 +108,7 @@ public class Queue<T>: CustomStringConvertible {
     return front?.value
   }
 
-  public func dequeueLast() -> T? {
+  open func dequeueLast() -> T? {
     if count == 1 {
       return dequeue()
     } else if !isEmpty {
@@ -124,7 +124,7 @@ public class Queue<T>: CustomStringConvertible {
     }
   }
 
-  public func getDelayedValue(timestamp: Int, reversed: Bool = false) -> T? {
+  open func getDelayedValue(timestamp: Int, reversed: Bool = false) -> T? {
     if isEmpty {
       return nil
     }
@@ -153,7 +153,7 @@ public class Queue<T>: CustomStringConvertible {
     return nil
   }
 
-  public func asArray() -> [T] {
+  open func asArray() -> [T] {
     if isEmpty {
       return []
     }
