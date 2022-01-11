@@ -37,6 +37,7 @@ public final class ReplaySensorDataLoader: IReplaySensorDataLoader {
     let decoder = JSONDecoder()
     var sensorData: [MotionSensorData]?
     var startPosition: ReplayStartPosition?
+    var altitudeData: [AltitudeSensorData]?
     switch fileVersion {
     case .v2:
       let replayData = try decoder.decode(ReplaySensorDataFileV2.self, from: data)
@@ -55,6 +56,7 @@ public final class ReplaySensorDataLoader: IReplaySensorDataLoader {
       let replayData = try decoder.decode(ReplaySensorDataFileV5.self, from: data)
       sensorData = replayData.replayData.trim(trimStrategy: trimStrategy).asMotionSensorData()
       startPosition = replayData.startPosition
+      altitudeData = replayData.replayData.asAltitudeSensorData()
     }
 
     guard let sensorData = sensorData, let startPosition = startPosition else {
@@ -62,7 +64,9 @@ public final class ReplaySensorDataLoader: IReplaySensorDataLoader {
     }
     let result = ReplayData(
       sensorData: sensorData,
-      startPosition: startPosition)
+      startPosition: startPosition,
+      altitudeData: altitudeData
+    )
 
     return result
   }

@@ -29,6 +29,7 @@ final class ReplayDataLoaderTest: XCTestCase {
       XCTAssertNotNil(dataV4?.startPosition)
       XCTAssertNotNil(dataV5?.sensorData)
       XCTAssertNotNil(dataV5?.startPosition)
+      XCTAssertNotNil(dataV5?.altitudeData)
 
     } else {
       XCTAssertTrue(false)
