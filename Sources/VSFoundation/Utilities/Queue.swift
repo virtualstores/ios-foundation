@@ -1,5 +1,5 @@
 // Queue.swift
-// VSSensorInterpreter
+// VSFoundation
 
 // Created by: CJ on 2021-12-11
 // Copyright (c) 2021 Virtual Stores
