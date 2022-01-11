@@ -1,5 +1,5 @@
 // VectorUtilsTest.swift
-// VSSensorInterpreterTests
+// VSFoundationTests
 
 // Created by: CJ on 2021-12-16
 // Copyright (c) 2021 Virtual Stores
