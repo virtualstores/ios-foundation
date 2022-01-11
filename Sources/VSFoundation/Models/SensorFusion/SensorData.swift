@@ -26,4 +26,5 @@ public enum SensorDataType {
     case acceleration
     case gravity
     case rotation
+    case altitude
 }
