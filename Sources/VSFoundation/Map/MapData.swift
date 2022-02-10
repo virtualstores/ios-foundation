@@ -8,11 +8,11 @@
 import Foundation
 
 public class MapData {
+    var rtlsOptions: RtlsOptions
     var style: MapStyle
-    var camera: Camera
     
-    init(style: MapStyle, camera: Camera) {
+    init(rtlsOptions: RtlsOptions, style: MapStyle) {
+        self.rtlsOptions = rtlsOptions
         self.style = style
-        self.camera = camera
     }
 }

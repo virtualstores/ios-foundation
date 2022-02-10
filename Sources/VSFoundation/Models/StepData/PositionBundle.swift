@@ -11,10 +11,10 @@ import CoreGraphics
 
 public struct PositionBundle {
     public let position: CGPoint
-    public let std: Double
+    public let std: Float?
     
-    public init(position: CGPoint, std: Double) {
-        self.position = position
+    public init(x: Float, y: Float, std: Float?) {
+        self.position = CGPoint(x: CGFloat(x), y: CGFloat(y))
         self.std = std
     }
 }
