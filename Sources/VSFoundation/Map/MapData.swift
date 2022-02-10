@@ -8,8 +8,8 @@
 import Foundation
 
 public class MapData {
-    var rtlsOptions: RtlsOptions
-    var style: MapStyle
+    public var rtlsOptions: RtlsOptions
+    public var style: MapStyle
     
     init(rtlsOptions: RtlsOptions, style: MapStyle) {
         self.rtlsOptions = rtlsOptions
