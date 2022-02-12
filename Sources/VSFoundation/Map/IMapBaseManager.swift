@@ -6,7 +6,10 @@
 // Copyright (c) 2021 Virtual Stores
 
 import Foundation
+import UIKit
 
 public class IMapBaseManager: IMap {
+    public var mapView: UIView?
+    
     public func loadMap(with mapData: MapData) { }
 }

@@ -11,7 +11,7 @@ public class MapData {
     public var rtlsOptions: RtlsOptions
     public var style: MapStyle
     
-    init(rtlsOptions: RtlsOptions, style: MapStyle) {
+    public init(rtlsOptions: RtlsOptions, style: MapStyle) {
         self.rtlsOptions = rtlsOptions
         self.style = style
     }
