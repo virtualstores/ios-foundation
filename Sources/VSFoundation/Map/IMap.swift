@@ -7,10 +7,11 @@
 
 import Foundation
 import UIKit
+import CoreLocation
 
 public protocol IMap {
     /// location manager for handling location updates
-    var location: ILocation
+    var location: ILocation { get }
     
     /// User location
     var position: CLLocation? { get }
