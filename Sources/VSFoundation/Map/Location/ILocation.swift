@@ -25,7 +25,8 @@ public protocol ILocation {
     /// Updates the position of the userMark
     /// newLocation: The new position for the user
     /// precision:   The radius of the precisionCircle
-    func updateUserLocation(newLocation: CGPoint?, precision: Float)
+    /// locaten as latitude and longitude
+    func updateUserLocation(newLocation: CGPoint, std: Float?)
     
     /// Updates the users direction depending on which direction you last synced
     /// newDirection  The direction in radians
