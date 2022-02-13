@@ -10,9 +10,11 @@ import Foundation
 public class MapData {
     public var rtlsOptions: RtlsOptions
     public var style: MapStyle
+    public var converter: ICoordinateConverter
     
-    public init(rtlsOptions: RtlsOptions, style: MapStyle) {
+    public init(rtlsOptions: RtlsOptions, style: MapStyle, converter: ICoordinateConverter) {
         self.rtlsOptions = rtlsOptions
         self.style = style
+        self.converter = converter
     }
 }
