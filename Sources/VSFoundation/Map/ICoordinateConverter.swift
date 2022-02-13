@@ -1,0 +1,64 @@
+//
+//  File.swift
+//  
+//
+//  Created by Hripsime on 2022-02-13.
+//
+
+import Foundation
+import CoreLocation
+import CoreGraphics
+
+public class BaseCoordinateConverter: ICoordinateConverter {
+    public var heightInMeters: Double { heightInPixels / pixelPerMeter }
+    public var widthInMeters: Double { widthInPixels / pixelPerMeter }
+    public var heightInPixels: Double
+    public var widthInPixels: Double
+    public var pixelPerMeter: Double
+    private var pixelPerLatitude: Double
+    private var realMetersPerLatitude: Double = 111320
+    
+    public init(heightInPixels: Double, widthInPixels: Double, pixelPerMeter: Double, pixelPerLatitude: Double) {
+        self.heightInPixels = heightInPixels
+        self.widthInPixels = widthInPixels
+        self.pixelPerMeter = pixelPerMeter
+        self.pixelPerLatitude = pixelPerLatitude
+    }
+    
+    public func convertFromPixelsToMapCoordinate(input: Double) -> Double {
+        input / pixelPerLatitude
+    }
+    
+    public func convertFromMapCoordinateToPixels(input: Double) -> Double {
+        input * pixelPerLatitude
+    }
+    
+    public func convertFromPixelsToMeters(input: Double) -> Double {
+        input / pixelPerMeter
+    }
+    
+    public func convertFromMetersToPixels(input: Double) -> Double {
+        input * pixelPerMeter
+    }
+}
+
+public protocol ICoordinateConverter {
+    var heightInMeters: Double { get }
+    var widthInMeters: Double { get }
+    var heightInPixels: Double { get }
+    var widthInPixels: Double { get }
+    var pixelPerMeter: Double { get }
+    
+    /// Will convert from pixels to  map coordinate
+    func convertFromPixelsToMapCoordinate(input: Double) -> Double
+    
+    /// Will convert from  map coordinate to pixels
+    func convertFromMapCoordinateToPixels(input: Double) -> Double
+    
+    /// Will convert from pixels to  map meters
+    func convertFromPixelsToMeters(input: Double) -> Double
+    
+    /// Will convert from meters to  pixels
+    func convertFromMetersToPixels(input: Double) -> Double
+}
+
