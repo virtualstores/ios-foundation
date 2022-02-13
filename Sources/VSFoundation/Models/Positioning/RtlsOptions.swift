@@ -54,7 +54,7 @@ public struct RtlsOptions: Codable {
         self.scanLocations = scanLocations
     }
 
-   func rtlsOptionsWidth() -> Double {
+    public func rtlsOptionsWidth() -> Double {
         self.widthInMeters > 0.0 ? self.widthInMeters : self.width
     }
 
