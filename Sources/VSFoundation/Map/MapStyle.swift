@@ -12,6 +12,7 @@ public struct MapStyle {
     let userMarkerType: UserMarkerType
     let userMarkerColor: UIColor
     let markerViewColor: UIColor
+    let userMarkerImage: UIImage?
     let styleMode: Mode
     let hideMapLogo: Bool
     let hideAttributionButton: Bool
@@ -29,7 +30,7 @@ public struct MapStyle {
     }
     
     public init(userMarkerType: UserMarkerType = .bullsEye, userMarkerColor: UIColor = .systemOrange,
-                markerViewColor: UIColor = .white, styleMode: Mode = .dark, hideMapLogo: Bool = true,
+                markerViewColor: UIColor = .white, userMarkerImage: UIImage?, styleMode: Mode = .dark, hideMapLogo: Bool = true,
                 hideAttributionButton: Bool = true, pathfindingLineColor: UIColor = .systemBlue,
                 showPathfindingLineBody: Bool = true) {
         self.userMarkerType = userMarkerType
