@@ -36,6 +36,7 @@ public struct MapStyle {
         self.userMarkerType = userMarkerType
         self.userMarkerColor = userMarkerColor
         self.markerViewColor = markerViewColor
+        self.userMarkerImage = userMarkerImage
         self.styleMode = styleMode
         self.hideMapLogo = hideMapLogo
         self.hideAttributionButton = hideAttributionButton
