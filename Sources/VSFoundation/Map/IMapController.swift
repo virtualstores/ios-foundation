@@ -1,5 +1,5 @@
 //
-// IMap.swift
+// IMapController.swift
 // VSFoundation
 //
 // Created by Hripsime on 2022-02-07.
@@ -9,15 +9,9 @@ import Foundation
 import UIKit
 import CoreLocation
 
-public protocol IMap {
-    /// location manager for handling location updates
-    var location: ILocation { get }
-    
+public protocol IMapController {
     /// User location
     var position: CLLocation? { get }
-    
-    /// MapBox view
-    var mapView: UIView? { get }
 
     /// Map loader which will receave all needed  setup information
     func loadMap(with mapData: MapData)
