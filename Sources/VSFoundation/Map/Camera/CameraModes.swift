@@ -11,5 +11,5 @@ import Foundation
 public enum CameraModes {
     case free
     case containMap
-    case threeDimensional(_ zoomLevel: Double? = nil)
+    case threeDimensional(_ zoomLevel: Double? = nil, degree: Double)
 }

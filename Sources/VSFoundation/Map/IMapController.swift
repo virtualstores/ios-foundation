@@ -11,7 +11,7 @@ import CoreLocation
 
 public protocol IMapController {
     /// User location
-    var position: CLLocation? { get }
+    var camera: ICameraController? { get }
 
     /// Map loader which will receave all needed  setup information
     func loadMap(with mapData: MapData)
