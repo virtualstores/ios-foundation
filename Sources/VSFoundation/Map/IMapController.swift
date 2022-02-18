@@ -8,16 +8,17 @@
 import Foundation
 import UIKit
 import CoreLocation
+import Combine
 
 public protocol IMapController {
     /// User location
     var camera: ICameraController? { get }
     
     /// Publisher for receaving drag start on MapView
-    var dragDidBeginPublisher: CurrentValueSubject<Bool, Never> = .init(false)
+    var dragDidBeginPublisher: CurrentValueSubject<Bool, Never> { get }
     
     /// Publisher for receaving drag end on MapView
-    var dragDidEndPublisher: CurrentValueSubject<Bool, Never> = .init(false)
+    var dragDidEndPublisher: CurrentValueSubject<Bool, Never> { get }
 
     /// Map loader which will receave all needed  setup information
     func loadMap(with mapData: MapData)
