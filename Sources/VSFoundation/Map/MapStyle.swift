@@ -9,15 +9,15 @@ import Foundation
 import UIKit
 
 public struct MapStyle {
-    let userMarkerType: UserMarkerType
-    let userMarkerColor: UIColor
-    let markerViewColor: UIColor
+    public let userMarkerType: UserMarkerType
+    public let userMarkerColor: UIColor
+    public let markerViewColor: UIColor
     public let userMarkerImage: UIImage?
-    let styleMode: Mode
-    let hideMapLogo: Bool
-    let hideAttributionButton: Bool
-    let pathfindingLineColor: UIColor
-    let showPathfindingLineBody: Bool
+    public let styleMode: Mode
+    public let hideMapLogo: Bool
+    public let hideAttributionButton: Bool
+    public let pathfindingLineColor: UIColor
+    public let showPathfindingLineBody: Bool
     
     public enum UserMarkerType {
         case bullsEye
