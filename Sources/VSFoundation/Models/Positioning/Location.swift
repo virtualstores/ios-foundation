@@ -120,6 +120,9 @@ public struct TT2Location {
     /// If this location is a valid sync location. Can be used when synchronizing a position manager.
     public var forceSyncPosition: Bool
 
+    /// Used for compass start
+    public var uncertainAngle: Bool
+
     /// Initialize a location.
     public init (position: TT2Position, course: TT2Course, confidence: Double = 1.0,
                  radius: Double = 1.0, timestamp: Date = Date(), syncDirection: Bool = false,
