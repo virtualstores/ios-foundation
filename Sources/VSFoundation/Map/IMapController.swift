@@ -1,5 +1,5 @@
 //
-// IMap.swift
+// IMapController.swift
 // VSFoundation
 //
 // Created by Hripsime on 2022-02-07.
@@ -8,16 +8,17 @@
 import Foundation
 import UIKit
 import CoreLocation
+import Combine
 
-public protocol IMap {
-    /// location manager for handling location updates
-    var location: ILocation { get }
-    
+public protocol IMapController {
     /// User location
-    var position: CLLocation? { get }
+    var camera: ICameraController? { get }
     
-    /// MapBox view
-    var mapView: UIView? { get }
+    /// Publisher for receaving drag start on MapView
+    var dragDidBeginPublisher: CurrentValueSubject<Bool, Never> { get }
+    
+    /// Publisher for receaving drag end on MapView
+    var dragDidEndPublisher: CurrentValueSubject<Bool, Never> { get }
 
     /// Map loader which will receave all needed  setup information
     func loadMap(with mapData: MapData)

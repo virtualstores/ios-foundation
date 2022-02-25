@@ -25,6 +25,10 @@ public class BaseCoordinateConverter: ICoordinateConverter {
         self.pixelPerLatitude = pixelPerLatitude
     }
     
+    private var factor: Double {
+        1000 / pixelPerMeter
+    }
+    
     public func convertFromPixelsToMapCoordinate(input: Double) -> Double {
         input / pixelPerLatitude
     }
@@ -39,6 +43,14 @@ public class BaseCoordinateConverter: ICoordinateConverter {
     
     public func convertFromMetersToPixels(input: Double) -> Double {
         input * pixelPerMeter
+    }
+    
+    public func convertFromMetersToMapCoordinate(input: Double) -> Double {
+        return input / factor
+    }
+    
+    public func convertFromMapCoordinateToMeters(input: Double) -> Double {
+        return input * factor
     }
 }
 
@@ -60,5 +72,11 @@ public protocol ICoordinateConverter {
     
     /// Will convert from meters to  pixels
     func convertFromMetersToPixels(input: Double) -> Double
+    
+    /// Will convert from meters to  map coordinate
+    func convertFromMetersToMapCoordinate(input: Double) -> Double
+    
+    /// Will convert from  map coordinate to meters
+    func convertFromMapCoordinateToMeters(input: Double) -> Double
 }
 
