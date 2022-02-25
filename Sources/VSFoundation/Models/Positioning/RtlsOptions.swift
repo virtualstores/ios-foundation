@@ -29,11 +29,12 @@ public struct RtlsOptions: Codable {
     public let mapBoxImageUrl: String?
     public let pixelsPerMeter: Double
     public let scanLocations: [PositionedCode]?
+    public let isDefault: Bool
 
     public init(id: Int64, width: Int64, height: Int64, widthInMeters: Double, heightInMeters: Double, floorLevel: Int?,
                 north: Double?, name: String?, startOffsetX: Int64, startOffsetY: Int64, mapBoxUrl: String,
                 mapBoxToken: String, mapFenceUrl: String, mapZonesUrl: String, navGraphUrl: String, mapOffsetsUrl: String,
-                mapDataVersionUrl: String, mapBoxImageUrl: String, pixelsPerMeter: Double, scanLocations: [PositionedCode]) {
+                mapDataVersionUrl: String, mapBoxImageUrl: String, pixelsPerMeter: Double, scanLocations: [PositionedCode], isDefault: Bool) {
         self.id = id
         self.width = Double(width)
         self.height = Double(height)
@@ -54,6 +55,7 @@ public struct RtlsOptions: Codable {
         self.mapBoxImageUrl = mapBoxImageUrl
         self.pixelsPerMeter = pixelsPerMeter
         self.scanLocations = scanLocations
+        self.isDefault = isDefault
     }
 
     public func rtlsOptionsWidth() -> Double {
