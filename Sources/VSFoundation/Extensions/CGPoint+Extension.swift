@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreGraphics
+import CoreLocation
 
 public extension CGPoint {
     func fromMeterToPixel(converter: ICoordinateConverter) -> CGPoint {
