@@ -126,7 +126,7 @@ public struct TT2Location {
     /// Initialize a location.
     public init (position: TT2Position, course: TT2Course, confidence: Double = 1.0,
                  radius: Double = 1.0, timestamp: Date = Date(), syncDirection: Bool = false,
-                 forceSyncPosition: Bool = false) {
+                 forceSyncPosition: Bool = false, uncertainAngle: Bool) {
         self.position = position
         self.course = course
         self.confidence = confidence
@@ -134,5 +134,6 @@ public struct TT2Location {
         self.timestamp = timestamp
         self.syncDirection = syncDirection
         self.forceSyncPosition  = forceSyncPosition
+        self.uncertainAngle = uncertainAngle
     }
 }
