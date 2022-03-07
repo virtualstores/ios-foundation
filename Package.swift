@@ -16,13 +16,14 @@ let package = Package(
       targets: ["VSFoundation"]),
   ],
   dependencies: [
-    // Dependencies declare other packages that this package depends on.
-    // .package(url: /* package url */, from: "1.0.0"),
+    .package(url: "https://github.com/stephencelis/SQLite.swift.git", .exact("0.13.1")),
   ],
   targets: [
     .target(
       name: "VSFoundation",
-      dependencies: []),
+      dependencies: [
+        .product(name: "SQLite", package: "SQLite.swift"),
+]),
     .testTarget(
       name: "VSFoundationTests",
       dependencies: ["VSFoundation"],
