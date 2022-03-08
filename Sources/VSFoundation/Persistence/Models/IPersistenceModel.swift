@@ -3,7 +3,7 @@ import Foundation
 /// Conforming to the PersistenceModelInterface Protocol
 /// =======================================
 public protocol IPersistenceModel: Codable {
-    var retainOriginalIndex: Bool { get set}
+    var retainOriginalIndex: Bool { get set }
     var index: String? { get set }
 }
 

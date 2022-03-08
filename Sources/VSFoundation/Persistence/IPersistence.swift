@@ -60,7 +60,7 @@ public extension ILocalPersistence {
         return get(objectType, storage: .sqlite, index: index)
     }
 
-    func get<T: IPersistenceModel>(_ objectType: T.Type) -> T? {
+    func get<T: IPersistenceModel>(object objectType: T.Type) -> T? {
         return get(objectType, storage: .sqlite)
     }
 
