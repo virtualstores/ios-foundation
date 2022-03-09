@@ -6,7 +6,11 @@
 import Foundation
 
 public protocol IUserSettings {
-  var userHeight: Double? { get }
-  var speedRegressionSlope: Double? { get }
-  var speedRegressionIntercept: Double? { get }
+    func setUser(user: User)
+    
+    func getUser(userId: String) -> User?
+    
+    func clearAllUserSettings()
+    
+    func clearUser(userId: String)
 }
