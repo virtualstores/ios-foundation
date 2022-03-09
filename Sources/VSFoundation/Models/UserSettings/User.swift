@@ -26,7 +26,7 @@ final public class User: IPersistenceModel {
     public var userId: String?
     public var userHeight: Float?
     public var name: String?
-    public var age: Int?
+    public var age: String?
     public var gender: String?
     public var speedRegressionIntercept: Float?
     public var speedRegressionSlope: Float?
