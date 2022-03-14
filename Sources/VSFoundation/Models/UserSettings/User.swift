@@ -7,7 +7,7 @@
 
 import Foundation
 
-final public class User: IPersistenceModel {
+final public class User {
     public var retainOriginalIndex = false
     public var index: String?
 
