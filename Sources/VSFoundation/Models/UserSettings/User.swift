@@ -8,30 +8,19 @@
 import Foundation
 
 final public class User {
-    public var retainOriginalIndex = false
-    public var index: String?
-
-    public init() {
-        self.alpha = []
-        self.beta = []
-        self.y = []
-    }
-    
-    convenience init(index: String) {
-        self.init()
-        self.index = index
-    }
-
     public var id: String?
     public var userId: String?
     public var userHeight: Float?
     public var name: String?
     public var age: String?
     public var gender: String?
-    public var speedRegressionIntercept: Float?
-    public var speedRegressionSlope: Float?
-    public var alpha: [Float]?
-    public var beta: [Float]?
-    public var y: [Float]?
-    public var noScanML: String?
+    
+    public init(id: String?, userId: String?, userHeight: Float?, name: String?, age: String?, gender: String?) {
+        self.id = id
+        self.userId = userId
+        self.userHeight = userHeight
+        self.name = name
+        self.age = age
+        self.gender = gender
+    }
 }
