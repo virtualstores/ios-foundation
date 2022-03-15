@@ -15,15 +15,11 @@ let package = Package(
       name: "VSFoundation",
       targets: ["VSFoundation"]),
   ],
-  dependencies: [
-    .package(url: "https://github.com/stephencelis/SQLite.swift.git", .exact("0.13.1")),
-  ],
+  dependencies: [],
   targets: [
     .target(
       name: "VSFoundation",
-      dependencies: [
-        .product(name: "SQLite", package: "SQLite.swift"),
-]),
+      dependencies: []),
     .testTarget(
       name: "VSFoundationTests",
       dependencies: ["VSFoundation"],
