@@ -15,10 +15,10 @@ public protocol IMapController {
     var camera: ICameraController? { get }
     
     /// CallBack for receaving drag start on MapView
-    var dragDidBegin: (() -> Void)? { get }
+    var dragDidBegin: (() -> Void)? { get set }
     
     /// CallBack for receaving drag end on MapView
-    var dragDidEnd: (() -> Void)? { get }
+    var dragDidEnd: (() -> Void)? { get set }
 
     /// Map loader which will receave all needed  setup information
     func loadMap(with mapData: MapData)
