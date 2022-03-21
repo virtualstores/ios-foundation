@@ -24,9 +24,9 @@ public extension CGPoint {
         return CGPoint(x: x, y: y)
     }
     
-    func convertFromMeterToLatLng(converter: ICoordinateConverter) -> CGPoint {
+    func convertFromMeterToLatLng(converter: ICoordinateConverter) -> CLLocationCoordinate2D {
         let pixelPoint = self.fromMeterToPixel(converter: converter)
-        
-        return pixelPoint.fromPixelToLatLng(converter: converter)
+        let converted = pixelPoint.fromPixelToLatLng(converter: converter)
+        return CLLocationCoordinate2D(latitude: converted.y, longitude: converted.x)
     }
 }
