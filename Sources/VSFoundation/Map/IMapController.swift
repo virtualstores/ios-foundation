@@ -32,4 +32,9 @@ public protocol IMapController {
     /// Updates the users direction depending on which direction you last synced
     /// newDirection  The direction in radians
     func updateUserDirection(newDirection: Double)
+
+    func start()
+
+    /// Stop  map
+    func stop()
 }
