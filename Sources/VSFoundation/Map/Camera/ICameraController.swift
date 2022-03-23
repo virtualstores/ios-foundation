@@ -17,7 +17,7 @@ public protocol ICameraController {
     func updateCameraMode(with mode: CameraModes)
     
     /// Update camera mode with some delay
-    func setAutoCameraResetDelay(with milliseconds: Int64)
+    func setAutoCameraResetDelay(with milliseconds: Double)
     
     /// Will reset camera mode
     func resetCameraMode()
