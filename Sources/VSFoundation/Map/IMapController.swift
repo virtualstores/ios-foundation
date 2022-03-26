@@ -10,15 +10,24 @@ import UIKit
 import CoreLocation
 import Combine
 
+public protocol IMapControlerDelegate {
+    func onMapLoaded()
+}
+
 public protocol IMapController {
     /// User location
-    var camera: ICameraController? { get }
+    var camera: ICameraController { get }
     
+    /// Map marker
+    var marker: IMarkerController { get }
+
     /// CallBack for receaving drag start on MapView
     var dragDidBegin: (() -> Void)? { get set }
     
     /// CallBack for receaving drag end on MapView
     var dragDidEnd: (() -> Void)? { get set }
+
+    var mapDataLoadedPublisher: CurrentValueSubject<Bool?, MapControllerError> { get }
 
     /// Map loader which will receave all needed  setup information
     func loadMap(with mapData: MapData)
@@ -37,4 +46,8 @@ public protocol IMapController {
 
     /// Stop  map
     func stop()
+}
+
+public enum MapControllerError: Error {
+    case loadinFailed
 }
