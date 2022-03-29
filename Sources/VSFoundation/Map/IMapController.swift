@@ -21,6 +21,8 @@ public protocol IMapController {
     /// Map marker
     var marker: IMarkerController { get }
 
+    var path: IFoundationPathfinder { get }
+
     /// CallBack for receaving drag start on MapView
     var dragDidBegin: (() -> Void)? { get set }
     
@@ -31,6 +33,8 @@ public protocol IMapController {
 
     /// Map loader which will receave all needed  setup information
     func loadMap(with mapData: MapData)
+
+    func setup(pathfinder: IFoundationPathfinder)
     
     /// Updates the position of the userMark
     /// newLocation: The new position for the user
@@ -42,6 +46,8 @@ public protocol IMapController {
     /// newDirection  The direction in radians
     func updateUserDirection(newDirection: Double)
 
+    func addGoal(id: String, itemPosition: ItemPosition)
+  
     func start()
 
     /// Stop  map

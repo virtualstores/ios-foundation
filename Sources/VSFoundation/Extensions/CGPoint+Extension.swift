@@ -17,16 +17,16 @@ public extension CGPoint {
         return CGPoint(x: x, y: y)
     }
     
-    func fromPixelToLatLng(converter: ICoordinateConverter) -> CGPoint {
+    func fromPixelToLatLng(converter: ICoordinateConverter) -> CLLocationCoordinate2D {
         let x = converter.convertFromPixelsToMapCoordinate(input: self.x)
         let y = converter.convertFromPixelsToMapCoordinate(input: self.y)
         
-        return CGPoint(x: x, y: y)
+        return CLLocationCoordinate2D(latitude: y, longitude: x)
     }
     
     func convertFromMeterToLatLng(converter: ICoordinateConverter) -> CLLocationCoordinate2D {
         let pixelPoint = self.fromMeterToPixel(converter: converter)
         let converted = pixelPoint.fromPixelToLatLng(converter: converter)
-        return CLLocationCoordinate2D(latitude: converted.y, longitude: converted.x)
+        return converted
     }
 }

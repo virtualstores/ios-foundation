@@ -21,6 +21,6 @@ public protocol MapMark {
     var offsetX: Double { get }
     var offsetY: Double { get }
     
-    func createViewHolder(onFinish: @escaping (MapMarkViewHolder) -> ())
+    func createViewHolder(completion: @escaping (MapMarkViewHolder) -> ())
     //onFinish: (viewHolder: MapMarkViewHolder) -> Unit)
 }

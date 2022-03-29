@@ -1,6 +1,6 @@
 //
 //  Goal.swift
-//  PositionKit
+//  VSFoundation
 //
 //  Created by Hripsime on 2022-01-31.
 //
