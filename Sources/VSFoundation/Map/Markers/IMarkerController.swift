@@ -10,30 +10,30 @@ import CoreGraphics
 
 public protocol IMarkerController {
     /// Access to allMarks in the markerController
-    var allMarks: [MapMark] { get }
+    var allMarkers: [MapMark] { get }
     
     /// Adds a mark and shows it on the map.
     /// It is useful for visualizing information related to a specific point on the map.
     /// If pathfinding to the mark is wanted, its recommended to use the same data and add a PathfindingGoal with [PathfindingController.addGoal].
-    func addMark(mark: MapMark)
+    func add(marker: MapMark)
     
     /// Clears all current marks and replaces them with these
-    func setMarks(marks: [MapMark])
+    func set(markers: [MapMark])
     
     /// Get a [MapMark] by using the id you assigned on creation
-    func getMark(id: String) -> MapMark
+    func get(markerId id: String) -> MapMark
     
     /// Focus mark makes the mark with that id bigger is size.
-    func focusMark(id: String)
+    func focus(markerId id: String)
     
     /// Unfocus marks makes all focused marks go back to their original size.
-    func unfocusMarks()
+    func unfocusMarkers()
     
     /// Remove mark, removes the input mark from the map.
-    func removeMark(mark: MapMark)
+    func remove(marker: MapMark)
     
     /// Remove mark, removes the input mark from the map.
-    func removeMark(id: String)
+    func remove(markerId id: String)
     
     /// Update location updates [MarkerController] with a new user position.
     /// The [MarkerController] need the latest user position for mark triggerlisteners to work correctly.
