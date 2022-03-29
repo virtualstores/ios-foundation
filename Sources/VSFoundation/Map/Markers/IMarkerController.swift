@@ -39,20 +39,5 @@ public protocol IMarkerController {
     /// The [MarkerController] need the latest user position for mark triggerlisteners to work correctly.
     func updateLocation(newLocation: CGPoint, precision: Float)
     
-    /// Add trigger listener will give an event when the user is inside the set radius from given mark.
-
-    // fun addTriggerListener(listener: (MapMark<out Any>) -> Unit)
-    
-    /// Remove trigger listener removes a listener from trigger event updates.
-    // func removeTriggerListener(listener: (MapMark<out Any>) -> Unit)
-    
     func setStartLocationsVisibility(isVisible: Bool)
-    
-    //    func addListener(listener: Listener)
-    //    func removeListener(listener: Listener)
-    //
-    //    interface Listener {
-    //        fun onMarkClicked(mark: MapMark<out Any>)
-    //        fun onClusterClicked(marks: List<MapMark<out Any>>)
-    //    }
 }

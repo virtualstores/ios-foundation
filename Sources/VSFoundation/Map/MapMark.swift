@@ -7,12 +7,13 @@
 
 import Foundation
 import CoreGraphics
+import UIKit
 
 public protocol MapMark {
     var id: String { get }
     var position: CGPoint { get }
     var floorLevelId: Int64? { get }
-    var data: Any? { get }
+    var data: UIImage? { get }
     var triggerRadius: Double? { get }
     var clusterable: Bool { get }
     var deletable: Bool { get }
