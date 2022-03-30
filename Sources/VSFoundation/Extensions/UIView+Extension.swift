@@ -26,7 +26,7 @@ public extension ReusableView where Self: UIView {
 }
 
 /// Defines name of nib for view to be used for loading from nib
-public protocol NibLoadableView: class {
+public protocol NibLoadableView: AnyObject {
     static var nibName: String { get }
 }
 
