@@ -21,7 +21,7 @@ public protocol IMapController {
     /// Map marker
     var marker: IMarkerController { get }
 
-    var path: IFoundationPathfinder { get }
+    var path: IPathfindingController { get }
 
     /// CallBack for receaving drag start on MapView
     var dragDidBegin: (() -> Void)? { get set }
@@ -47,7 +47,7 @@ public protocol IMapController {
     func updateUserDirection(newDirection: Double)
 
     func addGoal(id: String, itemPosition: ItemPosition)
-  
+
     func start()
 
     /// Stop  map

@@ -29,4 +29,8 @@ public extension CGPoint {
         let converted = pixelPoint.fromPixelToLatLng(converter: converter)
         return converted
     }
+
+    func flipY(converter: ICoordinateConverter) -> CGPoint {
+      CGPoint(x: x, y: converter.heightInPixels - y)
+    }
 }

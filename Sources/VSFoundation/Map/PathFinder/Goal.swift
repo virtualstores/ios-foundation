@@ -14,15 +14,17 @@ public struct Goal {
     public let position: CGPoint
     public let data: Any?
     public let type: GoalType
+    public let floorLevelId: Int64?
 
     public enum GoalType {
         case end, start, target
     }
 
-    public init(id: String, position: CGPoint, data: Any?, type: GoalType) {
+    public init(id: String, position: CGPoint, data: Any?, type: GoalType, floorLevelId: Int64?) {
         self.id = id
         self.position = position
         self.data = data
         self.type = type
+        self.floorLevelId = floorLevelId
     }
 }
