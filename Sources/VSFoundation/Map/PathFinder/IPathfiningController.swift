@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreGraphics
+import Combine
 
 /**
  * Pathfinding controller. Methods for controlling the path between goals and to help a user find the fastest way to them.
@@ -15,18 +16,31 @@ import CoreGraphics
  */
 public protocol IPathfindingController {
 
-  var state: State {get}
+  var state: State { get }
 
+  /**
+   * On current goal change. Gives updates whenever a change happends in the pathfinding order.
+   *
+   * @param goal Goal
+   */
+  var onCurrentGoalChangePublisher: CurrentValueSubject<PathfindingGoal?, Never> { get }
+
+  /**
+   * On sorted goal change. Gives updates when pathfiding goal order is deviated from.
+   *
+   * @param goals Goals
+   */
+  var onSortedGoalChangePublisher: CurrentValueSubject<[PathfindingGoal], Never> { get }
   /**
    * Current goal is the most optimal goal to go to first given a list of goals.
    * Current goal is the goal that the pathfinding head will go towards and this goal is the same as the first on in [sortedGoals].
    */
-  var currentGoal: PathfindingGoal? {get}
+  var currentGoal: PathfindingGoal? { get }
 
   /**
    * Sorted goals contains the list of goals witch are in the most optimal visit order.
    */
-  var sortedGoals: [PathfindingGoal] {get}
+  var sortedGoals: [PathfindingGoal] { get }
 
   /**
    * Add goal for pathfinding.
@@ -138,20 +152,6 @@ public protocol IPathfindingController {
    * @param callback Callback
    */
   func forceRefresh(withTSP: Bool, overridePosition: CGPoint?, completion: @escaping (() -> Void))
-
-  /**
-   * Add listener. Add a listener for pathfinding events.
-   *
-   * @param listener Listener
-   */
-  func addListener(listener: IPathfindingControllerListener)
-
-  /**
-   * Remove listener. Removes a listener from listening on pathfinding events.
-   *
-   * @param listener Listener
-   */
-  func removeListener(listener: IPathfindingControllerListener)
 }
 
 public enum State {
@@ -189,25 +189,4 @@ public struct PathfindingGoal {
     case start
     case target
   }
-}
-
-public protocol IPathfindingControllerListener {
-  /**
-   * unique identifier for instance of listeners
-   */
-  var pathfindingListenerId: String {get}
-
-  /**
-   * On current goal change. Gives updates whenever a change happends in the pathfinding order.
-   *
-   * @param goal Goal
-   */
-  func onCurrentGoalChange(goal: PathfindingGoal?)
-
-  /**
-   * On sorted goal change. Gives updates when pathfiding goal order is deviated from.
-   *
-   * @param goals Goals
-   */
-  func onSortedGoalChange(goals: [PathfindingGoal])
 }
