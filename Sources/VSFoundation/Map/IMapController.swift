@@ -34,7 +34,7 @@ public protocol IMapController {
     /// Map loader which will receave all needed  setup information
     func loadMap(with mapData: MapData)
 
-    func setup(pathfinder: IFoundationPathfinder)
+    func setup(pathfinder: IFoundationPathfinder, changedFloor: Bool)
     
     /// Updates the position of the userMark
     /// newLocation: The new position for the user
