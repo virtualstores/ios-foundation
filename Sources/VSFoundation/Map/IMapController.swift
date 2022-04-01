@@ -23,18 +23,14 @@ public protocol IMapController {
 
     var path: IPathfindingController { get }
 
-    /// CallBack for receaving drag start on MapView
-    var dragDidBegin: (() -> Void)? { get set }
-    
-    /// CallBack for receaving drag end on MapView
-    var dragDidEnd: (() -> Void)? { get set }
+    var zone: IZoneController { get }
 
     var mapDataLoadedPublisher: CurrentValueSubject<Bool?, MapControllerError> { get }
 
     /// Map loader which will receave all needed  setup information
     func loadMap(with mapData: MapData)
 
-    func setup(pathfinder: IFoundationPathfinder, changedFloor: Bool)
+  func setup(pathfinder: IFoundationPathfinder, zones: [Zone], changedFloor: Bool)
     
     /// Updates the position of the userMark
     /// newLocation: The new position for the user

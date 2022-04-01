@@ -8,6 +8,7 @@
 import Foundation
 import CoreGraphics
 import UIKit
+import CoreLocation
 
 public class Zone: Equatable {
     public let name: String
@@ -19,7 +20,7 @@ public class Zone: Equatable {
     public var parent: Zone?
     public var children: Dictionary<String, Zone>
     public var searchTerms: [String]
-    internal var navigationPoint: CGPoint?
+    public var navigationPoint: CGPoint?
     private let converter: BaseCoordinateConverter
 
     private var bezierPath: UIBezierPath?
