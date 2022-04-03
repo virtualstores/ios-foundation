@@ -13,7 +13,7 @@ public protocol MapMark {
     var id: String { get }
     var position: CGPoint { get }
     var floorLevelId: Int64? { get }
-    var data: UIImage? { get }
+    var data: Any? { get }
     var triggerRadius: Double? { get }
     var clusterable: Bool { get }
     var deletable: Bool { get }

@@ -8,65 +8,6 @@
 import Foundation
 import UIKit
 
-private struct MapOptionsOld {
-    public let cluster: Cluster
-    public let style: MapStyle
-    
-    public init(cluster: Cluster, style: MapStyle) {
-        self.cluster = cluster
-        self.style = style
-    }
-    
-    public struct MapStyle {
-        public let userMarkerType: UserMarkerType
-        public let userMarkerColor: UIColor
-        public let markerViewColor: UIColor
-        public let userMarkerImage: UIImage?
-        public let styleMode: Mode
-        public let hideMapLogo: Bool
-        public let hideAttributionButton: Bool
-        public let pathfindingLineColor: UIColor
-        public let showPathfindingLineBody: Bool
-        
-        public enum UserMarkerType {
-            case bullsEye
-            case blob
-        }
-        
-        public enum Mode {
-            case light
-            case dark
-        }
-        
-        public init(userMarkerType: UserMarkerType = .bullsEye, userMarkerColor: UIColor = .systemOrange,
-                    markerViewColor: UIColor = .white, userMarkerImage: UIImage?, styleMode: Mode = .dark, hideMapLogo: Bool = true,
-                    hideAttributionButton: Bool = true, pathfindingLineColor: UIColor = .systemBlue,
-                    showPathfindingLineBody: Bool = true) {
-            self.userMarkerType = userMarkerType
-            self.userMarkerColor = userMarkerColor
-            self.markerViewColor = markerViewColor
-            self.userMarkerImage = userMarkerImage
-            self.styleMode = styleMode
-            self.hideMapLogo = hideMapLogo
-            self.hideAttributionButton = hideAttributionButton
-            self.pathfindingLineColor = pathfindingLineColor
-            self.showPathfindingLineBody = showPathfindingLineBody
-        }
-    }
-    
-    public struct Cluster {
-        public let clusteringEnabled: Bool
-        public let clusterRadius: Double
-        public let clusterMaxZoom: Double
-        
-        public init(clusteringEnabled: Bool = true, clusterRadius: Double = 12.0, clusterMaxZoom: Double = 20.0) {
-            self.clusteringEnabled = clusteringEnabled
-            self.clusterRadius = clusterRadius
-            self.clusterMaxZoom = clusterMaxZoom
-        }
-    }
-}
-
 public struct MapOptions {
   public struct UserMark {
     public let activeAccuracyStyle: CircleStyle
@@ -113,26 +54,60 @@ public struct MapOptions {
     public let clusterRadius: Int
     public let clusterMaxZoom: Int
     public let scaleSize: Double
-    public let focusSizeScale: Double
+    public let focusScaleSize: Double
     public let offsetX: Double
     public let offsetY: Double
+    public let anchor: IconAnchor
+
+    public enum IconAnchor: String, Codable, CaseIterable {
+
+        /// The center of the icon is placed closest to the anchor.
+        case center = "center"
+
+        /// The left side of the icon is placed closest to the anchor.
+        case left = "left"
+
+        /// The right side of the icon is placed closest to the anchor.
+        case right = "right"
+
+        /// The top of the icon is placed closest to the anchor.
+        case top = "top"
+
+        /// The bottom of the icon is placed closest to the anchor.
+        case bottom = "bottom"
+
+        /// The top left corner of the icon is placed closest to the anchor.
+        case topLeft = "top-left"
+
+        /// The top right corner of the icon is placed closest to the anchor.
+        case topRight = "top-right"
+
+        /// The bottom left corner of the icon is placed closest to the anchor.
+        case bottomLeft = "bottom-left"
+
+        /// The bottom right corner of the icon is placed closest to the anchor.
+        case bottomRight = "bottom-right"
+
+    }
 
     public init (
       clusteringEnabled: Bool = true,
       clusterRadius: Int = 20,
       clusterMaxZoom: Int = 20,
       scaleSize: Double = 1.0,
-      focusSizeScale: Double = 1.5,
+      focusScaleSize: Double = 1.5,
       offsetX: Double = 0.0,
-      offsetY: Double = 0.0
+      offsetY: Double = 0.0,
+      anchor: IconAnchor = .bottom
     ) {
       self.clusteringEnabled = clusteringEnabled
       self.clusterRadius = clusterRadius
       self.clusterMaxZoom = clusterMaxZoom
       self.scaleSize = scaleSize
-      self.focusSizeScale = focusSizeScale
+      self.focusScaleSize = focusScaleSize
       self.offsetX = offsetX
       self.offsetY = offsetY
+      self.anchor = anchor
     }
   }
 
@@ -397,4 +372,63 @@ public struct MapOptions {
     self.shelfStyle = shelfStyle
     self.shelfStyleSelected = shelfStyleSelected
   }
+}
+
+private struct MapOptionsOld {
+    public let cluster: Cluster
+    public let style: MapStyle
+
+    public init(cluster: Cluster, style: MapStyle) {
+        self.cluster = cluster
+        self.style = style
+    }
+
+    public struct MapStyle {
+        public let userMarkerType: UserMarkerType
+        public let userMarkerColor: UIColor
+        public let markerViewColor: UIColor
+        public let userMarkerImage: UIImage?
+        public let styleMode: Mode
+        public let hideMapLogo: Bool
+        public let hideAttributionButton: Bool
+        public let pathfindingLineColor: UIColor
+        public let showPathfindingLineBody: Bool
+
+        public enum UserMarkerType {
+            case bullsEye
+            case blob
+        }
+
+        public enum Mode {
+            case light
+            case dark
+        }
+
+        public init(userMarkerType: UserMarkerType = .bullsEye, userMarkerColor: UIColor = .systemOrange,
+                    markerViewColor: UIColor = .white, userMarkerImage: UIImage?, styleMode: Mode = .dark, hideMapLogo: Bool = true,
+                    hideAttributionButton: Bool = true, pathfindingLineColor: UIColor = .systemBlue,
+                    showPathfindingLineBody: Bool = true) {
+            self.userMarkerType = userMarkerType
+            self.userMarkerColor = userMarkerColor
+            self.markerViewColor = markerViewColor
+            self.userMarkerImage = userMarkerImage
+            self.styleMode = styleMode
+            self.hideMapLogo = hideMapLogo
+            self.hideAttributionButton = hideAttributionButton
+            self.pathfindingLineColor = pathfindingLineColor
+            self.showPathfindingLineBody = showPathfindingLineBody
+        }
+    }
+
+    public struct Cluster {
+        public let clusteringEnabled: Bool
+        public let clusterRadius: Double
+        public let clusterMaxZoom: Double
+
+        public init(clusteringEnabled: Bool = true, clusterRadius: Double = 12.0, clusterMaxZoom: Double = 20.0) {
+            self.clusteringEnabled = clusteringEnabled
+            self.clusterRadius = clusterRadius
+            self.clusterMaxZoom = clusterMaxZoom
+        }
+    }
 }
