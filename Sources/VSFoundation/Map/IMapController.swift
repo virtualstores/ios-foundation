@@ -51,5 +51,5 @@ public protocol IMapController {
 }
 
 public enum MapControllerError: Error {
-    case loadinFailed
+    case loadingFailed
 }
