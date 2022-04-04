@@ -10,12 +10,16 @@ import UIKit
 
 public class MapMarkViewHolder {
     public var id: String
-    public var _renderedBitmap: UIImage?
+    private var _renderedBitmap: UIImage?
 
     public var renderedBitmap: UIImage {
-        guard let renderedBitmap = _renderedBitmap else { fatalError("renderedBitmap not loaded")}
-        
-        return renderedBitmap
+        get {
+            guard let renderedBitmap = _renderedBitmap else { fatalError("renderedBitmap not loaded")}
+
+            return renderedBitmap
+        }
+
+        set { _renderedBitmap = newValue }
     }
     
     public var imageId: String {

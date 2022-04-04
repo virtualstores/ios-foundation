@@ -18,6 +18,7 @@ public protocol MapMark {
     var clusterable: Bool { get }
     var deletable: Bool { get }
     var defaultVisibility: Bool { get }
+    var focused: Bool { get }
     var offsetX: Double { get }
     var offsetY: Double { get }
     

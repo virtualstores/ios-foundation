@@ -7,10 +7,13 @@
 
 import Foundation
 import CoreGraphics
+import Combine
 
 public protocol IMarkerController {
     /// Access to allMarks in the markerController
     var allMarkers: [MapMark] { get }
+
+    var onMarkerClicked: CurrentValueSubject<MapMark?, Never> { get }
     
     /// Adds a mark and shows it on the map.
     /// It is useful for visualizing information related to a specific point on the map.
