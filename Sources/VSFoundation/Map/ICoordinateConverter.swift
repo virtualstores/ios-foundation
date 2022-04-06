@@ -52,6 +52,12 @@ public class BaseCoordinateConverter: ICoordinateConverter {
     public func convertFromMapCoordinateToMeters(input: Double) -> Double {
         return input * factor
     }
+
+    public func convertFromMetersToMapMeters(input: Double) -> Double {
+//        let pixels = convertFromMetersToPixels(input: input)
+//        let coordinate = convertFromPixelsToMapCoordinate(input: pixels)
+        return convertFromMetersToMapCoordinate(input: input) * realMetersPerLatitude
+    }
 }
 
 public protocol ICoordinateConverter {
@@ -78,5 +84,7 @@ public protocol ICoordinateConverter {
     
     /// Will convert from  map coordinate to meters
     func convertFromMapCoordinateToMeters(input: Double) -> Double
+
+    func convertFromMetersToMapMeters(input: Double) -> Double
 }
 

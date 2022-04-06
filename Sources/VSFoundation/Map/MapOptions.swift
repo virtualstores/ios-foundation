@@ -174,8 +174,8 @@ public struct MapOptions {
     public let lineEndStyle: CircleStyle?
 
     public init(
-      pathStyleHead: LineStyle = LineStyle(),
-      pathStyleBody: LineStyle? = nil,
+      pathStyleHead: LineStyle = LineStyle(lineColor: UIColor(rgb: 0x1097EC)),
+      pathStyleBody: LineStyle = LineStyle(),
       pathStyleTail: LineStyle? = nil,
       pathCornerRounding: Double = 0.3,
       pathCornerRoundingIterations: Int = 6,
@@ -186,8 +186,8 @@ public struct MapOptions {
       lineEndStyle: CircleStyle? = nil
     ) {
       self.pathStyleHead = pathStyleHead
-      self.pathStyleBody = pathStyleBody ?? pathStyleHead
-      self.pathStyleTail = pathStyleTail ?? pathStyleHead
+      self.pathStyleBody = pathStyleBody
+      self.pathStyleTail = pathStyleTail ?? pathStyleBody
       self.pathCornerRounding = pathCornerRounding
       self.pathCornerRoundingIterations = pathCornerRoundingIterations
       self.pathSmoothing = pathSmoothing
