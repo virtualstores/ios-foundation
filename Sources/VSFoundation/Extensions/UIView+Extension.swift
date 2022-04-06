@@ -36,12 +36,13 @@ public extension NibLoadableView where Self: UIView {
     }
 }
 
-extension UIView {
-    public func asImage() -> UIImage {
-        let renderer = UIGraphicsImageRenderer(bounds: bounds)
-        return renderer.image { rendererContext in
-            layer.render(in: rendererContext.cgContext)
+public extension UIView {
+    func asImage() -> UIImage {
+        let render = UIGraphicsImageRenderer(size: bounds.size)
+        let image = render.image { ctx in
+            drawHierarchy(in: bounds, afterScreenUpdates: true)
         }
+        return image
     }
 }
 

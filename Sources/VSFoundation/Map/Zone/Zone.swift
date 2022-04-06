@@ -11,28 +11,30 @@ import UIKit
 import CoreLocation
 
 public class Zone: Equatable {
-    public let name: String
     public let id: String
+    public var properties: ZoneProperties
     public let floorLevel: Int
     public var color: UIColor = .white
     public var image: UIImage?
     public var polygon: [CGPoint]
     public var parent: Zone?
     public var children: Dictionary<String, Zone>
-    public var searchTerms: [String]
     public var navigationPoint: CGPoint?
+
+    public var name: String { properties.name }
+    public var searchTerms: [String] { properties.names }
+
     private let converter: BaseCoordinateConverter
 
     private var bezierPath: UIBezierPath?
 
-    public init(id:String, name: String, polygon: [CGPoint] = [], navigationPoint: CGPoint? = nil, parent: Zone? = nil, children: Dictionary<String, Zone> = [:], searchTerms: [String] = [], floorLevel: Int, converter: BaseCoordinateConverter) {
+    public init(id: String, properties: ZoneProperties, polygon: [CGPoint] = [], navigationPoint: CGPoint? = nil, parent: Zone? = nil, children: Dictionary<String, Zone> = [:], floorLevel: Int, converter: BaseCoordinateConverter) {
         self.id = id
-        self.name = name
+        self.properties = properties
         self.polygon = polygon
         self.navigationPoint = navigationPoint
         self.parent = parent
         self.children = children
-        self.searchTerms = searchTerms
         self.floorLevel = floorLevel
         self.converter = converter
     }
@@ -46,7 +48,7 @@ public class Zone: Equatable {
     }
     
     public func addChild(child: Zone) {
-        let zone = Zone(id: child.id, name: child.name, polygon: child.polygon, navigationPoint: child.navigationPoint, parent: self, searchTerms: child.searchTerms, floorLevel: child.floorLevel, converter: converter)
+        let zone = Zone(id: child.id, properties: child.properties, polygon: child.polygon, navigationPoint: child.navigationPoint, parent: self, floorLevel: child.floorLevel, converter: converter)
         self.children[child.name] = zone
     }
     

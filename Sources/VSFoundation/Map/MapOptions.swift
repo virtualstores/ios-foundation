@@ -60,7 +60,6 @@ public struct MapOptions {
     public let anchor: IconAnchor
 
     public enum IconAnchor: String, Codable, CaseIterable {
-
         /// The center of the icon is placed closest to the anchor.
         case center = "center"
 
@@ -87,7 +86,6 @@ public struct MapOptions {
 
         /// The bottom right corner of the icon is placed closest to the anchor.
         case bottomRight = "bottom-right"
-
     }
 
     public init (
@@ -325,7 +323,7 @@ public struct MapOptions {
     }
   }
 
-  public struct FillStyle{
+  public struct FillStyle {
     public let color: UIColor
     public let colorSelected: UIColor
     public let alpha: Double

@@ -9,6 +9,16 @@ import Foundation
 import UIKit
 
 public extension UIColor {
+    var asHex: String {
+      let components = self.cgColor.components
+      let r: CGFloat = components?[0] ?? 0.0
+      let g: CGFloat = components?[1] ?? 0.0
+      let b: CGFloat = components?[2] ?? 0.0
+
+      let hexString = String.init(format: "#%02lX%02lX%02lX", lroundf(Float(r * 255)), lroundf(Float(g * 255)), lroundf(Float(b * 255)))
+//      print("hexString", hexString)
+      return hexString
+    }
     convenience init(red: Int, green: Int, blue: Int) {
         assert(red >= 0 && red <= 255, "Invalid red component")
         assert(green >= 0 && green <= 255, "Invalid green component")
