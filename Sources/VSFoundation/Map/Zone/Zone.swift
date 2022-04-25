@@ -13,7 +13,7 @@ import CoreLocation
 public class Zone: Equatable {
     public let id: String
     public var properties: ZoneProperties
-    public let floorLevel: Int
+    public let floorLevelId: Int64
     public var color: UIColor = .white
     public var image: UIImage?
     public var polygon: [CGPoint]
@@ -28,14 +28,14 @@ public class Zone: Equatable {
 
     private var bezierPath: UIBezierPath?
 
-    public init(id: String, properties: ZoneProperties, polygon: [CGPoint] = [], navigationPoint: CGPoint? = nil, parent: Zone? = nil, children: Dictionary<String, Zone> = [:], floorLevel: Int, converter: BaseCoordinateConverter) {
+    public init(id: String, properties: ZoneProperties, polygon: [CGPoint] = [], navigationPoint: CGPoint? = nil, parent: Zone? = nil, children: Dictionary<String, Zone> = [:], floorLevelId: Int64, converter: BaseCoordinateConverter) {
         self.id = id
         self.properties = properties
         self.polygon = polygon
         self.navigationPoint = navigationPoint
         self.parent = parent
         self.children = children
-        self.floorLevel = floorLevel
+        self.floorLevelId = floorLevelId
         self.converter = converter
     }
     
@@ -48,7 +48,7 @@ public class Zone: Equatable {
     }
     
     public func addChild(child: Zone) {
-        let zone = Zone(id: child.id, properties: child.properties, polygon: child.polygon, navigationPoint: child.navigationPoint, parent: self, floorLevel: child.floorLevel, converter: converter)
+        let zone = Zone(id: child.id, properties: child.properties, polygon: child.polygon, navigationPoint: child.navigationPoint, parent: self, floorLevelId: child.floorLevelId, converter: converter)
         self.children[child.name] = zone
     }
     
