@@ -12,6 +12,7 @@ import UIKit
 public protocol MapMark {
     var id: String { get }
     var position: CGPoint { get }
+    var offset: CGVector { get }
     var floorLevelId: Int64? { get }
     var data: Any? { get }
     var triggerRadius: Double? { get }
@@ -19,8 +20,6 @@ public protocol MapMark {
     var deletable: Bool { get }
     var defaultVisibility: Bool { get }
     var focused: Bool { get }
-    var offsetX: Double { get }
-    var offsetY: Double { get }
     
     func createViewHolder(completion: @escaping (MapMarkViewHolder) -> ())
     //onFinish: (viewHolder: MapMarkViewHolder) -> Unit)

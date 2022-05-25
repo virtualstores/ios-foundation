@@ -12,14 +12,14 @@ import CoreLocation
 
 public class Zone: Equatable {
     public let id: String
-    public var properties: ZoneProperties
+    public private(set) var properties: ZoneProperties
     public let floorLevelId: Int64
-    public var color: UIColor = .white
-    public var image: UIImage?
-    public var polygon: [CGPoint]
+    public private(set) var color: UIColor = .white
+    public private(set) var image: UIImage?
+    public private(set) var polygon: [CGPoint]
     public var parent: Zone?
-    public var children: Dictionary<String, Zone>
-    public var navigationPoint: CGPoint?
+    public private(set) var children: Dictionary<String, Zone>
+    public private(set) var navigationPoint: CGPoint?
 
     public var name: String { properties.name }
     public var searchTerms: [String] { properties.names }

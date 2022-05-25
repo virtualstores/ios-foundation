@@ -128,7 +128,6 @@ public struct SharedZoneProperties {
   public let textAnchor: String?
   public let textIgnorePlacement: Bool?
 
-
   public init(
     fillColor: String? = nil,
     fillColorSelected: String? = nil,
