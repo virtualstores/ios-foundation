@@ -8,13 +8,16 @@
 import Foundation
 import CoreGraphics
 
-public struct Shelf: Codable {
+public class Shelf: Codable {
     public let id: Int64
     public let name: String
     public let itemPosition: ItemPosition
     public let shelfGroupPosition: Int
     public let shelfTiers: [ShelfTier]
     public let shape: [CGPoint]
+    public var isVisible: Bool = false
+    public var isSelected: Bool = false
+    public var isMarked: Bool = false
 
     public init(id: Int64, name: String, itemPosition: ItemPosition, shelfGroupPosition: Int, shelfTiers: [ShelfTier], shape: [CGPoint]) {
         self.id = id

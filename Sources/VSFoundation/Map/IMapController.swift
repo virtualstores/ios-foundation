@@ -25,12 +25,14 @@ public protocol IMapController {
 
     var zone: IZoneController { get }
 
+    var shelf: IShelfController { get }
+
     var mapDataLoadedPublisher: CurrentValueSubject<Bool?, MapControllerError> { get }
 
     /// Map loader which will receave all needed  setup information
     func loadMap(with mapData: MapData)
 
-    func setup(pathfinder: IFoundationPathfinder, zones: [Zone], sharedProperties: SharedZoneProperties?, changedFloor: Bool)
+    func setup(pathfinder: IFoundationPathfinder, zones: [Zone], sharedProperties: SharedZoneProperties?, shelves: [ShelfGroup], changedFloor: Bool)
     
     /// Updates the position of the userMark
     /// newLocation: The new position for the user
