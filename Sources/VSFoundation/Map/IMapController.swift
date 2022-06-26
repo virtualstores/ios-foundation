@@ -27,7 +27,7 @@ public protocol IMapController {
 
     var shelf: IShelfController { get }
 
-    var mapDataLoadedPublisher: CurrentValueSubject<Bool?, MapControllerError> { get }
+    var mapDataLoadedPublisher: CurrentValueSubject<Bool, MapControllerError> { get }
 
     /// Map loader which will receave all needed  setup information
     func loadMap(with mapData: MapData)

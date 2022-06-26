@@ -289,10 +289,10 @@ public struct MapOptions {
     public let textFont: String
 
     public init(
-      textMinSize: Double = 17,
-      textMaxSize: Double = 40,
-      textColor: UIColor = UIColor(rgb: 0xFFFFFF),
-      textColorSelected: UIColor = UIColor(rgb: 0x03DAC5),
+      textMinSize: Double = 10,
+      textMaxSize: Double = 25,
+      textColor: UIColor = UIColor(rgb: 0x000000),
+      textColorSelected: UIColor = UIColor(rgb: 0x000000),
       textOpacity: Double = 1.0,
       textIgnorePlacement: Bool = false,
       textAnchor: String = TEXT_ANCHOR_CENTER,
