@@ -31,6 +31,14 @@ public extension CGPoint {
     }
 
     func flipY(converter: ICoordinateConverter) -> CGPoint {
-      CGPoint(x: x, y: converter.heightInPixels - y)
+        CGPoint(x: x, y: converter.heightInPixels - y)
+    }
+}
+
+public extension CLLocationCoordinate2D {
+    func fromLatLngToMeter(converter: ICoordinateConverter) -> CGPoint {
+        let x = converter.convertFromMapCoordinateToMeters(input: longitude)
+        let y = converter.convertFromMapCoordinateToMeters(input: latitude)
+        return CGPoint(x: x, y: y)
     }
 }

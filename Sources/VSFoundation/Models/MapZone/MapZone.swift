@@ -3,13 +3,14 @@ import CoreGraphics
 
 import Foundation
 import CoreGraphics
+import CoreLocation
 
 public struct ZoneData {
   public let mapZones: [MapZone]
-  public let mapZonesPoints: [MapZonePoint]
+  public let mapZonesPoints: [MapZoneCoordinate]
   public let sharedProperties: SharedZoneProperties?
 
-  public init(mapZones: [MapZone], mapZonesPoints: [MapZonePoint], sharedProperties: SharedZoneProperties?) {
+  public init(mapZones: [MapZone], mapZonesPoints: [MapZoneCoordinate], sharedProperties: SharedZoneProperties?) {
     self.mapZones = mapZones
     self.mapZonesPoints = mapZonesPoints
     self.sharedProperties = sharedProperties
@@ -28,14 +29,14 @@ public struct MapZone {
   }
 }
 
-public struct MapZonePoint {
+public struct MapZoneCoordinate {
   public let name: String
-  public let point: CGPoint
+  public let coordinate: CLLocationCoordinate2D
   public let parentId: String?
 
-  public init(name: String, point: CGPoint, parentId: String?) {
+  public init(name: String, coordinate: CLLocationCoordinate2D, parentId: String?) {
     self.name = name
-    self.point = point
+    self.coordinate = coordinate
     self.parentId = parentId
   }
 }

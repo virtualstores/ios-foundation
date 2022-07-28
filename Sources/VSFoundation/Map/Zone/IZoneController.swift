@@ -14,6 +14,7 @@ import CoreGraphics
  * @constructor Create empty constructor for zone controller
  */
 public protocol IZoneController {
+    var zones: [Zone] { get }
 
     /**
      * Show text layer. Show the names of all zones that contain a name.

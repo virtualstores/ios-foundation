@@ -6,11 +6,11 @@
 
 import Foundation
 
-public enum DeviceOrientation: Hashable {
-  case regular
-  case swingSym
-  case swingAntiSym
-  case trolley
-  case trouserPocket
-  case jacketPocket
+public enum DeviceOrientation: String, Hashable {
+  case regular = "regular"
+  case swingSym = "swingSym"
+  case swingAntiSym = "swingAntiSym"
+  case trolley = "trolley"
+  case trouserPocket = "trouserPocket"
+  case jacketPocket = "jacketPocket"
 }

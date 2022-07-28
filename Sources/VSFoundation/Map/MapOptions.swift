@@ -10,6 +10,7 @@ import UIKit
 
 public struct MapOptions {
   public struct UserMark {
+    public let userMarkerType: UserMarkerType
     public let activeAccuracyStyle: CircleStyle
     public let staleAccuracyStyle: CircleStyle
     public let activeRadiusStyle: CircleStyle
@@ -21,7 +22,13 @@ public struct MapOptions {
     public let maxUserMarkZoomScale: Double
     public let trackingAnimationDurationMultiplier: Double
 
+    public enum UserMarkerType {
+        case bullsEye
+        case heading
+    }
+
     public init(
+      userMarkerType: UserMarkerType = .bullsEye,
       activeAccuracyStyle: CircleStyle = CircleStyle(),
       staleAccuracyStyle: CircleStyle? = nil,
       activeRadiusStyle: CircleStyle = CircleStyle(),
@@ -33,6 +40,7 @@ public struct MapOptions {
       maxUserMarkZoomScale: Double = 4.0,
       trackingAnimationDurationMultiplier: Double = 1.0
     ) {
+      self.userMarkerType = userMarkerType
       self.activeAccuracyStyle = activeAccuracyStyle
       self.staleAccuracyStyle = staleAccuracyStyle ?? activeAccuracyStyle
       self.activeRadiusStyle = activeRadiusStyle
