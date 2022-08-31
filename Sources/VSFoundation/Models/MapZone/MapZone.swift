@@ -29,7 +29,7 @@ public struct MapZone {
   }
 }
 
-public struct MapZoneCoordinate {
+public struct MapZoneCoordinate: Equatable {
   public let name: String
   public let coordinate: CLLocationCoordinate2D
   public let parentId: String?
@@ -38,6 +38,10 @@ public struct MapZoneCoordinate {
     self.name = name
     self.coordinate = coordinate
     self.parentId = parentId
+  }
+
+  public static func == (lhs: MapZoneCoordinate, rhs: MapZoneCoordinate) -> Bool {
+    lhs.name == rhs.name
   }
 }
 

@@ -19,20 +19,21 @@ public class Zone: Equatable {
     public private(set) var polygon: [CGPoint]
     public var parent: Zone?
     public private(set) var children: Dictionary<String, Zone>
-    public private(set) var navigationPoint: CGPoint?
+    public private(set) var navigationPoints: [String : CGPoint]
+    public var navigationPoint: CGPoint? { navigationPoints.first?.value }
 
     public var name: String { properties.name }
-    public var searchTerms: [String] { properties.names }
+    public var names: [String] { properties.names }
 
     private let converter: BaseCoordinateConverter
 
     private var bezierPath: UIBezierPath?
 
-    public init(id: String, properties: ZoneProperties, polygon: [CGPoint] = [], navigationPoint: CGPoint? = nil, parent: Zone? = nil, children: Dictionary<String, Zone> = [:], floorLevelId: Int64, converter: BaseCoordinateConverter) {
+    public init(id: String, properties: ZoneProperties, polygon: [CGPoint] = [], navigationPoints: [String: CGPoint] = [:], parent: Zone? = nil, children: Dictionary<String, Zone> = [:], floorLevelId: Int64, converter: BaseCoordinateConverter) {
         self.id = id
         self.properties = properties
         self.polygon = polygon
-        self.navigationPoint = navigationPoint
+        self.navigationPoints = navigationPoints
         self.parent = parent
         self.children = children
         self.floorLevelId = floorLevelId
@@ -48,7 +49,7 @@ public class Zone: Equatable {
     }
     
     public func addChild(child: Zone) {
-        let zone = Zone(id: child.id, properties: child.properties, polygon: child.polygon, navigationPoint: child.navigationPoint, parent: self, floorLevelId: child.floorLevelId, converter: converter)
+        let zone = Zone(id: child.id, properties: child.properties, polygon: child.polygon, navigationPoints: child.navigationPoints, parent: self, floorLevelId: child.floorLevelId, converter: converter)
         self.children[child.name] = zone
     }
     
@@ -79,7 +80,7 @@ public class Zone: Equatable {
         
         var search: String = self.name
         
-        for string in searchTerms {
+        for string in names {
             search = search + ":" + string
         }
         
