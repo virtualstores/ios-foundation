@@ -14,21 +14,27 @@ public struct ItemPosition: Codable {
     public let offsetX: Double
     public let offsetY: Double
     public let floorLevelId: Int64
+    public let shelfId: Int64?
+    public let shelfName: String?
 
-    public init(xPosition: Double, yPosition: Double, offsetX: Double, offsetY: Double, floorLevelId: Int64) {
+    public init(xPosition: Double, yPosition: Double, offsetX: Double, offsetY: Double, floorLevelId: Int64, shelfId: Int64? = nil, shelfName: String? = nil) {
         self.xPosition = xPosition
         self.yPosition = yPosition
         self.offsetX = offsetX
         self.offsetY = offsetY
         self.floorLevelId = floorLevelId
+        self.shelfId = shelfId
+        self.shelfName = shelfName
     }
 
-    public init(point: CGPoint, offset: CGVector, floorLevelId: Int64) {
+    public init(point: CGPoint, offset: CGVector, floorLevelId: Int64, shelfId: Int64? = nil, shelfName: String? = nil) {
         self.xPosition = Double(point.x)
         self.yPosition = Double(point.y)
         self.offsetX = Double(offset.dx)
         self.offsetY = Double(offset.dy)
         self.floorLevelId = floorLevelId
+        self.shelfId = shelfId
+        self.shelfName = shelfName
     }
 
     public var point: CGPoint {
