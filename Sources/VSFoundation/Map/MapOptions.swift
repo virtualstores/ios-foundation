@@ -96,7 +96,7 @@ public struct MapOptions {
         case bottomRight = "bottom-right"
     }
 
-    public init (
+    public init(
       clusteringEnabled: Bool = true,
       clusterRadius: Int = 20,
       clusterMaxZoom: Int = 20,
