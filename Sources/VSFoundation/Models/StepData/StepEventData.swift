@@ -18,6 +18,8 @@ public struct StepEventData {
   public let timestamp: Int64
   public let type: DeviceOrientation?
 
+  public var distance: Double { speed ?? 0.0 * (Double(duration) / 1000) }
+
   public init(direction: Double?, directionCertainty: Double?, duration: Int64, relativeDirection: Double?, speed: Double?, stepCertainty: Double, success: Bool, timestamp: Int64, type: DeviceOrientation?) {
     self.direction = direction
     self.directionCertainty = directionCertainty
