@@ -33,6 +33,10 @@ public extension CGPoint {
     func flipY(converter: ICoordinateConverter) -> CGPoint {
         CGPoint(x: x, y: converter.heightInPixels - y)
     }
+
+    func distance(to point: CGPoint) -> Double {
+        sqrt(pow(x - point.x, 2) + pow(y - point.y, 2))
+    }
 }
 
 public extension CLLocationCoordinate2D {

@@ -8,9 +8,9 @@ import Foundation
 
 public enum DeviceOrientation: String, Hashable {
   case regular = "REGULAR"
-  case swingSym = "SWINGSYM"
-  case swingAntiSym = "SWINGANTISYM"
+  case swingSym = "SWING_SYM"
+  case swingAntiSym = "SWING_ANTI_SYM"
   case trolley = "TROLLEY"
-  case trouserPocket = "TROUSERPOCKET"
-  case jacketPocket = "JACKETPOCKET"
+  case trouserPocket = "TROUSER_POCKET"
+  case jacketPocket = "JACKET_POCKET"
 }
