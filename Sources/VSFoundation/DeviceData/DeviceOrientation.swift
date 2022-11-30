@@ -14,3 +14,14 @@ public enum DeviceOrientation: String, Hashable {
   case trouserPocket = "TROUSER_POCKET"
   case jacketPocket = "JACKET_POCKET"
 }
+
+public enum PersonalMLAlgorithm: String, Hashable {
+  case coefficientOptimizer = "COEFFICIENT_OPTIMIZER"
+  case sac = "SAC"
+  case heuristicNoScan = "HEURISTIC_NO_SCAN"
+  case regresionMediator = "REGRESION_MEDIATOR"
+  case teoScanMl = "TEO_SCAN_ML"
+  case driftCompensator = "DRIFT_COMPENSATOR"
+  case compassAngleRectifier = "COMPASS_ANGLE_RECTIFIER"
+  case none = "NONE"
+}

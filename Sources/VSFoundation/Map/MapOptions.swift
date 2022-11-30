@@ -21,10 +21,11 @@ public struct MapOptions {
     public let minUserMarkZoomScale: Double
     public let maxUserMarkZoomScale: Double
     public let trackingAnimationDurationMultiplier: Double
+//    public let minLocationAccuracyLevel: Double
+//    public let maxLocationAccuracyLevel: Double
 
     public enum UserMarkerType {
-        case bullsEye
-        case heading
+        case bullsEye, heading, accuracy
     }
 
     public init(
@@ -38,7 +39,9 @@ public struct MapOptions {
       backgroundTintColor: Int? = nil,
       minUserMarkZoomScale: Double = 1.0,
       maxUserMarkZoomScale: Double = 4.0,
-      trackingAnimationDurationMultiplier: Double = 1.0
+      trackingAnimationDurationMultiplier: Double = 1.0//,
+//      minLocationAccuracyLevel: Double = 1.5,
+//      maxLocationAccuracyLevel: Double = 12
     ) {
       self.userMarkerType = userMarkerType
       self.activeAccuracyStyle = activeAccuracyStyle
@@ -51,6 +54,8 @@ public struct MapOptions {
       self.minUserMarkZoomScale = minUserMarkZoomScale
       self.maxUserMarkZoomScale = maxUserMarkZoomScale
       self.trackingAnimationDurationMultiplier = trackingAnimationDurationMultiplier
+//      self.minLocationAccuracyLevel = minLocationAccuracyLevel
+//      self.maxLocationAccuracyLevel = maxLocationAccuracyLevel
     }
   }
 

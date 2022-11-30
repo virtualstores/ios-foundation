@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreGraphics
+import Combine
 
 /**
  * Zone controller. Methods for handling zones on the map.
@@ -14,6 +15,9 @@ import CoreGraphics
  * @constructor Create empty constructor for zone controller
  */
 public protocol IZoneController {
+    var onEnterPublisher: CurrentValueSubject<Zone?, Never> { get }
+    var onExitPublisher: CurrentValueSubject<Zone?, Never> { get }
+
     var zones: [Zone] { get }
 
     /**

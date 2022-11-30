@@ -18,7 +18,9 @@ public protocol IWiFiController {
 
   func getConfiguredSSIDs() -> [String]
 
-  func fetch(completion: @escaping (WiFiInfo) -> Void)
+  //func fetch(completion: @escaping (WiFiInfo) -> Void)
 
   func set(timeInterval: Double)
+
+  func stopTimer()
 }
