@@ -24,3 +24,15 @@ final public class User {
         self.gender = gender
     }
 }
+
+public struct MlUser {
+  public let speedModifier: [DeviceOrientation: Double]
+  public let directionModifier: [DeviceOrientation: Double]
+  public let mlAlgorithm: PersonalMLAlgorithm
+
+  public init(speedModifier: [DeviceOrientation : Double], directionModifier: [DeviceOrientation : Double], mlAlgorithm: PersonalMLAlgorithm) {
+    self.speedModifier = speedModifier
+    self.directionModifier = directionModifier
+    self.mlAlgorithm = mlAlgorithm
+  }
+}

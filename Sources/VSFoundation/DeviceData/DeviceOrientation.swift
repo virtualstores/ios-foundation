@@ -6,7 +6,7 @@
 
 import Foundation
 
-public enum DeviceOrientation: String, Hashable {
+public enum DeviceOrientation: String, Hashable, Codable {
   case regular = "REGULAR"
   case swingSym = "SWING_SYM"
   case swingAntiSym = "SWING_ANTI_SYM"
@@ -15,7 +15,7 @@ public enum DeviceOrientation: String, Hashable {
   case jacketPocket = "JACKET_POCKET"
 }
 
-public enum PersonalMLAlgorithm: String, Hashable {
+public enum PersonalMLAlgorithm: String, Hashable, Codable {
   case coefficientOptimizer = "COEFFICIENT_OPTIMIZER"
   case sac = "SAC"
   case heuristicNoScan = "HEURISTIC_NO_SCAN"
