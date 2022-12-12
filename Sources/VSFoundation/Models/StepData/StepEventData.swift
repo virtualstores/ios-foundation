@@ -17,10 +17,12 @@ public struct StepEventData {
   public let success: Bool
   public let timestamp: Int64
   public let type: DeviceOrientation?
+  public let mlAdjustment: MLAdjustment?
+  public let quaternion: [Double]
 
   public var distance: Double { speed ?? 0.0 * (Double(duration) / 1000) }
 
-  public init(direction: Double?, directionCertainty: Double?, duration: Int64, relativeDirection: Double?, speed: Double?, stepCertainty: Double, success: Bool, timestamp: Int64, type: DeviceOrientation?) {
+  public init(direction: Double?, directionCertainty: Double?, duration: Int64, relativeDirection: Double?, speed: Double?, stepCertainty: Double, success: Bool, timestamp: Int64, type: DeviceOrientation?, mlAdjustment: MLAdjustment?, quaternion: [Double]) {
     self.direction = direction
     self.directionCertainty = directionCertainty
     self.duration = duration
@@ -30,5 +32,21 @@ public struct StepEventData {
     self.success = success
     self.timestamp = timestamp
     self.type = type
+    self.mlAdjustment = mlAdjustment
+    self.quaternion = quaternion
+  }
+
+  public struct MLAdjustment {
+    public let speedModelFactor: Double
+    public let speedAdjuster: Double
+    public let driftInRadians: Double
+    public let rotationInRadians: Double
+
+    public init(speedModelFactor: Double, speedAdjuster: Double, driftInRadians: Double, rotationInRadians: Double) {
+      self.speedModelFactor = speedModelFactor
+      self.speedAdjuster = speedAdjuster
+      self.driftInRadians = driftInRadians
+      self.rotationInRadians = rotationInRadians
+    }
   }
 }
