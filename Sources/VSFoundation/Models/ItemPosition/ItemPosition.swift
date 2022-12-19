@@ -8,7 +8,7 @@
 import Foundation
 import CoreGraphics
 
-public struct ItemPosition: Codable {
+public struct ItemPosition: Codable, Hashable {
     public let xPosition: Double
     public let yPosition: Double
     public let offsetX: Double
