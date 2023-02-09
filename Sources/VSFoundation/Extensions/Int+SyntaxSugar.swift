@@ -8,11 +8,7 @@
 import Foundation
 
 public extension Int {
-  var asFloat: Float {
-    return Float(self)
-  }
-
-  var asDouble: Double {
-    return Double(self)
-  }
+  var asLong: Int64 { Int64(self) }
+  var asFloat: Float { Float(self) }
+  var asDouble: Double { Double(self) }
 }
