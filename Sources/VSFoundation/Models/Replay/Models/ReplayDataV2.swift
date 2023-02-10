@@ -49,7 +49,10 @@ extension ReplayDataV2 {
               timestampLocal: 0,
               accelerationData: ACCELERATION[index].second,
               gravityData: GRAVITY[index].second,
-              rotationData: ROTATION[index].second
+              rotationData: ROTATION[index].second,
+              rotationRateData: [],
+              accelerometerData: [],
+              magnetometerData: []
             )
         )
       }
