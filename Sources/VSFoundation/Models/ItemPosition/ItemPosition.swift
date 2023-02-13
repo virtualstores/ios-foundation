@@ -8,7 +8,7 @@
 import Foundation
 import CoreGraphics
 
-public struct ItemPosition: Codable, Hashable {
+public struct ItemPosition: Codable {
     public let xPosition: Double
     public let yPosition: Double
     public let offsetX: Double
@@ -16,8 +16,9 @@ public struct ItemPosition: Codable, Hashable {
     public let floorLevelId: Int64?
     public let shelfId: Int64?
     public let identifier: String
+    public let isDisabled: Bool
 
-    public init(xPosition: Double, yPosition: Double, offsetX: Double, offsetY: Double, floorLevelId: Int64?, shelfId: Int64? = nil, identifier: String? = nil) {
+    public init(xPosition: Double, yPosition: Double, offsetX: Double, offsetY: Double, floorLevelId: Int64?, shelfId: Int64? = nil, identifier: String? = nil, isDisabled: Bool? = nil) {
         self.xPosition = xPosition
         self.yPosition = yPosition
         self.offsetX = offsetX
@@ -25,9 +26,10 @@ public struct ItemPosition: Codable, Hashable {
         self.floorLevelId = floorLevelId
         self.shelfId = shelfId
         self.identifier = identifier ?? "undefined"
+        self.isDisabled = isDisabled ?? false
     }
 
-    public init(point: CGPoint, offset: CGVector, floorLevelId: Int64?, shelfId: Int64? = nil, identifier: String? = nil) {
+    public init(point: CGPoint, offset: CGVector, floorLevelId: Int64?, shelfId: Int64? = nil, identifier: String? = nil, isDisabled: Bool? = nil) {
         self.xPosition = Double(point.x)
         self.yPosition = Double(point.y)
         self.offsetX = Double(offset.dx)
@@ -35,6 +37,7 @@ public struct ItemPosition: Codable, Hashable {
         self.floorLevelId = floorLevelId
         self.shelfId = shelfId
         self.identifier = identifier ?? "undefined"
+        self.isDisabled = isDisabled ?? false
     }
 
     public var point: CGPoint {
