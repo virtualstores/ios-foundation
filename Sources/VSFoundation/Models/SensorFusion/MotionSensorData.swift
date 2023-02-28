@@ -11,6 +11,7 @@ import CoreMotion
 public struct MotionSensorData {
     public let timestampSensor: Int
     public let timestampLocal: Int
+    public let timestampLocalNano: UInt64
 
     public let acceleration: SensorData
     public let gravity: SensorData
@@ -19,9 +20,10 @@ public struct MotionSensorData {
     public let accelerometer: SensorData
     public let magnetometer: SensorData
 
-    public init(timestampSensor: Int, timestampLocal: Int, accelerationData: [Double], gravityData: [Double], rotationData: [Double], rotationRateData: [Double], accelerometerData: [Double], magnetometerData: [Double]) {
+    public init(timestampSensor: Int, timestampLocal: Int, timestampLocalNano: UInt64, accelerationData: [Double], gravityData: [Double], rotationData: [Double], rotationRateData: [Double], accelerometerData: [Double], magnetometerData: [Double]) {
         self.timestampSensor = timestampSensor
         self.timestampLocal = timestampLocal
+        self.timestampLocalNano = timestampLocalNano
         self.acceleration = SensorData(type: .acceleration, data: accelerationData, timestampSensor: timestampSensor, timestampLocal: timestampLocal)
         self.gravity = SensorData(type: .gravity, data: gravityData, timestampSensor: timestampSensor, timestampLocal: timestampLocal)
         self.rotation = SensorData(type: .rotation, data: rotationData, timestampSensor: timestampSensor, timestampLocal: timestampLocal)
@@ -39,6 +41,7 @@ public extension MotionSensorData {
 
         let timestampSensor = Int(data.timestamp * 1000)
         let timestampLocal = Date().currentTimeMillis
+        let timestampLocalNano: UInt64 = .nanoTime
 
         let accelerationData = [data.userAcceleration.x * gravity,
                                 data.userAcceleration.y * gravity,
@@ -59,7 +62,9 @@ public extension MotionSensorData {
 
         let accelerometerData = [accelerometerData?.acceleration.x,
                                  accelerometerData?.acceleration.y,
-                                 accelerometerData?.acceleration.z].compactMap { $0 }
+                                 accelerometerData?.acceleration.z]
+                                  .compactMap { $0 }
+                                  .map { $0 * gravity }
 
         let magnetometerData = [magnetometerData?.magneticField.x,
                                 magnetometerData?.magneticField.y,
@@ -68,6 +73,7 @@ public extension MotionSensorData {
 
         self.init(timestampSensor: timestampSensor,
                   timestampLocal: timestampLocal,
+                  timestampLocalNano: timestampLocalNano,
                   accelerationData: accelerationData,
                   gravityData: gravityData,
                   rotationData: rotationData,

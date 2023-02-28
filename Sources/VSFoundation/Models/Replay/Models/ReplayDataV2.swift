@@ -47,6 +47,7 @@ extension ReplayDataV2 {
             MotionSensorData(
               timestampSensor: ROTATION[index].first,
               timestampLocal: 0,
+              timestampLocalNano: .nanoTime,
               accelerationData: ACCELERATION[index].second,
               gravityData: GRAVITY[index].second,
               rotationData: ROTATION[index].second,

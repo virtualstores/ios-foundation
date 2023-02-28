@@ -12,3 +12,11 @@ public extension Int {
   var asFloat: Float { Float(self) }
   var asDouble: Double { Double(self) }
 }
+
+public extension UInt64 {
+  static var nanoTime: UInt64 {
+    var info = mach_timebase_info()
+    guard mach_timebase_info(&info) == KERN_SUCCESS else { return 0 }
+    return mach_absolute_time() * UInt64(info.numer) / UInt64(info.denom)
+  }
+}
