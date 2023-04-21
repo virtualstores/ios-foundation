@@ -19,8 +19,9 @@ public class Zone: Equatable {
     public private(set) var polygon: [CGPoint]
     public var parent: Zone?
     public private(set) var children: Dictionary<String, Zone>
-    public private(set) var navigationPoints: [String : CGPoint]
-    public var navigationPoint: CGPoint? { navigationPoints.first?.value }
+    public private(set) var navigationPoints: [String : (point: CGPoint, properties: PointProperties)]
+    public var navigationPoint: CGPoint? { navigationPoints.first?.value.point }
+    public var navigationPointProperties: PointProperties? { navigationPoints.first?.value.properties }
 
     public var name: String { properties.name }
     public var names: [String] { properties.names }
@@ -29,7 +30,7 @@ public class Zone: Equatable {
 
     private var bezierPath: UIBezierPath?
 
-    public init(id: String, properties: ZoneProperties, polygon: [CGPoint] = [], navigationPoints: [String: CGPoint] = [:], parent: Zone? = nil, children: Dictionary<String, Zone> = [:], floorLevelId: Int64, converter: BaseCoordinateConverter) {
+    public init(id: String, properties: ZoneProperties, polygon: [CGPoint] = [], navigationPoints: [String : (point: CGPoint, properties: PointProperties)] = [:], parent: Zone? = nil, children: Dictionary<String, Zone> = [:], floorLevelId: Int64, converter: BaseCoordinateConverter) {
         self.id = id
         self.properties = properties
         self.polygon = polygon

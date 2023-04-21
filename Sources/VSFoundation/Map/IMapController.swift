@@ -32,6 +32,7 @@ public protocol IMapController {
     /// Map loader which will receave all needed  setup information
     func loadMap(with mapData: MapData)
 
+    /// Function called by TT2 Core SDK to pass information to Map SDK
     func setup(pathfinder: IFoundationPathfinder, zones: [Zone], sharedProperties: SharedZoneProperties?, shelves: [ShelfGroup], changedFloor: Bool)
     
     /// Updates the position of the userMark

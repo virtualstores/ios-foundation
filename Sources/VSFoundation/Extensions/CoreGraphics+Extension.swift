@@ -39,6 +39,23 @@ public extension CGPoint {
     }
 }
 
+public extension CGSize {
+  func convertFromMeterToLatLng(converter: ICoordinateConverter) -> CGSize {
+    CGSize(
+      width: converter.convertFromMetersToMapCoordinate(input: width),
+      height: converter.convertFromMetersToMapCoordinate(input: height)
+    )
+  }
+}
+
+public extension CGRect {
+    func convertFromMeterToLatLng(converter: ICoordinateConverter) -> CGRect {
+      let origin = CGPoint(x: converter.convertFromMetersToMapCoordinate(input: minX), y: converter.convertFromMetersToMapCoordinate(input: minY))
+      let size = size.convertFromMeterToLatLng(converter: converter)
+      return CGRect(origin: origin, size: size)
+    }
+}
+
 public extension CLLocationCoordinate2D {
     func fromLatLngToMeter(converter: ICoordinateConverter) -> CGPoint {
         let x = converter.convertFromMapCoordinateToMeters(input: longitude)

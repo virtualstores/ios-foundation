@@ -7,6 +7,7 @@
 
 import Foundation
 import CoreGraphics
+import UIKit
 
 public struct RtlsOptions: Codable {
     public let id: Int64
@@ -28,13 +29,18 @@ public struct RtlsOptions: Codable {
     public let mapDataVersionUrl: String?
     public let mapBoxImageUrl: String?
     public let pixelsPerMeter: Double
+    public let boundingBoxInMeters: BoundingBox?
     public let scanLocations: [PositionedCode]?
     public let isDefault: Bool
+
+    public var rtlsOptionsWidth: Double { widthInMeters > 0.0 ? widthInMeters : width }
+    public var rtlsOptionsHeight: Double { heightInMeters > 0.0 ? heightInMeters : height }
+    public var rtlsOptionsSize: CGSize { CGSize(width: rtlsOptionsWidth, height: rtlsOptionsHeight) }
 
     public init(id: Int64, width: Int64, height: Int64, widthInMeters: Double, heightInMeters: Double, floorLevel: Int?,
                 north: Double?, name: String?, startOffsetX: Int64, startOffsetY: Int64, mapBoxUrl: String,
                 mapBoxToken: String, mapFenceUrl: String, mapZonesUrl: String, navGraphUrl: String, mapOffsetsUrl: String,
-                mapDataVersionUrl: String, mapBoxImageUrl: String, pixelsPerMeter: Double, scanLocations: [PositionedCode], isDefault: Bool) {
+                mapDataVersionUrl: String, mapBoxImageUrl: String, pixelsPerMeter: Double, boundingBoxInMeters: BoundingBox?, scanLocations: [PositionedCode], isDefault: Bool) {
         self.id = id
         self.width = Double(width)
         self.height = Double(height)
@@ -54,19 +60,52 @@ public struct RtlsOptions: Codable {
         self.mapDataVersionUrl = mapDataVersionUrl
         self.mapBoxImageUrl = mapBoxImageUrl
         self.pixelsPerMeter = pixelsPerMeter
+        self.boundingBoxInMeters = boundingBoxInMeters
         self.scanLocations = scanLocations
         self.isDefault = isDefault
     }
 
-    public func rtlsOptionsWidth() -> Double {
-        self.widthInMeters > 0.0 ? self.widthInMeters : self.width
-    }
+    public struct BoundingBox: Codable {
+        let bottomLeft: [Double]
+        let topLeft: [Double]
+        let topRight: [Double]
+        let bottomRight: [Double]
+        let leftPadding: Double
+        let topPadding: Double
+        let rightPadding: Double
+        let bottomPadding: Double
 
-    public func rtlsOptionsHeight() -> Double {
-        self.heightInMeters > 0.0 ? self.heightInMeters : self.height
-    }
+        public var bottomLeftPoint: CGPoint { CGPoint(x: bottomLeft[0], y: bottomLeft[1]) }
+        public var topLeftPoint: CGPoint { CGPoint(x: topLeft[0], y: topLeft[1]) }
+        public var topRightPoint: CGPoint { CGPoint(x: topRight[0], y: topRight[1]) }
+        public var bottomRightPoint: CGPoint { CGPoint(x: bottomRight[0], y: bottomRight[1]) }
+        public var padding: UIEdgeInsets { UIEdgeInsets(top: topPadding, left: leftPadding, bottom: bottomPadding, right: rightPadding) }
 
-    public func rtlsOptionsSize() -> CGSize {
-        CGSize(width: rtlsOptionsWidth(), height: rtlsOptionsHeight())
+        public var asCGRect: CGRect {
+          CGRect(
+            origin: bottomLeftPoint,
+            size: CGSize(width: topRightPoint.x - bottomLeftPoint.x, height: topRightPoint.y - bottomLeftPoint.y)
+          )
+        }
+
+        public var asCGRectWithPadding: CGRect {
+          CGRect(
+            x: asCGRect.minX - padding.left,
+            y: asCGRect.minY - padding.bottom,
+            width: asCGRect.width + padding.right,
+            height: asCGRect.height + padding.top
+          )
+        }
+
+        public init(bottomLeft: [Double], topLeft: [Double], topRight: [Double], bottomRight: [Double], leftPadding: Double, topPadding: Double, rightPadding: Double, bottomPadding: Double) {
+            self.bottomLeft = bottomLeft
+            self.topLeft = topLeft
+            self.topRight = topRight
+            self.bottomRight = bottomRight
+            self.leftPadding = leftPadding
+            self.topPadding = topPadding
+            self.rightPadding = rightPadding
+            self.bottomPadding = bottomPadding
+        }
     }
 }
