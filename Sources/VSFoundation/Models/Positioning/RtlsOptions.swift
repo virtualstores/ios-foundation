@@ -76,13 +76,13 @@ public struct RtlsOptions: Codable {
         let bottomPadding: Double
 
         public var bottomLeftPoint: CGPoint { CGPoint(x: bottomLeft[0], y: bottomLeft[1]) }
-        public var bottomLeftPointWithPadding: CGPoint { CGPoint(x: bottomLeft[0] - leftPadding, y: bottomLeft[1] - bottomPadding) }
+        public var bottomLeftPointWithPadding: CGPoint { bottomLeftPoint.add(x: -leftPadding, y: -bottomPadding) }
         public var topLeftPoint: CGPoint { CGPoint(x: topLeft[0], y: topLeft[1]) }
-        public var topLeftPointWithPadding: CGPoint { CGPoint(x: topLeft[0] - leftPadding, y: topLeft[1] - topPadding) }
+        public var topLeftPointWithPadding: CGPoint { topLeftPoint.add(x: -leftPadding, y: topPadding) }
         public var topRightPoint: CGPoint { CGPoint(x: topRight[0], y: topRight[1]) }
-        public var topRightPointWithPadding: CGPoint { CGPoint(x: topRight[0] + rightPadding, y: topRight[1] + topPadding) }
+        public var topRightPointWithPadding: CGPoint { topRightPoint.add(x: rightPadding, y: topPadding) }
         public var bottomRightPoint: CGPoint { CGPoint(x: bottomRight[0], y: bottomRight[1]) }
-        public var bottomRightPointWithPadding: CGPoint { CGPoint(x: bottomRight[0] + rightPadding, y: bottomRight[1] + bottomPadding) }
+        public var bottomRightPointWithPadding: CGPoint { bottomRightPoint.add(x: rightPadding, y: -bottomPadding) }
         public var padding: UIEdgeInsets { UIEdgeInsets(top: topPadding, left: leftPadding, bottom: bottomPadding, right: rightPadding) }
 
         public var asRect: CGRect {
@@ -112,4 +112,10 @@ public struct RtlsOptions: Codable {
             self.bottomPadding = bottomPadding
         }
     }
+}
+
+public extension UIEdgeInsets {
+  func multiply(with value: Double) -> UIEdgeInsets {
+    UIEdgeInsets(top: top * value, left: left * value, bottom: bottom * value, right: right * value)
+  }
 }

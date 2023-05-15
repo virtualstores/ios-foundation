@@ -37,6 +37,14 @@ public extension CGPoint {
     func distance(to point: CGPoint) -> Double {
         sqrt(pow(x - point.x, 2) + pow(y - point.y, 2))
     }
+
+    func add(point: CGPoint) -> CGPoint {
+      CGPoint(x: x + point.x, y: y + point.y)
+    }
+
+    func add(x: Double, y: Double) -> CGPoint {
+      add(point: CGPoint(x: x, y: y))
+    }
 }
 
 public extension CGSize {
