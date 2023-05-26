@@ -39,7 +39,7 @@ public protocol IMapController {
     /// newLocation: The new position for the user
     /// precision:   The radius of the precisionCircle
     /// In meter scale
-    func updateUserLocation(newLocation: CGPoint?, std: Float?)
+    func updateUserLocation(newLocation: CGPoint?, std: Double?)
     
     /// Updates the users direction depending on which direction you last synced
     /// newDirection  The direction in radians

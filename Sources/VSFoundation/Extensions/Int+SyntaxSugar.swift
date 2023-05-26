@@ -20,3 +20,8 @@ public extension UInt64 {
     return mach_absolute_time() * UInt64(info.numer) / UInt64(info.denom)
   }
 }
+
+public extension Int64 {
+  static var nanoTime: Int64 { Int64(UInt64.nanoTime) }
+  static var currentTimeMillis: Int64 { Int64(Date().currentTimeMillis) }
+}

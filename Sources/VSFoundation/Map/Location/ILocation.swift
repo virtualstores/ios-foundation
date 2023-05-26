@@ -26,7 +26,7 @@ public protocol ILocation {
     /// newLocation: The new position for the user
     /// precision:   The radius of the precisionCircle
     /// locaten as latitude and longitude
-    func updateUserLocation(newLocation: CLLocationCoordinate2D, std: Float?)
+    func updateUserLocation(newLocation: CLLocationCoordinate2D, std: Double)
     
     /// Updates the users direction depending on which direction you last synced
     /// newDirection  The direction in radians
