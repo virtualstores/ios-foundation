@@ -20,10 +20,12 @@ public enum VPSOutputSignal {
     }
 
     public enum Status {
-      case confident, uncertain
+      case confident, uncertain, none
     }
   }
 
   case position(position: Position)
+  case ux(position: Position)
+  case ml(position: Position)
   case rotation(heading: Double)
 }
