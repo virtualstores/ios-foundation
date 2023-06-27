@@ -40,20 +40,8 @@ public struct ItemPosition: Codable {
         self.isDisabled = isDisabled ?? false
     }
 
-    public var point: CGPoint {
-        CGPoint(x: xPosition, y: yPosition)
-    }
-
-    public var offset: CGVector {
-        CGVector(dx: offsetX, dy: offsetY)
-    }
-    
-    public var offsetPoint: CGPoint {
-        CGPoint(x: offsetX, y: offsetY)
-    }
-
-    public var pointWithOffset: CGPoint {
-        CGPoint(x: point.x + offset.dx, y: point.y + offset.dy)
-    }
+    public var point: CGPoint { CGPoint(x: xPosition, y: yPosition) }
+    public var offset: CGVector { CGVector(dx: offsetX, dy: offsetY) }
+    public var offsetPoint: CGPoint { CGPoint(x: offsetX, y: offsetY) }
+    public var pointWithOffset: CGPoint { CGPoint(x: point.x + offset.dx, y: point.y + offset.dy) }
 }
-

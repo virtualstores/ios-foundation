@@ -27,7 +27,7 @@ public struct MapOptions {
     }
 
     public init(
-      userMarkerType: UserMarkerType = .bullsEye,
+      userMarkerType: UserMarkerType = .accuracy,
       activeAccuracyStyle: CircleStyle = CircleStyle(),
       staleAccuracyStyle: CircleStyle? = nil,
       foregroundTintColor: Int? = nil,

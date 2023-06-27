@@ -21,7 +21,7 @@ public protocol IMapController {
     /// Map marker
     var marker: IMarkerController { get }
 
-    var path: IPathfindingController { get }
+    var path: IPathfinderController { get }
 
     var zone: IZoneController { get }
 
@@ -33,7 +33,7 @@ public protocol IMapController {
     func loadMap(with mapData: MapData)
 
     /// Function called by TT2 Core SDK to pass information to Map SDK
-    func setup(pathfinder: IFoundationPathfinder, zones: [Zone], sharedProperties: SharedZoneProperties?, shelves: [ShelfGroup], changedFloor: Bool)
+    func setup(pathfinder: IPathfinder, zones: [Zone], sharedProperties: SharedZoneProperties?, shelves: [ShelfGroup], changedFloor: Bool)
     
     /// Updates the position of the userMark
     /// newLocation: The new position for the user

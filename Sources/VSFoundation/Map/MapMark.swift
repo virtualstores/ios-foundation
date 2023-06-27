@@ -23,3 +23,7 @@ public protocol MapMark {
     func createViewHolder(completion: @escaping (MapMarkViewHolder) -> ())
     //onFinish: (viewHolder: MapMarkViewHolder) -> Unit)
 }
+
+public extension MapMark {
+  var asGoal: PathfindingGoal { PathfindingGoal(id: id, position: position, data: data, type: .target, floorLevelId: floorLevelId) }
+}

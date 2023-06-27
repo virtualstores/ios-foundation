@@ -1,5 +1,5 @@
 //
-//  IPathfiningController.swift
+//  IPathfinderController.swift
 //  
 //
 //  Created by Théodore Roos on 2022-03-30.
@@ -14,7 +14,7 @@ import Combine
  *
  * @constructor Create empty constructor for pathfinding controller
  */
-public protocol IPathfindingController {
+public protocol IPathfinderController {
 
   var state: State { get }
 
@@ -73,6 +73,7 @@ public protocol IPathfindingController {
    * @param id Id
    * @param callback Callback
    */
+  func remove(id: String, completion: @escaping (() -> Void))
   func remove(goal: PathfindingGoal, completion: @escaping (() -> Void))
 
   /**
@@ -81,6 +82,7 @@ public protocol IPathfindingController {
    * @param ids Ids
    * @param callback Callback
    */
+  func remove(ids: [String], completion: @escaping () -> Void)
   func remove(goals: [PathfindingGoal], completion: @escaping (() -> Void))
 
   /**
@@ -185,8 +187,6 @@ public struct PathfindingGoal {
    * @constructor Create empty constructor for type
    */
   public enum GoalType {
-    case end
-    case start
-    case target
+    case end, start, target//target(point: CGPoint), target(zone: Zone)
   }
 }

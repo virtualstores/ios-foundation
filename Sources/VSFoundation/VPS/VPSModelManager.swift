@@ -9,5 +9,5 @@ import Foundation
 import CoreML
 
 public protocol VPSModelManager {
-  var model: MLModel { get }
+  var model: MLModel? { get }
 }
