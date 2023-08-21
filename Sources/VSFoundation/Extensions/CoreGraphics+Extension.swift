@@ -11,23 +11,19 @@ import CoreLocation
 
 public extension CGPoint {
     func fromMeterToPixel(converter: ICoordinateConverter) -> CGPoint {
-        let x = converter.convertFromMetersToPixels(input: self.x)
-        let y = converter.convertFromMetersToPixels(input: self.y)
-        
+        let x = converter.convertFromMetersToPixels(input: x)
+        let y = converter.convertFromMetersToPixels(input: y)
         return CGPoint(x: x, y: y)
     }
     
     func fromPixelToLatLng(converter: ICoordinateConverter) -> CLLocationCoordinate2D {
-        let x = converter.convertFromPixelsToMapCoordinate(input: self.x)
-        let y = converter.convertFromPixelsToMapCoordinate(input: self.y)
-        
+        let x = converter.convertFromPixelsToMapCoordinate(input: x)
+        let y = converter.convertFromPixelsToMapCoordinate(input: y)
         return CLLocationCoordinate2D(latitude: y, longitude: x)
     }
-    
+
     func convertFromMeterToLatLng(converter: ICoordinateConverter) -> CLLocationCoordinate2D {
-        let pixelPoint = self.fromMeterToPixel(converter: converter)
-        let converted = pixelPoint.fromPixelToLatLng(converter: converter)
-        return converted
+        fromMeterToPixel(converter: converter).fromPixelToLatLng(converter: converter)
     }
 
     func flipY(converter: ICoordinateConverter) -> CGPoint {
