@@ -12,11 +12,13 @@ public enum VPSOutputSignal {
     public let position: CGPoint
     public let std: Double
     public let status: Status
+    public let timestamp: Date
 
-    public init(position: CGPoint, std: Double, status: Status) {
+    public init(position: CGPoint, std: Double, status: Status, timestamp: Date) {
       self.position = position
       self.std = std
       self.status = status
+      self.timestamp = timestamp
     }
 
     public enum Status {
