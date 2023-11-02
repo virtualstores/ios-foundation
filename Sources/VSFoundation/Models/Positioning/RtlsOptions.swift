@@ -118,4 +118,8 @@ public extension UIEdgeInsets {
   func multiply(with value: Double) -> UIEdgeInsets {
     UIEdgeInsets(top: top * value, left: left * value, bottom: bottom * value, right: right * value)
   }
+
+  func multiply(width: Double, height: Double) -> UIEdgeInsets {
+    UIEdgeInsets(top: top * height, left: left * width, bottom: bottom * height, right: right * width)
+  }
 }

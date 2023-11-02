@@ -1,6 +1,6 @@
 //
-//  File.swift
-//  
+//  VPSModelManager.swift
+//
 //
 //  Created by Théodore Roos on 2023-05-29.
 //
@@ -16,9 +16,11 @@ public protocol VPSModelManager {
 public struct VPSModelParams {
   public let frameSize: Int32
   public let useSmooting: Bool
+  public let featureSequence: [VPSFeaturesEntriesEnum]
 
-  public init(frameSize: Int32, useSmooting: Bool) {
+  public init(frameSize: Int32, useSmooting: Bool, featureSequence: [VPSFeaturesEntriesEnum]) {
     self.frameSize = frameSize
     self.useSmooting = useSmooting
+    self.featureSequence = featureSequence
   }
 }
