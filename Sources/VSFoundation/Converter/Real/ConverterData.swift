@@ -12,7 +12,7 @@ struct Rotate {
   let sin: Double
 }
 
-struct LngLatToMetersConstants {
+struct LatLngToMetersConstants {
   let origin: Origin
   let y: Y
   let rotate: Rotate
@@ -34,7 +34,7 @@ struct LngLatToMetersConstants {
   }
 }
 
-struct MetersToLngLatConstants {
+struct MetersToLatLngConstants {
   let longitude: Double
   let latitude: Double
   let rotate: Rotate

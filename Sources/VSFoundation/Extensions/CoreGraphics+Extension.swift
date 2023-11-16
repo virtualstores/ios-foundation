@@ -26,6 +26,18 @@ public extension CGPoint {
         fromMeterToPixel(converter: converter).fromPixelToLatLng(converter: converter)
     }
 
+    func convertFromMeterToLatLng(converter: ICoordinateConverterReal) -> CLLocationCoordinate2D {
+        converter.metersToLatLng(point: self)
+    }
+
+    func fromMeterToPixel(converter: ICoordinateConverterReal) -> CGPoint {
+        converter.metersToPixels(point: self)
+    }
+
+    func fromPixelsToMeter(converter: ICoordinateConverterReal) -> CGPoint {
+        converter.pixelsToMeters(point: self)
+    }
+
     func flipY(converter: ICoordinateConverter) -> CGPoint {
         CGPoint(x: x, y: converter.heightInPixels - y)
     }
@@ -35,11 +47,19 @@ public extension CGPoint {
     }
 
     func add(point: CGPoint) -> CGPoint {
-      CGPoint(x: x + point.x, y: y + point.y)
+        CGPoint(x: x + point.x, y: y + point.y)
     }
 
     func add(x: Double, y: Double) -> CGPoint {
-      add(point: CGPoint(x: x, y: y))
+        add(point: CGPoint(x: x, y: y))
+    }
+
+    func multiply(value: Double) -> CGPoint {
+        CGPoint(x: x * value, y: y * value)
+    }
+
+    func divide(value: Double) -> CGPoint {
+        CGPoint(x: x / value, y: y / value)
     }
 }
 

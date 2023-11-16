@@ -9,11 +9,11 @@ import Foundation
 import CoreGraphics
 import CoreLocation
 
-/// The ICoordinateConverter, contains logic
+/// The ICoordinateConverterReal, contains logic
 /// needed to swap between the pixel, meter &
-/// lngLat coordinate systems.
-protocol ICoordinateConverterReal {
-  /// Converts a point from the lngLat
+/// latLng coordinate systems.
+public protocol ICoordinateConverterReal {
+  /// Converts a point from the latLng
   /// coordinate system to the meter
   /// coordinate system.
   ///
@@ -22,10 +22,15 @@ protocol ICoordinateConverterReal {
   /// following points can be specified:
   ///
   /// (0, storeHeight) ____ (storeWidth, storeHeight)
+  ///
   /// | x x x x x x x x x x x x x x x x x x x x x x x x x x |
+  ///
   /// | x x x x x x x x x x x x x x x x x x x x x x x x x x |
+  ///
   /// | x x x x x x x x x x x x x x x x x x x x x x x x x x |
+  ///
   /// | x x x x x x x x x x x x x x x x x x x x x x x x x x |
+  ///
   /// (0, 0) ___________________________ (storeWidth, 0)
   ///
   /// That is the meter origin will be
@@ -37,33 +42,33 @@ protocol ICoordinateConverterReal {
   /// positive x value with a y value
   /// of 0 will result in a point going
   /// straight to the right.
-  /// - Parameter point: The lngLat point to convert, index 0 is longitude & index 1 is latitude.
-  /// - Returns: The converted point in meters, index 0 is x & index 1 is y.
-  func lngLatToMeters(coordinate: CLLocationCoordinate2D) -> CGPoint
+  /// - Parameter coordinate: The latLng point to convert.
+  /// - Returns: The converted coordinate in meters.
+  func latLngToMeters(coordinate: CLLocationCoordinate2D) -> CGPoint
 
   /// Converts a point from the meter
-  /// coordinate system to the lngLat
+  /// coordinate system to the latLng
   /// coordinate system.
   ///
   /// This method will rotate the
   /// provided point with the inverted
   /// angle used when executing the
-  /// lngLatToMeters method.
-  /// - Parameter point: The meter point to convert, index 0 is x & index 1 is y.
-  /// - Returns: The converted point in lngLat, index 0 is longitude & index 1 is latitude.
-  func metersToLngLat(point: CGPoint) -> CLLocationCoordinate2D
+  /// latLngToMeters method.
+  /// - Parameter point: The meter point to convert.
+  /// - Returns: The converted point in latLng.
+  func metersToLatLng(point: CGPoint) -> CLLocationCoordinate2D
 
   /// Converts a point from the meter
   /// coordinate system to the pixel
   /// coordinate system.
-  /// - Parameter point: The meter point to convert, index 0 is x & index 1 is y.
-  /// - Returns: The converted point in pixels, index 0 is x & index 1 y.
-  func metersToPixel(point: CGPoint) -> CGPoint
+  /// - Parameter point: The meter point to convert.
+  /// - Returns: The converted point in pixels.
+  func metersToPixels(point: CGPoint) -> CGPoint
 
   /// Converts a point from the pixel
   /// coordinate system to the meter
   /// coordinate system.
-  /// - Parameter point: The pixel point to convert, index 0 is x & index 1 is y.
-  /// - Returns: The converted point in meters, index 0 is x & index 1 y.
-  func pixelsToMeter(point: CGPoint) -> CGPoint
+  /// - Parameter point: The pixel point to convert.
+  /// - Returns: The converted point in meters.
+  func pixelsToMeters(point: CGPoint) -> CGPoint
 }
