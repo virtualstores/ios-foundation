@@ -5,8 +5,6 @@
 //  Created by Hripsime on 2022-02-13.
 //
 
-import Foundation
-import CoreGraphics
 import CoreLocation
 
 public extension CGPoint {

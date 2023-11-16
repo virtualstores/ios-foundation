@@ -27,6 +27,8 @@ public protocol IMapController {
 
     var shelf: IShelfController { get }
 
+    var mlPosition: IMLPositionLineController { get }
+
     var mapDataLoadedPublisher: CurrentValueSubject<Bool, MapControllerError> { get }
 
     /// Map loader which will receave all needed  setup information
@@ -40,7 +42,9 @@ public protocol IMapController {
     /// precision:   The radius of the precisionCircle
     /// In meter scale
     func updateUserLocation(newLocation: CGPoint?, std: Double?)
-    
+
+    func updateMLPosition(point: CGPoint)
+
     /// Updates the users direction depending on which direction you last synced
     /// newDirection  The direction in radians
     func updateUserDirection(newDirection: Double)

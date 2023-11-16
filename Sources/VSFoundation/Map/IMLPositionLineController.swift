@@ -1,8 +1,11 @@
 //
-//  File.swift
-//  
+//  IMLPositionLineController.swift
+//
 //
 //  Created by Théodore Roos on 2023-11-15.
 //
 
-import Foundation
+public protocol IMLPositionLineController {
+  func show()
+  func hide()
+}

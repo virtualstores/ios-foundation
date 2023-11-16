@@ -5,8 +5,6 @@
 //  Created by Théodore Roos on 2023-11-09.
 //
 
-import Foundation
-import CoreGraphics
 import CoreLocation
 
 /// The ICoordinateConverterReal, contains logic

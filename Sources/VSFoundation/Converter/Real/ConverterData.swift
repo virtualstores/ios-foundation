@@ -5,8 +5,6 @@
 //  Created by Théodore Roos on 2023-11-09.
 //
 
-import Foundation
-
 struct Rotate {
   let cos: Double
   let sin: Double
