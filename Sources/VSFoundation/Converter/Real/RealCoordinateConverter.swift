@@ -42,8 +42,8 @@ class RealCoordinateConverter {
   ///                  also as a anchor when rotating points.
   ///   - mapAngleInDegrees: Specifies the map angle and thus the angle that each coordinate
   ///                       should be rotated with when converting between meters & latLng.
-  ///                       Positive values results in the latLng map rotating clockwise
-  ///                       (as the actual clock and not as the unit circle).
+  ///                       Positive values results in the latLng map rotating counterclockwise
+  ///                       (as the unit circle and not as the clock).
   ///   - earthRadiusInMeters: The earth radius in meters to use when converting between
   ///                         meters & latLng.
   ///   - pixelsPerMeter: Specifies how many pixels to use per meter when converting between
@@ -65,12 +65,12 @@ private extension RealCoordinateConverter {
   /// from the given parameters. These
   /// values are constant for all given
   /// conversions with the provided
-  /// latLngOrigin & angleInDegrees and
+  /// latLngOrigin & mapAngleInDegrees and
   /// are only calculated once instead of
   /// per conversion.
   /// - Parameters:
   ///   - latLngOrigin: The latLngOrigin to calculate the constants from.
-  ///   - mapAngleInDegrees: The angleInDegrees to calculate the constants from.
+  ///   - mapAngleInDegrees: The mapAngleInDegrees to calculate the constants from.
   /// - Returns: The calculated LatLngToMetersConstants.
   func buildLatLngToMetersConstants(latLngOrigin: CLLocationCoordinate2D, mapAngleInDegrees: Double) -> LatLngToMetersConstants {
     let mCos = cos(degreesToRadians(degrees: latLngOrigin.latitude))
@@ -115,12 +115,12 @@ private extension RealCoordinateConverter {
   /// from the given parameters. These
   /// values are constant for all given
   /// conversions with the provided
-  /// latLngOrigin & angleInDegrees and
+  /// latLngOrigin & mapAngleInDegrees and
   /// are only calculated once instead of
   /// per conversion.
   /// - Parameters:
   ///   - latLngOrigin: The latLngOrigin to calculate the constants from.
-  ///   - mapAngleInDegrees: The angleInDegrees to calculate the constants from.
+  ///   - mapAngleInDegrees: The mapAngleInDegrees to calculate the constants from.
   /// - Returns: The calculated MetersToLatLngConstants.
   func buildMetersToLatLngConstants(latLngOrigin: CLLocationCoordinate2D, mapAngleInDegrees: Double) -> MetersToLatLngConstants {
     MetersToLatLngConstants(
@@ -148,12 +148,12 @@ private extension RealCoordinateConverter {
   private func rotateLatLngToMeters(center: CGPoint, point: CGPoint) -> CGPoint {
     CGPoint(x:
               round(value:
-                      (latLngToMetersConstants.rotate.cos * (point.x - center.x)) +
+                      (latLngToMetersConstants.rotate.cos * (point.x - center.x)) -
                       (latLngToMetersConstants.rotate.sin * (point.y - center.y)) +
                       center.x),
             y:
               round(value:
-                      (latLngToMetersConstants.rotate.cos * (point.y - center.y)) -
+                      (latLngToMetersConstants.rotate.cos * (point.y - center.y)) +
                       (latLngToMetersConstants.rotate.sin * (point.x - center.x)) +
                       center.y)
     )
@@ -175,12 +175,12 @@ private extension RealCoordinateConverter {
   func rotateMetersToLatLng(center: CGPoint, point: CGPoint) -> CGPoint {
     CGPoint(x:
               round(value:
-                      (metersToLatLngConstants.rotate.cos * (point.x - center.x)) +
+                      (metersToLatLngConstants.rotate.cos * (point.x - center.x)) -
                       (metersToLatLngConstants.rotate.sin * (point.y - center.y)) +
                       center.x),
             y:
               round(value:
-                      (metersToLatLngConstants.rotate.cos * (point.y - center.y)) -
+                      (metersToLatLngConstants.rotate.cos * (point.y - center.y)) +
                       (metersToLatLngConstants.rotate.sin * (point.x - center.x)) +
                       center.y)
     )

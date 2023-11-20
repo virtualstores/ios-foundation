@@ -11,8 +11,6 @@ import UIKit
 
 public struct RtlsOptions: Codable {
     public let id: Int64
-    public let width: Double
-    public let height: Double
     public let widthInMeters: Double
     public let heightInMeters: Double
     public let floorLevel: Int
@@ -33,17 +31,13 @@ public struct RtlsOptions: Codable {
     public let scanLocations: [PositionedCode]?
     public let isDefault: Bool
 
-    public var rtlsOptionsWidth: Double { widthInMeters > 0.0 ? widthInMeters : width }
-    public var rtlsOptionsHeight: Double { heightInMeters > 0.0 ? heightInMeters : height }
-    public var rtlsOptionsSize: CGSize { CGSize(width: rtlsOptionsWidth, height: rtlsOptionsHeight) }
+    public var size: CGSize { CGSize(width: widthInMeters, height: widthInMeters) }
 
-    public init(id: Int64, width: Int64, height: Int64, widthInMeters: Double, heightInMeters: Double, floorLevel: Int?,
+    public init(id: Int64, widthInMeters: Double, heightInMeters: Double, floorLevel: Int?,
                 north: Double?, name: String?, startOffsetX: Int64, startOffsetY: Int64, mapBoxUrl: String,
                 mapBoxToken: String, mapFenceUrl: String, mapZonesUrl: String, navGraphUrl: String, mapOffsetsUrl: String,
                 mapDataVersionUrl: String, mapBoxImageUrl: String, pixelsPerMeter: Double, boundingBoxInMeters: BoundingBox?, scanLocations: [PositionedCode], isDefault: Bool) {
         self.id = id
-        self.width = Double(width)
-        self.height = Double(height)
         self.widthInMeters = widthInMeters
         self.heightInMeters = heightInMeters
         self.floorLevel = floorLevel ?? 0
