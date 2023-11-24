@@ -49,6 +49,8 @@ public protocol IMapController {
     /// newDirection  The direction in radians
     func updateUserDirection(newDirection: Double)
 
+    func initRealWorldConverter()
+
     func start()
 
     /// Stop  map

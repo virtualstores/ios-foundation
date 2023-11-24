@@ -18,7 +18,7 @@ import CoreLocation
 /// new latLngOrigin, mapAngleInDegrees,
 /// earthRadiusInMeters & pixelsPerMeter
 /// values.
-class RealCoordinateConverter {
+public class RealCoordinateConverter {
   private let latLngOrigin: CLLocationCoordinate2D
   private let mapAngleInDegrees: Double
   private let earthRadiusInMeters: Double
@@ -48,7 +48,7 @@ class RealCoordinateConverter {
   ///                         meters & latLng.
   ///   - pixelsPerMeter: Specifies how many pixels to use per meter when converting between
   ///                    meters & pixels.
-  init(latLngOrigin: CLLocationCoordinate2D, mapAngleInDegrees: Double, earthRadiusInMeters: Double, pixelsPerMeter: Double) {
+  public init(latLngOrigin: CLLocationCoordinate2D, mapAngleInDegrees: Double, earthRadiusInMeters: Double, pixelsPerMeter: Double) {
     self.latLngOrigin = latLngOrigin
     self.mapAngleInDegrees = mapAngleInDegrees
     self.earthRadiusInMeters = earthRadiusInMeters
@@ -262,7 +262,7 @@ private extension RealCoordinateConverter {
 /// the ICoordinateConverterReal protocol
 /// functionality.
 extension RealCoordinateConverter: ICoordinateConverterReal {
-  func latLngToMeters(coordinate: CLLocationCoordinate2D) -> CGPoint {
+  public func latLngToMeters(coordinate: CLLocationCoordinate2D) -> CGPoint {
     rotateLatLngToMeters(
       center: meterOrigin,
       point: CGPoint(
@@ -271,7 +271,7 @@ extension RealCoordinateConverter: ICoordinateConverterReal {
       ))
   }
 
-  func metersToLatLng(point: CGPoint) -> CLLocationCoordinate2D {
+  public func metersToLatLng(point: CGPoint) -> CLLocationCoordinate2D {
     // rotate meterPoint using angle
     let mPoint = rotateMetersToLatLng(center: meterOrigin, point: point)
     let distanceInMeters = pythagorean(xDiff: mPoint.x, yDiff: mPoint.y)
@@ -293,11 +293,11 @@ extension RealCoordinateConverter: ICoordinateConverterReal {
     )
   }
 
-  func metersToPixels(point: CGPoint) -> CGPoint {
+  public func metersToPixels(point: CGPoint) -> CGPoint {
     point.multiply(value: pixelsPerMeter)
   }
 
-  func pixelsToMeters(point: CGPoint) -> CGPoint {
+  public func pixelsToMeters(point: CGPoint) -> CGPoint {
     point.divide(value: pixelsPerMeter)
   }
 }
