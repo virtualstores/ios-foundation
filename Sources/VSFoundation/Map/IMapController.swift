@@ -31,6 +31,8 @@ public protocol IMapController {
 
     var mapDataLoadedPublisher: CurrentValueSubject<Bool, MapControllerError> { get }
 
+    var convertedMLPostionPublisher: CurrentValueSubject<CLLocationCoordinate2D?, Never> { get }
+
     /// Map loader which will receave all needed  setup information
     func loadMap(with mapData: MapData)
 
