@@ -70,15 +70,15 @@ extension ReplayDataV5 {
   func asAltitudeSensorData() -> [AltitudeSensorData]? {
     var result = [AltitudeSensorData]()
 
-    for index in ALTITUDE.indices {
-      result.append(
-        AltitudeSensorData(
-          timestampSensor: ALTITUDE[index].sensorTimestamp,
-          timestampLocal: ALTITUDE[index].systemTimestamp,
-          altitudenData: ALTITUDE[index].values
-        )
-      )
-    }
+    //for index in ALTITUDE.indices {
+    //  result.append(
+    //    AltitudeSensorData(
+    //      timestampSensor: ALTITUDE[index].sensorTimestamp,
+    //      timestampLocal: ALTITUDE[index].systemTimestamp,
+    //      altitudenData: ALTITUDE[index].values
+    //    )
+    //  )
+    //}
     return result
   }
 }

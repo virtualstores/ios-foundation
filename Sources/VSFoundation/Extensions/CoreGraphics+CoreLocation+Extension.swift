@@ -1,5 +1,5 @@
 //
-//  File.swift
+//  CoreGraphics+CoreLocation+Extension.swift
 //  
 //
 //  Created by Hripsime on 2022-02-13.
@@ -45,11 +45,11 @@ public extension CGPoint {
     }
 
     func add(point: CGPoint) -> CGPoint {
-        CGPoint(x: x + point.x, y: y + point.y)
+        add(x: point.x, y: point.y)
     }
 
     func add(x: Double, y: Double) -> CGPoint {
-        add(point: CGPoint(x: x, y: y))
+        CGPoint(x: self.x + x, y: self.y + y)
     }
 
     func multiply(value: Double) -> CGPoint {
@@ -84,4 +84,13 @@ public extension CLLocationCoordinate2D {
         let y = converter.convertFromMapCoordinateToMeters(input: latitude)
         return CGPoint(x: x, y: y)
     }
+
+    func fromLatLngToMeter(converter: ICoordinateConverterReal) -> CGPoint {
+        converter.latLngToMeters(coordinate: self)
+    }
+}
+
+public extension CLHeading {
+  /// Returns `trueHeading` if it's non-negative, and otherwise `magneticHeading`.
+  var headingDirection: CLLocationDirection { trueHeading >= 0 ? trueHeading : magneticHeading }
 }

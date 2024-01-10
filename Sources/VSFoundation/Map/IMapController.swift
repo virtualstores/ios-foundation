@@ -29,10 +29,12 @@ public protocol IMapController {
 
     var mlPosition: IMLPositionLineController { get }
 
+    var currentGPSCoordinate: CLLocationCoordinate2D? { get }
+
     var mapDataLoadedPublisher: CurrentValueSubject<Bool, MapControllerError> { get }
 
-    var convertedMLPostionPublisher: CurrentValueSubject<CLLocationCoordinate2D?, Never> { get }
-
+    func getCoordinate(point: CGPoint) -> CLLocationCoordinate2D
+  
     /// Map loader which will receave all needed  setup information
     func loadMap(with mapData: MapData)
 
@@ -47,16 +49,18 @@ public protocol IMapController {
 
     func updateMLPosition(point: CGPoint)
 
+    func updateMLPosition(coordinate: CLLocationCoordinate2D)
+
     /// Updates the users direction depending on which direction you last synced
     /// newDirection  The direction in radians
     func updateUserDirection(newDirection: Double)
-
-    func initRealWorldConverter()
 
     func start()
 
     /// Stop  map
     func stop()
+
+    func reset()
 }
 
 public enum MapControllerError: Error {
