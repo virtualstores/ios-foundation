@@ -52,9 +52,13 @@ extension ReplayDataV5 {
           MotionSensorData(
             timestampSensor: ROTATION[index].sensorTimestamp,
             timestampLocal: ROTATION[index].systemTimestamp,
+            timestampLocalNano: .nanoTime,
             accelerationData: ACCELERATION[index].values,
             gravityData: GRAVITY[index].values,
-            rotationData:ROTATION[index].values
+            rotationData:ROTATION[index].values,
+            rotationRateData: [],
+            accelerometerData: [],
+            magnetometerData: []
           )
         )
       }
@@ -66,15 +70,15 @@ extension ReplayDataV5 {
   func asAltitudeSensorData() -> [AltitudeSensorData]? {
     var result = [AltitudeSensorData]()
 
-    for index in ALTITUDE.indices {
-      result.append(
-        AltitudeSensorData(
-          timestampSensor: ALTITUDE[index].sensorTimestamp,
-          timestampLocal: ALTITUDE[index].systemTimestamp,
-          altitudenData: ALTITUDE[index].values
-        )
-      )
-    }
+    //for index in ALTITUDE.indices {
+    //  result.append(
+    //    AltitudeSensorData(
+    //      timestampSensor: ALTITUDE[index].sensorTimestamp,
+    //      timestampLocal: ALTITUDE[index].systemTimestamp,
+    //      altitudenData: ALTITUDE[index].values
+    //    )
+    //  )
+    //}
     return result
   }
 }

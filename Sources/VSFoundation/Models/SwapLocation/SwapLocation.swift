@@ -14,7 +14,7 @@ public class SwapLocation: Codable {
         public let angle: Double
         public let coordinate: CGPoint
 
-        public init(name: String, angle: Double, coordinate: CGPoint) {
+        public init(name: String?, angle: Double, coordinate: CGPoint) {
             self.name = name
             self.angle = angle
             self.coordinate = coordinate
@@ -52,12 +52,12 @@ public class SwapLocation: Codable {
 
     public let id: Int64
     public let rtlsOptionsId: Int64
-    public let name: String
+    public let name: String?
     public let point: Point
     public let paths: [Path]
     public let coordinates: [CGPoint]
 
-    public init(id: Int64, rtlsOptionsId: Int64, name: String, point: Point, paths: [Path], coordinates: [CGPoint]) {
+    public init(id: Int64, rtlsOptionsId: Int64, name: String?, point: Point, paths: [Path], coordinates: [CGPoint]) {
         self.id = id
         self.rtlsOptionsId = rtlsOptionsId
         self.name = name

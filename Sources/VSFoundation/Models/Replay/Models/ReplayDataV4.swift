@@ -47,9 +47,13 @@ extension ReplayDataV4 {
           MotionSensorData(
             timestampSensor: ROTATION[index].sensorTimestamp,
             timestampLocal: ROTATION[index].systemTimestamp,
+            timestampLocalNano: .nanoTime,
             accelerationData: ACCELERATION[index].values,
             gravityData: GRAVITY[index].values,
-            rotationData: ROTATION[index].values
+            rotationData: ROTATION[index].values,
+            rotationRateData: [],
+            accelerometerData: [],
+            magnetometerData: []
           )
         )
       }

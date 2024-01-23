@@ -23,7 +23,7 @@ open class Queue<T>: CustomStringConvertible {
       self.value = value
       self.next = next
       self.previous = previous
-      self.timestamp = timestamp ?? Int(Date().timeIntervalSince1970 * 1000)
+      self.timestamp = timestamp ?? Date().currentTimeMillis
     }
   }
 

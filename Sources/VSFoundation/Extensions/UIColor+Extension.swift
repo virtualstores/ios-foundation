@@ -15,8 +15,8 @@ public extension UIColor {
       let g: CGFloat = components?[1] ?? 0.0
       let b: CGFloat = components?[2] ?? 0.0
 
-      let hexString = String.init(format: "#%02lX%02lX%02lX", lroundf(Float(r * 255)), lroundf(Float(g * 255)), lroundf(Float(b * 255)))
-//      print("hexString", hexString)
+      let hexString = String(format: "#%02lX%02lX%02lX", lroundf(Float(r * 255)), lroundf(Float(g * 255)), lroundf(Float(b * 255)))
+      //print("hexString", hexString)
       return hexString
     }
     convenience init(red: Int, green: Int, blue: Int) {

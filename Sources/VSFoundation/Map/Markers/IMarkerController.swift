@@ -40,7 +40,7 @@ public protocol IMarkerController {
     
     /// Update location updates [MarkerController] with a new user position.
     /// The [MarkerController] need the latest user position for mark triggerlisteners to work correctly.
-    func updateLocation(newLocation: CGPoint, precision: Float)
+    func updateLocation(newLocation: CGPoint, precision: Double)
     
     func setStartLocationsVisibility(isVisible: Bool)
 }

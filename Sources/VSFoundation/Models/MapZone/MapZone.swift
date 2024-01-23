@@ -30,18 +30,48 @@ public struct MapZone {
 }
 
 public struct MapZoneCoordinate: Equatable {
-  public let name: String
+  public let description: String
   public let coordinate: CLLocationCoordinate2D
   public let parentId: String?
+  public let properties: PointProperties
 
-  public init(name: String, coordinate: CLLocationCoordinate2D, parentId: String?) {
-    self.name = name
+  public init(description: String, coordinate: CLLocationCoordinate2D, parentId: String?, properties: PointProperties) {
+    self.description = description
     self.coordinate = coordinate
     self.parentId = parentId
+    self.properties = properties
   }
 
   public static func == (lhs: MapZoneCoordinate, rhs: MapZoneCoordinate) -> Bool {
-    lhs.name == rhs.name
+    lhs.description == rhs.description
+  }
+}
+
+public struct PointProperties {
+  public let textColor: String?
+  public let textColorSelected: String?
+  public let textSize: Double?
+  public let textOpacity: Double?
+  public let textAllowOverLap: Bool?
+  public let textAnchor: String?
+  public let textIgnorePlacement: Bool?
+
+  public init(
+    textColor: String? = nil,
+    textColorSelected: String? = nil,
+    textSize: Double? = nil,
+    textOpacity: Double? = nil,
+    textAllowOverLap: Bool? = nil,
+    textAnchor: String? = nil,
+    textIgnorePlacement: Bool? = nil
+  ) {
+    self.textColor = textColor
+    self.textColorSelected = textColorSelected
+    self.textSize = textSize
+    self.textOpacity = textOpacity
+    self.textAllowOverLap = textAllowOverLap
+    self.textAnchor = textAnchor
+    self.textIgnorePlacement = textIgnorePlacement
   }
 }
 

@@ -9,7 +9,7 @@ import Foundation
 import Combine
 import UIKit
 
-public protocol IFoundationPathfinder {
+public protocol IPathfinder {
     /// Publisher for rcurrent goal update
     var currentGoalUpdatedPublisher: CurrentValueSubject<Goal?, Never> { get }
 
@@ -35,10 +35,10 @@ public protocol IFoundationPathfinder {
     func set(goals: [Goal], completion: @escaping () -> Void)
 
     /// Remove goal from VPS
-    func remove(goal: Goal, completion: @escaping () -> Void)
+    func remove(id: String, completion: @escaping () -> Void)
 
     /// Remove goals from VPS
-    func remove(goals: [Goal], completion: @escaping () -> Void)
+    func remove(ids: [String], completion: @escaping () -> Void)
 
     /// Pop Goal to VPS
     func popGoal()

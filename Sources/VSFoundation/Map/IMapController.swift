@@ -21,25 +21,36 @@ public protocol IMapController {
     /// Map marker
     var marker: IMarkerController { get }
 
-    var path: IPathfindingController { get }
+    var path: IPathfinderController { get }
 
     var zone: IZoneController { get }
 
     var shelf: IShelfController { get }
 
+    var mlPosition: IMLPositionLineController { get }
+
+    var currentGPSCoordinate: CLLocationCoordinate2D? { get }
+
     var mapDataLoadedPublisher: CurrentValueSubject<Bool, MapControllerError> { get }
 
+    func getCoordinate(point: CGPoint) -> CLLocationCoordinate2D
+  
     /// Map loader which will receave all needed  setup information
     func loadMap(with mapData: MapData)
 
-    func setup(pathfinder: IFoundationPathfinder, zones: [Zone], sharedProperties: SharedZoneProperties?, shelves: [ShelfGroup], changedFloor: Bool)
+    /// Function called by TT2 Core SDK to pass information to Map SDK
+    func setup(pathfinder: IPathfinder, zones: [Zone], sharedProperties: SharedZoneProperties?, shelves: [ShelfGroup], changedFloor: Bool)
     
     /// Updates the position of the userMark
     /// newLocation: The new position for the user
     /// precision:   The radius of the precisionCircle
     /// In meter scale
-    func updateUserLocation(newLocation: CGPoint?, std: Float?)
-    
+    func updateUserLocation(newLocation: CGPoint?, std: Double?)
+
+    func updateMLPosition(point: CGPoint)
+
+    func updateMLPosition(coordinate: CLLocationCoordinate2D)
+
     /// Updates the users direction depending on which direction you last synced
     /// newDirection  The direction in radians
     func updateUserDirection(newDirection: Double)
@@ -48,6 +59,8 @@ public protocol IMapController {
 
     /// Stop  map
     func stop()
+
+    func reset()
 }
 
 public enum MapControllerError: Error {

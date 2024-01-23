@@ -19,8 +19,9 @@ public class Zone: Equatable {
     public private(set) var polygon: [CGPoint]
     public var parent: Zone?
     public private(set) var children: Dictionary<String, Zone>
-    public private(set) var navigationPoints: [String : CGPoint]
-    public var navigationPoint: CGPoint? { navigationPoints.first?.value }
+    public private(set) var navigationPoints: [String : (point: CGPoint, properties: PointProperties)]
+    public var navigationPoint: CGPoint? { navigationPoints.first?.value.point }
+    public var navigationPointProperties: PointProperties? { navigationPoints.first?.value.properties }
 
     public var name: String { properties.name }
     public var names: [String] { properties.names }
@@ -29,7 +30,7 @@ public class Zone: Equatable {
 
     private var bezierPath: UIBezierPath?
 
-    public init(id: String, properties: ZoneProperties, polygon: [CGPoint] = [], navigationPoints: [String: CGPoint] = [:], parent: Zone? = nil, children: Dictionary<String, Zone> = [:], floorLevelId: Int64, converter: BaseCoordinateConverter) {
+    public init(id: String, properties: ZoneProperties, polygon: [CGPoint] = [], navigationPoints: [String : (point: CGPoint, properties: PointProperties)] = [:], parent: Zone? = nil, children: Dictionary<String, Zone> = [:], floorLevelId: Int64, converter: BaseCoordinateConverter) {
         self.id = id
         self.properties = properties
         self.polygon = polygon
@@ -42,7 +43,7 @@ public class Zone: Equatable {
     
     public var points: [CGPoint] {
         var points: [CGPoint] = []
-        for point in polygon {
+        polygon.forEach { (point) in
             points.append(CGPoint(x: converter.convertFromMapCoordinateToMeters(input: point.x), y: converter.convertFromMapCoordinateToMeters(input: point.y)))
         }
         return points
@@ -50,7 +51,7 @@ public class Zone: Equatable {
     
     public func addChild(child: Zone) {
         let zone = Zone(id: child.id, properties: child.properties, polygon: child.polygon, navigationPoints: child.navigationPoints, parent: self, floorLevelId: child.floorLevelId, converter: converter)
-        self.children[child.name] = zone
+        children[child.name] = zone
     }
     
     public func getChildren() -> [Zone]? {
@@ -58,8 +59,8 @@ public class Zone: Equatable {
         
         list.append(self)
         
-        for key in self.children.keys {
-            if let zones = self.children[key]?.getChildren() {
+        children.keys.forEach { (key) in
+            if let zones = children[key]?.getChildren() {
                 list += zones
             }
         }
@@ -68,11 +69,8 @@ public class Zone: Equatable {
     }
     
     public func recursivePrint(_ padding: String) {
-        Logger.init(verbosity: .debug).log(message: "\(padding)\(self.name)")
-        
-        for key in self.children.keys {
-            self.children[key]?.recursivePrint(padding + "    ")
-        }
+        Logger(verbosity: .debug).log(message: "\(padding)\(self.name)")
+        children.keys.forEach { children[$0]?.recursivePrint(padding + "    ") }
     }
     
     public func recursiveSearch(_ searchString: String) -> [Zone]? {
@@ -98,24 +96,16 @@ public class Zone: Equatable {
     }
     
     func contains(point: CGPoint) -> Bool {
-        if self.bezierPath == nil {
-            guard points.count > 0 else {
-                return false
-            }
-            
+        if bezierPath == nil {
+            guard points.count > 0 else { return false }
             let path = UIBezierPath()
             path.move(to: points[0])
-            for point in points {
-                path.addLine(to: point)
-            }
+            points.forEach { path.addLine(to: $0) }
             path.close()
-            self.bezierPath = path
+            bezierPath = path
         }
         
-        guard let path = self.bezierPath else {
-            return false
-        }
-        
+        guard let path = bezierPath else { return false }
         return path.contains(point)
     }
 

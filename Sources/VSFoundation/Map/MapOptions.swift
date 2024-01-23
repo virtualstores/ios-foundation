@@ -13,8 +13,6 @@ public struct MapOptions {
     public let userMarkerType: UserMarkerType
     public let activeAccuracyStyle: CircleStyle
     public let staleAccuracyStyle: CircleStyle
-    public let activeRadiusStyle: CircleStyle
-    public let staleRadiusStyle: CircleStyle
     public let foregroundTintColor: Int?
     public let bearingTintColor: Int?
     public let backgroundTintColor: Int?
@@ -25,15 +23,13 @@ public struct MapOptions {
 //    public let maxLocationAccuracyLevel: Double
 
     public enum UserMarkerType {
-        case bullsEye, heading, accuracy
+        case bullsEye, heading, accuracy, custom(UIImage)
     }
 
     public init(
-      userMarkerType: UserMarkerType = .bullsEye,
+      userMarkerType: UserMarkerType = .accuracy,
       activeAccuracyStyle: CircleStyle = CircleStyle(),
       staleAccuracyStyle: CircleStyle? = nil,
-      activeRadiusStyle: CircleStyle = CircleStyle(),
-      staleRadiusStyle: CircleStyle? = nil,
       foregroundTintColor: Int? = nil,
       bearingTintColor: Int? = nil,
       backgroundTintColor: Int? = nil,
@@ -46,8 +42,6 @@ public struct MapOptions {
       self.userMarkerType = userMarkerType
       self.activeAccuracyStyle = activeAccuracyStyle
       self.staleAccuracyStyle = staleAccuracyStyle ?? activeAccuracyStyle
-      self.activeRadiusStyle = activeRadiusStyle
-      self.staleRadiusStyle = staleRadiusStyle ?? activeRadiusStyle
       self.foregroundTintColor = foregroundTintColor
       self.bearingTintColor = bearingTintColor
       self.backgroundTintColor = backgroundTintColor
@@ -330,7 +324,7 @@ public struct MapOptions {
     public let color: UIColor
     public let alpha: Double
 
-    public init(color: UIColor = UIColor(rgb: 0x1097EC), alpha: Double = 0.12) {
+    public init(color: UIColor = UIColor(rgb: 0x1097EC), alpha: Double = 0.4) {
       self.color = color
       self.alpha = alpha
     }
