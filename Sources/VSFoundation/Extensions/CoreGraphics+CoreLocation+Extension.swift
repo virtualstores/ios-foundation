@@ -8,6 +8,8 @@
 import CoreLocation
 
 public extension CGPoint {
+    var asArray: [Double] { [x, y] }
+
     func fromMeterToPixel(converter: ICoordinateConverter) -> CGPoint {
         let x = converter.convertFromMetersToPixels(input: x)
         let y = converter.convertFromMetersToPixels(input: y)
