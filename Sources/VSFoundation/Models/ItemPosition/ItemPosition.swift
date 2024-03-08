@@ -13,10 +13,13 @@ public struct ItemPosition: Codable {
     private let yPosition: Double
     private let offsetX: Double
     private let offsetY: Double
-    public let floorLevelId: Int64?
-    public let shelfId: Int64?
-    public let shelfTierId: Int64?
-    public let shelfTierPosition: Int64?
+    public let floorLevelId: Int64? // For old version of scan event
+    public let shelfId: Int64? // For old version of scan event
+    public let shelfTierId: Int64? // For old version of scan event
+    public let shelfTierPosition: Int64? // For old version of scan event
+    public let shelfSectionId: String? // For new version of scan event
+    public let sectionPosition: Int? // For new version of scan event
+    public let shelfPositionFromLeftToRight: Int? // For new version of scan event
     public let identifier: String
     public let isDisabled: Bool
 
@@ -33,6 +36,9 @@ public struct ItemPosition: Codable {
         self.shelfId = shelfId
         self.shelfTierId = shelfTierId
         self.shelfTierPosition = shelfTierPosition
+        self.shelfSectionId = nil
+        self.sectionPosition = nil
+        self.shelfPositionFromLeftToRight = nil
         self.identifier = identifier ?? "undefined"
         self.isDisabled = isDisabled ?? false
     }
@@ -46,6 +52,9 @@ public struct ItemPosition: Codable {
         self.shelfId = shelfId
         self.shelfTierId = shelfTierId
         self.shelfTierPosition = shelfTierPosition
+        self.shelfSectionId = nil
+        self.sectionPosition = nil
+        self.shelfPositionFromLeftToRight = nil
         self.identifier = identifier ?? "undefined"
         self.isDisabled = isDisabled ?? false
     }

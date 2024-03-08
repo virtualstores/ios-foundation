@@ -80,6 +80,7 @@ public struct ZoneProperties {
   public let id: String
   public let name: String
   public let names: [String]
+  public let entryPoints: [NSDictionary]?
   public let parentId: String?
 
   public let fillColor: String?
@@ -104,6 +105,7 @@ public struct ZoneProperties {
     id: String,
     name: String,
     names: [String] = [],
+    entryPoints: [NSDictionary]? = nil,
     parentId: String? = nil,
     fillColor: String? = nil,
     fillColorSelected: String? = nil,
@@ -124,6 +126,7 @@ public struct ZoneProperties {
     self.id = id
     self.name = name
     self.names = names
+    self.entryPoints = entryPoints
     self.parentId = parentId
 
     self.fillColor = fillColor
