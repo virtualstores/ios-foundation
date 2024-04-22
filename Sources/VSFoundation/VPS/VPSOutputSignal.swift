@@ -30,4 +30,5 @@ public enum VPSOutputSignal {
   case ux(position: Position)
   case ml(position: Position)
   case rotation(heading: Double)
+  case rescueMode
 }
