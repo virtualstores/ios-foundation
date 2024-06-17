@@ -51,6 +51,8 @@ public protocol IMapController {
 
     func updateMLPosition(coordinate: CLLocationCoordinate2D)
 
+    func updateParticlePositions(positions: [CGPoint])
+
     /// Updates the users direction depending on which direction you last synced
     /// newDirection  The direction in radians
     func updateUserDirection(newDirection: Double)

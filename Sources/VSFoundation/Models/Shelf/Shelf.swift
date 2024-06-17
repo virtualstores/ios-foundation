@@ -10,7 +10,7 @@ import CoreGraphics
 
 public class Shelf: Codable {
     public let id: Int64
-    public let name: String
+    public let name: String?
     public let itemPosition: ItemPosition
     public let shelfGroupPosition: Int
     public let shelfTiers: [ShelfTier]
@@ -19,7 +19,7 @@ public class Shelf: Codable {
     public var isSelected: Bool = false
     public var isMarked: Bool = false
 
-    public init(id: Int64, name: String, itemPosition: ItemPosition, shelfGroupPosition: Int, shelfTiers: [ShelfTier], shape: [CGPoint]) {
+    public init(id: Int64, name: String?, itemPosition: ItemPosition, shelfGroupPosition: Int, shelfTiers: [ShelfTier], shape: [CGPoint]) {
         self.id = id
         self.name = name
         self.itemPosition = itemPosition
