@@ -8,4 +8,8 @@
 public protocol IMLPositionLineController {
   func show()
   func hide()
+  func showMLPath()
+  func showParticles()
+  func hideMLPath()
+  func hideParticles()
 }
