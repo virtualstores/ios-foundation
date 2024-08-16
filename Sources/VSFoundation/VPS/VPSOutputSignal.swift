@@ -32,4 +32,5 @@ public enum VPSOutputSignal {
   case rotation(heading: Double)
   case particles(positions: [CGPoint])
   case rescueMode
+  case floorChange(difference: Int, timestamp: Date)
 }

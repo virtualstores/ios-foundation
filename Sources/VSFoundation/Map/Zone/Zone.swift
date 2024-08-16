@@ -25,11 +25,11 @@ public class Zone: Equatable {
     public var name: String { properties.name }
     public var names: [String] { properties.names }
 
-    private let converter: BaseCoordinateConverter
+    private let converter: ICoordinateConverter
 
     private var bezierPath: UIBezierPath?
 
-    public init(id: String, floorLevelId: Int64, properties: ZoneProperties, polygon: [CGPoint] = [], navigationPoints: [String : (point: CGPoint, properties: PointProperties)] = [:], parent: Zone? = nil, children: Dictionary<String, Zone> = [:], converter: BaseCoordinateConverter) {
+    public init(id: String, floorLevelId: Int64, properties: ZoneProperties, polygon: [CGPoint] = [], navigationPoints: [String : (point: CGPoint, properties: PointProperties)] = [:], parent: Zone? = nil, children: Dictionary<String, Zone> = [:], converter: ICoordinateConverter) {
         self.id = id
         self.floorLevelId = floorLevelId
         self.properties = properties
