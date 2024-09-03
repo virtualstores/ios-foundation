@@ -8,6 +8,7 @@
 import Foundation
 
 public extension Int {
+  static var currentTimeMillis: Int { Date().currentTimeMillis }
   var asInt32: Int32 { Int32(self) }
   var asLong: Int64 { Int64(self) }
   var asFloat: Float { Float(self) }
@@ -24,5 +25,5 @@ public extension UInt64 {
 
 public extension Int64 {
   static var nanoTime: Int64 { Int64(UInt64.nanoTime) }
-  static var currentTimeMillis: Int64 { Int64(Date().currentTimeMillis) }
+  static var currentTimeMillis: Int64 { Date().currentTimeMillis.asLong }
 }

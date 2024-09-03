@@ -6,39 +6,45 @@
 
 import Foundation
 
-open class Queue<T>: CustomStringConvertible {
+class Node<T>: CustomStringConvertible {
+  var value: T
+  var timestamp: Int
+  var next: Node?
+  var previous: Node?
 
-  public class Node<T>: CustomStringConvertible {
-    public var value: T
-    public var timestamp: Int
-    public var next: Node?
-    public var previous: Node?
-
-    public var description: String {
-      guard let next = next else { return "\(value)" }
-      return "\(value) -> " + String(describing: next)
-    }
-
-    public init(value: T, timestamp: Int? = nil, next: Node? = nil, previous: Node? = nil) {
-      self.value = value
-      self.next = next
-      self.previous = previous
-      self.timestamp = timestamp ?? Date().currentTimeMillis
-    }
+  var description: String {
+    guard let next = next else { return "\(value)" }
+    return "\(value) -> " + String(describing: next)
   }
 
+  init(value: T, timestamp: Int = .currentTimeMillis, next: Node? = nil, previous: Node? = nil) {
+    self.value = value
+    self.next = next
+    self.previous = previous
+    self.timestamp = timestamp
+  }
+}
+
+open class Queue<T>: CustomStringConvertible {
   var front: Node<T>? = nil
   var rear: Node<T>? = nil
   public var count: Int = 0
   var maxSize: Int? = nil
+  var timeout: Int?
 
   public init() {}
 
-  public init(maxSize: Int) {
+  public convenience init(maxSize: Int) {
     if maxSize < 2 {
       fatalError("Tried to init queue with maxSize=\(maxSize). A queue of size less than 2 is pointless and is not supported.")
     }
+    self.init()
     self.maxSize = maxSize
+  }
+
+  public convenience init(timeout: Int) {
+    self.init()
+    self.timeout = timeout
   }
 
   public var isEmpty: Bool {
@@ -58,7 +64,7 @@ open class Queue<T>: CustomStringConvertible {
     rear?.value
   }
 
-  private func push(_ value: T, timestamp: Int? = nil) {
+  private func push(_ value: T, timestamp: Int = .currentTimeMillis) {
     front = Node(value: value, timestamp: timestamp, next: front)
     if rear == nil {
       rear = front
@@ -71,7 +77,7 @@ open class Queue<T>: CustomStringConvertible {
     count = 0
   }
 
-  open func enqueue(_ value: T, timestamp: Int? = nil) {
+  open func enqueue(_ value: T, timestamp: Int = .currentTimeMillis) {
     if isEmpty {
       push(value, timestamp: timestamp)
       count += 1
@@ -94,6 +100,38 @@ open class Queue<T>: CustomStringConvertible {
     rear = rear?.next
     count += 1
 
+    removeTimedOutValues()
+  }
+
+  private func removeTimedOutValues() {
+    if count <= 1 {
+      print("removeTimedOutValues: size <= 1")
+      return
+    }
+
+    guard
+      let f = front,
+      let r = rear,
+      let timeout = timeout
+    else { return }
+
+    var currentNode: Node<T>? = f
+    if currentNode != nil {
+      if let node = currentNode, r.timestamp - node.timestamp < timeout {
+        return
+      } else {
+        while let node = currentNode {
+          if r.timestamp - node.timestamp > timeout {
+            front = currentNode?.next
+            front?.previous = nil
+            count -= 1
+            currentNode = currentNode?.next
+          } else {
+            break
+          }
+        }
+      }
+    }
   }
 
   open func dequeue() -> T? {

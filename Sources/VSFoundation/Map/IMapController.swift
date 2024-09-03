@@ -51,6 +51,10 @@ public protocol IMapController {
 
     func updateMLPosition(coordinate: CLLocationCoordinate2D)
 
+    func updateLatLngPosition(latLng: VPSOutputSignal.LatLngPosition)
+
+    func update(location: VPSOutputSignal.LatLngPosition.Location)
+
     func updateParticlePositions(positions: [CGPoint])
 
     /// Updates the users direction depending on which direction you last synced

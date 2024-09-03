@@ -81,6 +81,8 @@ public extension CGRect {
 }
 
 public extension CLLocationCoordinate2D {
+    var asPoint: CGPoint { .init(x: longitude, y: latitude) }
+
     func fromLatLngToMeter(converter: ICoordinateConverter) -> CGPoint {
         let x = converter.convertFromMapCoordinateToMeters(input: longitude)
         let y = converter.convertFromMapCoordinateToMeters(input: latitude)
