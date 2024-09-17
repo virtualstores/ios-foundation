@@ -65,10 +65,10 @@ public extension MotionSensorData {
                                  accelerometerData?.acceleration.z]
                                   .compactMap { $0 }
                                   .map { $0 * gravity }
-
-        let magnetometerData = [magnetometerData?.magneticField.x,
-                                magnetometerData?.magneticField.y,
-                                magnetometerData?.magneticField.z].compactMap { $0 }
+      
+        let magnetometerData = [data.magneticField.field.x,
+                                data.magneticField.field.y,
+                                data.magneticField.field.z]
 
 
         self.init(timestampSensor: timestampSensor,

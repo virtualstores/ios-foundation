@@ -10,10 +10,12 @@ public protocol IMLPositionLineController {
   func hide()
   func showMLPath()
   func showFullMLPath()
+  func showFullGPSPath()
   func showParticles()
   func showMLUser()
   func hideMLPath()
   func hideFullMLPath()
+  func hideFullGPSPath()
   func hideParticles()
   func hideMLUser()
 }
