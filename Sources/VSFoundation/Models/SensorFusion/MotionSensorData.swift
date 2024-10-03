@@ -83,7 +83,7 @@ public extension MotionSensorData {
                   rotationData: rotationData,
                   rotationRateData: rotationRateData,
                   accelerometerData: accelerometerData,
-                  magnetometerData: magnetometerData
+                  magnetometerData: calibratedMagnetometerData
         )
     }
 }
