@@ -65,8 +65,12 @@ public extension MotionSensorData {
                                  accelerometerData?.acceleration.z]
                                   .compactMap { $0 }
                                   .map { $0 * gravity }
-      
-        let magnetometerData = [data.magneticField.field.x,
+
+        let magnetometerData = [magnetometerData?.magneticField.x,
+                                magnetometerData?.magneticField.y,
+                                magnetometerData?.magneticField.z].compactMap { $0 }
+
+        let calibratedMagnetometerData = [data.magneticField.field.x,
                                 data.magneticField.field.y,
                                 data.magneticField.field.z]
 
