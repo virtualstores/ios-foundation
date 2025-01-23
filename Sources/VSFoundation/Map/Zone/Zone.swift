@@ -64,7 +64,7 @@ public class Zone: Equatable {
     
     public func addChild(child: Zone) {
         child.parent = self
-        children[child.name] = child
+        children[child.id] = child
     }
     
     public func getChildren() -> [Zone]? {
