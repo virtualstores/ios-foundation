@@ -10,7 +10,7 @@ import CoreGraphics
 import UIKit
 import CoreLocation
 
-public class Zone: Equatable {
+public class Zone {
     public let id: String
     public let floorLevelId: Int64
     public let properties: ZoneProperties
@@ -20,14 +20,32 @@ public class Zone: Equatable {
     public private(set) var children: Dictionary<String, Zone>
     public private(set) var entryPoints: [EntryPoint]
 
-    public var navigationPoint: CGPoint? { navigationPoints.first?.value.point }
-    public var navigationPointProperties: PointProperties? { navigationPoints.first?.value.properties }
-    public var name: String { properties.name }
-    public var names: [String] { properties.names }
+    public lazy var points: [CGPoint] = {
+      polygon.map {
+        CGPoint(
+          x: converter.convertFromMapCoordinateToMeters(input: $0.x),
+          y: converter.convertFromMapCoordinateToMeters(input: $0.y)
+        )
+      }
+    }()
+
+    public lazy var extendedPoints: [CGPoint]? = {
+      properties.triggerPolygon
+        .map { $0.map { $0.map { CLLocationCoordinate2D(latitude: $0[1], longitude: $0[0]) } } } // Creating [[CLLocationCoordinate2D]]
+        .map { $0.map { $0.map { $0.fromLatLngToMeter(converter: converter) } } }? // Converting to [[CGPoint]]
+        .first
+    }()
 
     private let converter: ICoordinateConverter
 
-    private var bezierPath: UIBezierPath?
+    private lazy var bezierPath: UIBezierPath? = {
+      guard points.count > 0 else { return nil }
+      let path = UIBezierPath()
+      path.move(to: points[0])
+      points.forEach { path.addLine(to: $0) }
+      path.close()
+      return path
+    }()
 
     public init(id: String, floorLevelId: Int64, properties: ZoneProperties, polygon: [CGPoint] = [], navigationPoints: [String : (point: CGPoint, properties: PointProperties)] = [:], parent: Zone? = nil, children: Dictionary<String, Zone> = [:], converter: ICoordinateConverter) {
         self.id = id
@@ -53,84 +71,12 @@ public class Zone: Equatable {
           }
         }
     }
-    
-    public var points: [CGPoint] {
-        var points: [CGPoint] = []
-        polygon.forEach { (point) in
-            points.append(CGPoint(x: converter.convertFromMapCoordinateToMeters(input: point.x), y: converter.convertFromMapCoordinateToMeters(input: point.y)))
-        }
-        return points
-    }
-    
-    public func addChild(child: Zone) {
-        child.parent = self
-        children[child.id] = child
-    }
-    
-    public func getChildren() -> [Zone]? {
-        var list: [Zone] = []
-        
-        list.append(self)
-        
-        children.keys.forEach { (key) in
-            if let zones = children[key]?.getChildren() {
-                list += zones
-            }
-        }
-        
-        return !list.isEmpty ? list : nil
-    }
-    
-    public func recursivePrint(_ padding: String) {
-        Logger(verbosity: .debug).log(message: "\(padding)\(name)")
-        children.keys.forEach { children[$0]?.recursivePrint(padding + "    ") }
-    }
-    
-    public func recursiveSearch(_ searchString: String) -> [Zone]? {
-        var list: [Zone] = []
-        
-        var search: String = name
 
-        names.forEach({ search = search + ":" + $0 })
-
-        if search.lowercased().contains(searchString.lowercased()) {
-            list.append(self)
-        }
-        
-        for key in children.keys {
-            if let zones = children[key]?.recursiveSearch(searchString) {
-                list += zones
-            }
-        }
-        
-        return !list.isEmpty ? list : nil
-    }
-    
     func contains(point: CGPoint) -> Bool {
-        if bezierPath == nil {
-            guard points.count > 0 else { return false }
-            let path = UIBezierPath()
-            path.move(to: points[0])
-            points.forEach { path.addLine(to: $0) }
-            path.close()
-            bezierPath = path
-        }
-        
-        guard let path = bezierPath else { return false }
-        return path.contains(point)
+        bezierPath?.contains(point) ?? false
     }
 
-    /// Uses name parameter for comparison
-    public static func == (lhs: Zone, rhs: Zone) -> Bool {
-        lhs.name == rhs.name
-    }
-    
-    /// Uses name parameter for comparison
-    public static func < (lhs: Zone, rhs: Zone) -> Bool {
-        lhs.name < rhs.name
-    }
-
-    public struct EntryPointDto: Decodable {
+    struct EntryPointDto: Decodable {
       let id: String
       let index: Int
       let point: [Double]
@@ -155,4 +101,67 @@ public class Zone: Equatable {
       public let angleInDegrees: Double
       public let line: [CGPoint]
     }
+}
+
+extension Zone: Equatable {
+  /// Uses name parameter for comparison
+  public static func == (lhs: Zone, rhs: Zone) -> Bool {
+    lhs.id == rhs.id
+  }
+
+  /// Uses name parameter for comparison
+  public static func < (lhs: Zone, rhs: Zone) -> Bool {
+    lhs.name < rhs.name
+  }
+}
+
+public extension Zone {
+  var navigationPoint: CGPoint? { navigationPoints.first?.value.point }
+  var navigationPointProperties: PointProperties? { navigationPoints.first?.value.properties }
+  var name: String { properties.name }
+  var names: [String] { properties.names }
+
+  func addChild(child: Zone) {
+    child.parent = self
+    children[child.id] = child
+  }
+
+  func getChildren() -> [Zone]? {
+    var list: [Zone] = []
+
+    list.append(self)
+
+    children.keys.forEach { (key) in
+      if let zones = children[key]?.getChildren() {
+        list += zones
+      }
+    }
+
+    return !list.isEmpty ? list : nil
+  }
+
+  func recursivePrint(_ padding: String) {
+    Logger(verbosity: .debug).log(message: "\(padding)\(name)")
+    children.keys.forEach { children[$0]?.recursivePrint(padding + "    ") }
+  }
+
+  func recursiveSearch(_ searchString: String) -> [Zone]? {
+    var list: [Zone] = []
+
+    var search: String = name
+
+    names.forEach({ search = search + ":" + $0 })
+
+    if search.lowercased().contains(searchString.lowercased()) {
+      list.append(self)
+    }
+
+    for key in children.keys {
+      if let zones = children[key]?.recursiveSearch(searchString) {
+        list += zones
+      }
+    }
+
+    return !list.isEmpty ? list : nil
+  }
 }

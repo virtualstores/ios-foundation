@@ -13,17 +13,25 @@ public enum VPSOutputSignal {
     public let point: CGPoint
     public let std: Double
     public let status: Status
+    public let activityState: ActivivtyState?
+    public let trustedPosition: Bool
     public let timestamp: Date
 
-    public init(point: CGPoint, std: Double, status: Status, timestamp: Date) {
+    public init(point: CGPoint, std: Double, status: Status, activityState: ActivivtyState?, trustedPosition: Bool, timestamp: Date) {
       self.point = point
       self.std = std
       self.status = status
+      self.activityState = activityState
+      self.trustedPosition = trustedPosition
       self.timestamp = timestamp
     }
 
     public enum Status {
-      case confident, uncertain, none
+      case confident, uncertain, outOfBounds, none
+    }
+
+    public enum ActivivtyState {
+      case active, idle
     }
   }
 
@@ -73,4 +81,5 @@ public enum VPSOutputSignal {
   case particles(positions: [CGPoint])
   case rescueMode
   case floorChange(difference: Int, timestamp: Date)
+  case consistencyScoreSignal(Int)
 }

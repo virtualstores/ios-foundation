@@ -81,6 +81,7 @@ public struct ZoneProperties {
   public let name: String
   public let names: [String]
   public let entryPoints: [NSDictionary]?
+  public let triggerPolygon: [[[Double]]]?
   public let parentId: String?
 
   public let fillColor: String?
@@ -106,6 +107,7 @@ public struct ZoneProperties {
     name: String,
     names: [String] = [],
     entryPoints: [NSDictionary]? = nil,
+    triggerPolygon: [[[Double]]]? = nil,
     parentId: String? = nil,
     fillColor: String? = nil,
     fillColorSelected: String? = nil,
@@ -127,6 +129,7 @@ public struct ZoneProperties {
     self.name = name
     self.names = names
     self.entryPoints = entryPoints
+    self.triggerPolygon = triggerPolygon
     self.parentId = parentId
 
     self.fillColor = fillColor
