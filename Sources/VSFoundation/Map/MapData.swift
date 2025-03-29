@@ -8,6 +8,11 @@
 import Foundation
 import CoreLocation
 
+public protocol IMapManager {
+  func set(isPositionActive: Bool)
+  func set(currentLocation position: VPSOutputSignal.Position?)
+}
+
 public class MapData {
     public var rtlsOptions: RtlsOptions
     public var pathFinder: IPathfinder?

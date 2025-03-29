@@ -10,8 +10,10 @@ import Combine
 import UIKit
 
 public protocol IPathfinder {
-    /// Publisher for rcurrent goal update
+    /// Publisher for current goal update
     var currentGoalUpdatedPublisher: CurrentValueSubject<Goal?, Never> { get }
+
+    var goalsUpdatedPublisher: CurrentValueSubject<[Goal]?, Never> { get }
 
     /// Publisher for  goal update
     var sortedGoalUpdatedPublisher: CurrentValueSubject<[Goal]?, Never> { get }

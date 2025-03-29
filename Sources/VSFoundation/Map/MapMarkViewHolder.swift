@@ -25,7 +25,9 @@ public class MapMarkViewHolder {
     public var imageId: String {
         "marker_icon_\(id)"
     }
-    
+
+    public var anchorPoint: String?
+
     public init(id: String) {
         self.id = id
     }

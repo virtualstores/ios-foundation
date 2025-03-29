@@ -8,7 +8,7 @@
 import Foundation
 
 // CameraModes which can have user
-public enum CameraModes {
+public enum CameraModes: Equatable {
     case free
     case containMap
     case followUser3D(_ zoomLevel: Double? = nil)

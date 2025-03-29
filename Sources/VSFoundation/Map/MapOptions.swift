@@ -53,7 +53,7 @@ public struct MapOptions {
     }
   }
 
-  public struct MapMark{
+  public struct MapMark {
     public static let BASE_TEXT_BOX_MAP_MARK_OFFSET_X: Double = 0.0
     public static let BASE_TEXT_BOX_MAP_MARK_OFFSET_Y: Double = 8.0
 
@@ -113,6 +113,18 @@ public struct MapOptions {
       self.offsetX = offsetX
       self.offsetY = offsetY
       self.anchor = anchor
+    }
+  }
+
+  public struct StartMapMark {
+    public let scale: Double
+    public let alhpa: Double
+    public let color: UIColor
+
+    public init(scale: Double = 0.6, alhpa: Double = 0.8, color: UIColor = UIColor(rgb: 0x1097EC)) {
+      self.scale = scale
+      self.alhpa = alhpa
+      self.color = color
     }
   }
 
@@ -252,7 +264,7 @@ public struct MapOptions {
     public init(
       lineColor: UIColor = UIColor(rgb: 0xFFFFFF),
       lineColorSelected: UIColor = UIColor(rgb: 0x1097EC),
-      lineWidth: Double = 1.0,
+      lineWidth: Double = 2.0,
       lineOpacity: Double = 1.0,
       lineJoin: String = LINE_JOIN_ROUND,
       lineDashLength: Double = 1.0,
@@ -344,6 +356,7 @@ public struct MapOptions {
 
   public let userMark: UserMark
   public let mapMark: MapMark
+  public let startMapMark: StartMapMark
   public let mapStyle: MapStyle
   public let pathfindingStyle: PathfindingStyle
   public let zoneStyle: ZoneStyle
@@ -364,6 +377,7 @@ public struct MapOptions {
     userMark: UserMark = UserMark(),
     mapMark: MapMark = MapMark(),
     mapStyle: MapStyle = MapStyle(),
+    startMapMark: StartMapMark = StartMapMark(),
     pathfindingStyle: PathfindingStyle = PathfindingStyle(),
     zoneStyle: ZoneStyle = ZoneStyle(),
     shelfStyle: ShelfStyle = ShelfStyle(fillStyle: FillStyle(color: UIColor(rgb: 0x1097EC)), lineStyle: LineStyle(lineColor: UIColor(rgb: 0x000000))),
@@ -371,6 +385,7 @@ public struct MapOptions {
   ) {
     self.userMark = userMark
     self.mapMark = mapMark
+    self.startMapMark = startMapMark
     self.mapStyle = mapStyle
     self.pathfindingStyle = pathfindingStyle
     self.zoneStyle = zoneStyle

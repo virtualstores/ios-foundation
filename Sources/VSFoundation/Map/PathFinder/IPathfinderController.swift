@@ -25,6 +25,7 @@ public protocol IPathfinderController {
    */
   var onCurrentGoalChangePublisher: CurrentValueSubject<PathfindingGoal?, Never> { get }
 
+  var onGoalsUpdatedPublisher: CurrentValueSubject<[PathfindingGoal]?, Never> { get }
   /**
    * On sorted goal change. Gives updates when pathfiding goal order is deviated from.
    *

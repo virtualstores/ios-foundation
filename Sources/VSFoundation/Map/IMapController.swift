@@ -15,6 +15,9 @@ public protocol IMapControlerDelegate {
 }
 
 public protocol IMapController {
+    /// Needs to be unique for each instance
+    var id: String { get }
+
     /// User location
     var camera: ICameraController { get }
     
@@ -32,6 +35,7 @@ public protocol IMapController {
     var currentGPSCoordinate: CLLocationCoordinate2D? { get }
 
     var mapDataLoadedPublisher: CurrentValueSubject<Bool, MapControllerError> { get }
+    var mapStatePublisher: CurrentValueSubject<MapState?, Never> { get }
 
     func getCoordinate(point: CGPoint) -> CLLocationCoordinate2D
   
@@ -40,12 +44,14 @@ public protocol IMapController {
 
     /// Function called by TT2 Core SDK to pass information to Map SDK
     func setup(pathfinder: IPathfinder, zones: [Zone], sharedProperties: SharedZoneProperties?, shelves: [ShelfGroup], changedFloor: Bool)
-    
+
+    func set(userMarkerVisibility: Bool)
+
     /// Updates the position of the userMark
     /// newLocation: The new position for the user
     /// precision:   The radius of the precisionCircle
     /// In meter scale
-    func updateUserLocation(newLocation: CGPoint?, std: Double?)
+    func updateUserLocation(position: VPSOutputSignal.Position)
 
     func updateMLPosition(point: CGPoint)
 
@@ -61,7 +67,9 @@ public protocol IMapController {
     /// newDirection  The direction in radians
     func updateUserDirection(newDirection: Double)
 
-    func start()
+    func visitScore(_ score: Int)
+
+    func start(qrStart: Bool)
 
     /// Stop  map
     func stop()
@@ -71,4 +79,8 @@ public protocol IMapController {
 
 public enum MapControllerError: Error {
     case loadingFailed
+}
+
+public enum MapState {
+  case locationKnown, locationUnknown, pending
 }

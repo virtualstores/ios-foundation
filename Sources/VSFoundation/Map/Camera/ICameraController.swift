@@ -11,7 +11,7 @@ import CoreLocation
 
 public protocol ICameraController {    
     /// Method for updating camera mode  when location changed
-    func updateLocation(with newLocation: CLLocationCoordinate2D, direction: Double)
+    func updateLocation(with newLocation: CLLocationCoordinate2D, direction: Double, std: Double)
 
     /// Method for updating camera mode  from camera controller
     func updateCameraMode(with mode: CameraModes)
