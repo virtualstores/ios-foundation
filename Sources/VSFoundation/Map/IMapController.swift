@@ -69,7 +69,7 @@ public protocol IMapController {
 
     func visitScore(_ score: Int)
 
-    func start(isReferenceAngleCertain: Bool)
+    func start()
 
     /// Stop  map
     func stop()

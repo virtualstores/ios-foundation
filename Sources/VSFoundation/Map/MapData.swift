@@ -11,6 +11,7 @@ import CoreLocation
 public protocol IMapManager {
   func set(isPositionActive: Bool)
   func set(currentLocation position: VPSOutputSignal.Position?)
+  func set(isReferenceAngleCertain: Bool)
 }
 
 public class MapData {
