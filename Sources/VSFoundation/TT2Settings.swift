@@ -8,12 +8,14 @@
 public struct TT2Settings {
   public let engine: TT2Engine
   public let params: TT2ModelParams
-  public let isAutomaticFloorChangeEanbled: Bool
+  public let isAutomaticFloorChangeEnabled: Bool
+  public let saveToDiskEnabled: Bool
 
-  public init(engine: TT2Engine = .indoor, params: TT2ModelParams = .init(), isAutomaticFloorChangeEanbled: Bool = true) {
+  public init(engine: TT2Engine = .indoor, params: TT2ModelParams = .init(), isAutomaticFloorChangeEnabled: Bool = true, saveToDiskEnabled: Bool = false) {
     self.engine = engine
     self.params = params
-    self.isAutomaticFloorChangeEanbled = isAutomaticFloorChangeEanbled
+    self.isAutomaticFloorChangeEnabled = isAutomaticFloorChangeEnabled
+    self.saveToDiskEnabled = saveToDiskEnabled
   }
 
   public enum TT2Engine: String {
