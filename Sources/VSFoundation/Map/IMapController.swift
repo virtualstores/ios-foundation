@@ -43,7 +43,7 @@ public protocol IMapController {
     func loadMap(with mapData: MapData)
 
     /// Function called by TT2 Core SDK to pass information to Map SDK
-    func setup(pathfinder: IPathfinder, zones: [Zone], sharedProperties: SharedZoneProperties?, shelves: [ShelfGroup], changedFloor: Bool)
+    func setup(pathfinder: IPathfinder?, zones: [Zone], sharedProperties: SharedZoneProperties?, shelves: [ShelfGroup], changedFloor: Bool)
 
     func set(userMarkerVisibility: Bool)
 

@@ -34,9 +34,9 @@ public struct RtlsOptions: Codable {
     public var size: CGSize { CGSize(width: widthInMeters, height: widthInMeters) }
 
     public init(id: Int64, widthInMeters: Double, heightInMeters: Double, floorLevel: Int?,
-                north: Double?, name: String?, startOffsetX: Int64, startOffsetY: Int64, mapBoxUrl: String,
-                mapBoxToken: String, mapFenceUrl: String, mapZonesUrl: String, navGraphUrl: String, mapOffsetsUrl: String,
-                mapDataVersionUrl: String, mapBoxImageUrl: String, pixelsPerMeter: Double, boundingBoxInMeters: BoundingBox?, scanLocations: [PositionedCode], isDefault: Bool) {
+                north: Double?, name: String?, startOffsetX: Int64, startOffsetY: Int64, mapBoxUrl: String?,
+                mapBoxToken: String?, mapFenceUrl: String?, mapZonesUrl: String?, navGraphUrl: String?, mapOffsetsUrl: String?,
+                mapDataVersionUrl: String?, mapBoxImageUrl: String?, pixelsPerMeter: Double, boundingBoxInMeters: BoundingBox?, scanLocations: [PositionedCode], isDefault: Bool) {
         self.id = id
         self.widthInMeters = widthInMeters
         self.heightInMeters = heightInMeters
