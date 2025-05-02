@@ -32,6 +32,8 @@ public protocol IMapController {
 
     var mlPosition: IMLPositionLineController { get }
 
+    var offlineManager: IMapboxOfflineManager { get }
+
     var currentGPSCoordinate: CLLocationCoordinate2D? { get }
 
     var mapDataLoadedPublisher: CurrentValueSubject<Bool, MapControllerError> { get }
