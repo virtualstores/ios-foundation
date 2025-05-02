@@ -16,6 +16,9 @@ public protocol IMapboxOfflineManager {
     completionHandler: @escaping(Bool) -> (),
     debugMode: Bool
   )
+
+  func show()
+  func hide()
 }
 
 public extension IMapboxOfflineManager {
