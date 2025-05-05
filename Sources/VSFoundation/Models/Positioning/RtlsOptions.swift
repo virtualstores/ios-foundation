@@ -106,6 +106,32 @@ public struct RtlsOptions: Codable {
             self.bottomPadding = bottomPadding
         }
     }
+
+    public static let mockRtlsOptions: RtlsOptions = .init(
+        id: 1,
+        widthInMeters: 10,
+        heightInMeters: 10,
+        floorLevel: nil,
+        north: 0.0,
+        name: "Mock Floorlevel",
+        startOffsetX: 0,
+        startOffsetY: 0,
+        mapBoxUrl: nil,
+        mapBoxToken: nil,
+        mapFenceUrl: "https://example.com/",
+        mapZonesUrl: "https://example.com/",
+        navGraphUrl: "https://example.com/",
+        mapOffsetsUrl: nil,
+        mapDataVersionUrl: nil,
+        mapBoxImageUrl: nil,
+        pixelsPerMeter: 50.0,
+        boundingBoxInMeters: nil,
+        scanLocations: [
+            .init(code: "Mock_Start", xPosition: 1.0, yPosition: 1.0, direction: 0.0, isRouteLocation: true, type: .start),
+            .init(code: "Mock_Stop", xPosition: 2.0, yPosition: 2.0, direction: 0.0, isRouteLocation: true, type: .stop)
+        ],
+        isDefault: true
+    )
 }
 
 public extension UIEdgeInsets {
