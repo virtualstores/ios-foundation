@@ -19,7 +19,7 @@ public struct TT2Settings {
     params: TT2ModelParams = .init(),
     isAutomaticFloorChangeEnabled: Bool = true,
     saveToDiskEnabled: Bool = false,
-    offlineModeEnabled: Bool = false,
+    offlineModeEnabled: Bool = false
     //debugModeEnabled: Bool = false,
     //extendedDebugModeEnabled: Bool = false
   ) {
