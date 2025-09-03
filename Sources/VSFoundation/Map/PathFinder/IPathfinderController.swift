@@ -50,7 +50,7 @@ public protocol IPathfinderController {
    * @param goal Goal
    * @param callback Callback
    */
-  func add(goal: PathfindingGoal, completion: @escaping (() -> Void))
+  func add(goal: PathfindingGoal, completion: (() -> ())?)
 
   /**
    * Add goals. adds a list of goals to pathfinding.
@@ -58,7 +58,7 @@ public protocol IPathfinderController {
    * @param goals Goals
    * @param callback Callback
    */
-  func add(goals: [PathfindingGoal], completion: @escaping (() -> Void))
+  func add(goals: [PathfindingGoal], completion: (() -> ())?)
 
   /**
    * Set goals. Removes previously added goals and replaces them with the input.
@@ -66,7 +66,7 @@ public protocol IPathfinderController {
    * @param goals Goals
    * @param callback Callback
    */
-  func set(goals: [PathfindingGoal], completion: @escaping (() -> Void))
+  func set(goals: [PathfindingGoal], completion: (() -> ())?)
 
   /**
    * Remove goal. Removes a single goal from pathfinding.
@@ -74,8 +74,8 @@ public protocol IPathfinderController {
    * @param id Id
    * @param callback Callback
    */
-  func remove(id: String, completion: @escaping (() -> Void))
-  func remove(goal: PathfindingGoal, completion: @escaping (() -> Void))
+  func remove(id: String, completion: (() -> ())?)
+  func remove(goal: PathfindingGoal, completion: (() -> ())?)
 
   /**
    * Remove goals. removes a list of goals from pathfinding.
@@ -83,8 +83,8 @@ public protocol IPathfinderController {
    * @param ids Ids
    * @param callback Callback
    */
-  func remove(ids: [String], completion: @escaping () -> Void)
-  func remove(goals: [PathfindingGoal], completion: @escaping (() -> Void))
+  func remove(ids: [String], completion: (() -> ())?)
+  func remove(goals: [PathfindingGoal], completion: (() -> ())?)
 
   /**
    * Pop goal. Removes the first goal of the pathfinding.
@@ -154,7 +154,7 @@ public protocol IPathfinderController {
    * @param overridePosition Override position
    * @param callback Callback
    */
-  func forceRefresh(withTSP: Bool, overridePosition: CGPoint?, completion: @escaping (() -> Void))
+  func forceRefresh(withTSP: Bool, overridePosition: CGPoint?, completion: (() -> ())?)
 }
 
 public enum State {

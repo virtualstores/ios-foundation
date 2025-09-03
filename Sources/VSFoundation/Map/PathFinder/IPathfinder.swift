@@ -22,29 +22,31 @@ public protocol IPathfinder {
     var pathUpdatedPublisher: CurrentValueSubject<Path?, Never> { get }
 
     /// Publisher for  path checking if goal exists
-    var hasGoal: CurrentValueSubject<Bool, Never> { get }
+    var hasGoal: Bool { get }
 
     /// Set User Position from VPS
     func setUserPosition(position: CGPoint?)
 
     /// Add goal from VPS
-    func add(goal: Goal, completion: @escaping () -> Void)
+    func add(goal: Goal, completion: (() -> ())?)
 
     /// Add goals from VPS
-    func add(goals: [Goal], completion: @escaping () -> Void)
+    func add(goals: [Goal], completion: (() -> ())?)
 
     /// Set new goals from VPS
-    func set(goals: [Goal], completion: @escaping () -> Void)
+    func set(goals: [Goal], completion: (() -> ())?)
 
     /// Remove goal from VPS
-    func remove(id: String, completion: @escaping () -> Void)
+    func remove(id: String, completion: (() -> ())?)
 
     /// Remove goals from VPS
-    func remove(ids: [String], completion: @escaping () -> Void)
+    func remove(ids: [String], completion: (() -> ())?)
 
     /// Pop Goal to VPS
     func popGoal()
 
     /// Force refresh  VPS pathfinder
-    func forceRefresh(withTSP: Bool, overridePosition: CGPoint?, completion: @escaping () -> Void)
+    func forceRefresh(withTSP: Bool, overridePosition: CGPoint?, completion: (() -> ())?)
+
+    func onDestroy()
 }
