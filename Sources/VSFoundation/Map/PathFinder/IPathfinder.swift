@@ -47,6 +47,4 @@ public protocol IPathfinder {
 
     /// Force refresh  VPS pathfinder
     func forceRefresh(withTSP: Bool, overridePosition: CGPoint?, completion: (() -> ())?)
-
-    func onDestroy()
 }
