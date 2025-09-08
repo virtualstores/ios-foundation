@@ -10,7 +10,7 @@ import CoreGraphics
 import UIKit
 import CoreLocation
 
-public class Zone {
+public class Zone: Disposable {
     public let id: String
     public let floorLevelId: Int64
     public let properties: ZoneProperties
@@ -36,6 +36,7 @@ public class Zone {
         .first
     }()
 
+    private let tag = "Zone"
     private let converter: ICoordinateConverter
 
     private lazy var bezierPath: UIBezierPath? = {
@@ -70,6 +71,17 @@ public class Zone {
             entryPoints.append(Zone.EntryPointDto(id: id, index: index, point: point, angleInDegrees: angleInDegrees, line: line).asEntryPoint(converter: converter))
           }
         }
+    }
+
+    deinit {
+      Logger(verbosity: .info).log(tag: tag, message: "deinit")
+    }
+
+    public func dispose() {
+      Logger(verbosity: .info).log(tag: tag, message: "dispose")
+      children.forEach { $0.value.dispose() }
+      children.removeAll()
+      parent = nil
     }
 
     func contains(point: CGPoint) -> Bool {

@@ -19,17 +19,17 @@ public struct TT2Settings {
     params: TT2ModelParams = .init(),
     isAutomaticFloorChangeEnabled: Bool = true,
     saveToDiskEnabled: Bool = false,
-    offlineModeEnabled: Bool = false
-    //debugModeEnabled: Bool = false,
-    //extendedDebugModeEnabled: Bool = false
+    offlineModeEnabled: Bool = false,
+    debugModeEnabled: Bool = false,
+    extendedDebugModeEnabled: Bool = false
   ) {
     self.engine = engine
     self.params = params
     self.isAutomaticFloorChangeEnabled = isAutomaticFloorChangeEnabled
     self.saveToDiskEnabled = saveToDiskEnabled
     self.offlineModeEnabled = offlineModeEnabled
-    self.debugModeEnabled = false// debugModeEnabled
-    self.extendedDebugModeEnabled = false// debugModeEnabled ? extendedDebugModeEnabled : false
+    self.debugModeEnabled = debugModeEnabled
+    self.extendedDebugModeEnabled = debugModeEnabled ? extendedDebugModeEnabled : false
   }
 
   public enum TT2Engine: String {

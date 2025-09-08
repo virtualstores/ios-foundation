@@ -8,13 +8,13 @@
 import Foundation
 import CoreLocation
 
-public protocol IMapManager {
+public protocol IMapManager: Disposable {
   func set(isPositionActive: Bool)
   func set(currentLocation position: VPSOutputSignal.Position?)
   func set(isReferenceAngleCertain: Bool)
 }
 
-public class MapData {
+public struct MapData {
     public var rtlsOptions: RtlsOptions
     public var pathFinder: IPathfinder?
     public var bounds: CLLocationCoordinate2D?
