@@ -14,7 +14,7 @@ public protocol IMapControlerDelegate {
     func onMapLoaded()
 }
 
-public protocol IMapController {
+public protocol IMapController: Disposable {
     /// Needs to be unique for each instance
     var id: String { get }
 

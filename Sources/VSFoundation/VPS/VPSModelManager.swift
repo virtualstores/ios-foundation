@@ -8,7 +8,7 @@
 import Foundation
 import CoreML
 
-public protocol VPSModelManager {
+public protocol VPSModelManager: Disposable {
   var mlModel: MLModel? { get }
   var nlModel: MLModel? { get }
   var mlParams: VPSMLModelParams? { get }

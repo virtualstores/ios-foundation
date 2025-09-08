@@ -8,6 +8,7 @@
 
 import Foundation
 
-public protocol Config {
+public protocol Config: Disposable {
     func configure(_ injector: Injector)
+    func deconfigure(_ injector: Injector)
 }

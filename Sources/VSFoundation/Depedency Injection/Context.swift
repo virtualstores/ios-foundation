@@ -11,26 +11,33 @@ import Foundation
 public protocol IContext {
     var injector: Injector { get }
 
-    func configure(_ config: Config, completion: () -> Void)
+    func configure(completion: () -> Void)
     func configure(_ configs: [Config], completion: () -> Void)
 }
 
-public struct Context: IContext {
+public class Context: IContext {
+    private let tag = "Context"
     private let _injector: Injector = Injector.main
+    private var config: Config?
 
     public var injector: Injector {
         return _injector
     }
 
-    public init() { }
-
     public init(_ config: Config) {
-        self.init()
-        configure(config) {}
+        self.config = config
+        configure() {}
     }
 
-    public func configure(_ config: Config, completion: () -> Void) {
+    deinit {
+      Logger(verbosity: .info).log(tag: tag, message: "deinit")
+      dispose()
+    }
+
+    public func configure(completion: () -> Void) {
+      if let config = config {
         configure([config], completion: completion)
+      }
     }
 
     public func configure(_ configs: [Config], completion: () -> Void) {
@@ -40,4 +47,33 @@ public struct Context: IContext {
 
         completion()
     }
+
+    public func deconfigure(completion: () -> Void) {
+      if let config = config {
+        Logger(verbosity: .info).log(tag: tag, message: "deconfigure")
+        deconfigure([config], completion: completion)
+      }
+    }
+
+    public func deconfigure(_ configs: [Config], completion: () -> Void) {
+      for config in configs {
+        config.deconfigure(injector)
+      }
+
+      completion()
+    }
+
+    public func release() {
+        Injector.reset()
+    }
+}
+
+extension Context: Disposable {
+  public func dispose() {
+    Logger(verbosity: .info).log(tag: tag, message: "dispose")
+    deconfigure {
+      Injector.reset()
+      config = nil
+    }
+  }
 }

@@ -55,11 +55,14 @@ public protocol Loggable {
 public struct Logger: Loggable {
     public var verbosity: Verbosity
 
+    public static var debugModeEnabled = false
+
     public init(verbosity: Verbosity = .silent) {
         self.verbosity = verbosity
     }
 
     public func log(tag: String = "", message: String) {
+        guard Logger.debugModeEnabled else { return }
         switch verbosity {
         case .debug:
             print("🕵️‍♀️ DEBUG: \(tag): \(message)")

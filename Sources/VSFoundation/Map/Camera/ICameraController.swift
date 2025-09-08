@@ -9,7 +9,7 @@ import Foundation
 import CoreGraphics
 import CoreLocation
 
-public protocol ICameraController {    
+public protocol ICameraController: Disposable {    
     /// Method for updating camera mode  when location changed
     func updateLocation(with newLocation: CLLocationCoordinate2D, direction: Double, std: Double)
 

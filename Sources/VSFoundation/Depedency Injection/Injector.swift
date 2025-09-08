@@ -31,6 +31,10 @@ public final class Injector {
         self.parent = parent
     }
 
+    deinit {
+      Logger(verbosity: .info).log(tag: "Injector", message: "deinit")
+    }
+
     public final func registerInjections() {
         lock.lock()
         defer { lock.unlock() }
