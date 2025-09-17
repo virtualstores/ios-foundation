@@ -68,7 +68,7 @@ public struct RtlsOptions: Codable {
         let topPadding: Double
         let rightPadding: Double
         let bottomPadding: Double
-        let bearing: Double
+        public let bearing: Double
 
         public var bottomLeftPoint: CGPoint { CGPoint(x: bottomLeft[0], y: bottomLeft[1]) }
         public var bottomLeftPointWithPadding: CGPoint { bottomLeftPoint.add(x: -leftPadding, y: -bottomPadding) }
