@@ -77,6 +77,8 @@ public protocol IMapController: Disposable {
     func stop()
 
     func reset()
+
+    func onForceSync()
 }
 
 public enum MapControllerError: Error {

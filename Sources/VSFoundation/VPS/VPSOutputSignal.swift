@@ -9,6 +9,18 @@ import Foundation
 import CoreLocation
 
 public enum VPSOutputSignal {
+  case position(position: Position)
+  case latLng(LatLngPosition)
+  case gps(LatLngPosition.Location)
+  case ux(position: Position)
+  case ml(position: Position)
+  case rotation(heading: Double)
+  case particles(positions: [CGPoint])
+  case rescueMode
+  case floorChange(difference: Int, timestamp: Date)
+  case consistencyScoreSignal(Int)
+  case userInfoVPSError(UserInfoVPSError)
+
   public struct Position {
     public let point: CGPoint
     public let std: Double
@@ -72,14 +84,13 @@ public enum VPSOutputSignal {
     }
   }
 
-  case position(position: Position)
-  case latLng(LatLngPosition)
-  case gps(LatLngPosition.Location)
-  case ux(position: Position)
-  case ml(position: Position)
-  case rotation(heading: Double)
-  case particles(positions: [CGPoint])
-  case rescueMode
-  case floorChange(difference: Int, timestamp: Date)
-  case consistencyScoreSignal(Int)
+  public struct UserInfoVPSError {
+    public let description: String
+    public let stacktrace: String?
+
+    public init(description: String, stacktrace: String?) {
+      self.description = description
+      self.stacktrace = stacktrace
+    }
+  }
 }
