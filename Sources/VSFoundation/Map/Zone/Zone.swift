@@ -152,9 +152,9 @@ public extension Zone {
     return !list.isEmpty ? list : nil
   }
 
-  func recursivePrint(_ padding: String) {
+  func recursiveLog(_ padding: String) {
     Logger(verbosity: .debug).log(message: "\(padding)\(name)")
-    children.keys.forEach { children[$0]?.recursivePrint(padding + "    ") }
+    children.keys.forEach { children[$0]?.recursiveLog(padding + "    ") }
   }
 
   func recursiveSearch(_ searchString: String) -> [Zone]? {

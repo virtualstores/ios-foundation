@@ -35,7 +35,10 @@ public enum Verbosity {
     
     /// used to indicate critical errors
     case critical
-    
+
+    /// used for network calls
+    case network
+
     /// used to silent the logger (nothing will be printed out)
     case silent
 }
@@ -56,6 +59,7 @@ public struct Logger: Loggable {
     public var verbosity: Verbosity
 
     public static var debugModeEnabled = false
+    public static var extendedDebugModeEnabled = false
 
     public init(verbosity: Verbosity = .silent) {
         self.verbosity = verbosity
@@ -63,6 +67,11 @@ public struct Logger: Loggable {
 
     public func log(tag: String = "", message: String) {
         guard Logger.debugModeEnabled else { return }
+        if verbosity == .network {
+            print("🌐 \(message)")
+            return
+        }
+        guard Logger.extendedDebugModeEnabled else { return }
         switch verbosity {
         case .debug:
             print("🕵️‍♀️ DEBUG: \(tag): \(message)")
@@ -74,9 +83,10 @@ public struct Logger: Loggable {
             print("⛔️ ERROR: \(tag): \(message)")
         case .critical:
             print("☣️ CRITICAL: \(tag): \(message)")
-        case .silent:
+        case .silent, .network:
             // no log message message
             break
+
         }
     }
 }
