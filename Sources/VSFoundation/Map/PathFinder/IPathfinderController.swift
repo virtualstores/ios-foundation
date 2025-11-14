@@ -173,13 +173,15 @@ public struct PathfindingGoal {
   public let data: Any?
   public let type: GoalType
   public let floorLevelId: Int64?
+  public let zoneId: String?
 
-  public init(id: String, position: CGPoint, data: Any?, type: GoalType, floorLevelId: Int64?) {
+  public init(id: String, position: CGPoint, data: Any?, type: GoalType, floorLevelId: Int64?, zoneId: String? = nil) {
     self.id = id
     self.position = position
     self.data = data
     self.type = type
     self.floorLevelId = floorLevelId
+    self.zoneId = zoneId
   }
 
   /**

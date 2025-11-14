@@ -68,7 +68,7 @@ public class Zone: Disposable {
               let angleInDegrees = element["angleInDegrees"] as? Double,
               let line = element["line"] as? [[Double]]
             else { return }
-            entryPoints.append(Zone.EntryPointDto(id: id, index: index, point: point, angleInDegrees: angleInDegrees, line: line).asEntryPoint(converter: converter))
+            entryPoints.append(EntryPointDto(id: id, index: index, point: point, angleInDegrees: angleInDegrees, line: line).asEntryPoint(converter: converter))
           }
         }
     }
@@ -84,7 +84,7 @@ public class Zone: Disposable {
       parent = nil
     }
 
-    func contains(point: CGPoint) -> Bool {
+    public func contains(point: CGPoint) -> Bool {
         bezierPath?.contains(point) ?? false
     }
 

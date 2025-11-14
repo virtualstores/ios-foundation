@@ -255,6 +255,7 @@ public struct MapOptions {
     public let lineColorSelected: UIColor
     public let lineWidth: Double
     public let lineOpacity: Double
+    public let lineOpacitySelected: Double
     public let lineJoin: String
     public let lineDashLength: Double
     public let lineDashGap: Double
@@ -266,6 +267,7 @@ public struct MapOptions {
       lineColorSelected: UIColor = UIColor(rgb: 0x1097EC),
       lineWidth: Double = 2.0,
       lineOpacity: Double = 1.0,
+      lineOpacitySelected: Double = 1.0,
       lineJoin: String = LINE_JOIN_ROUND,
       lineDashLength: Double = 1.0,
       lineDashGap: Double = 0.0,
@@ -276,6 +278,7 @@ public struct MapOptions {
       self.lineColorSelected = lineColorSelected
       self.lineWidth = lineWidth
       self.lineOpacity = lineOpacity
+      self.lineOpacitySelected = lineOpacitySelected
       self.lineJoin = lineJoin
       self.lineDashLength = lineDashLength
       self.lineDashGap = lineDashGap
@@ -301,6 +304,7 @@ public struct MapOptions {
     public let textColor: UIColor
     public let textColorSelected: UIColor
     public let textOpacity: Double
+    public let textOpacitySelected: Double
     public let textIgnorePlacement: Bool
     public let textAnchor: String
     public let textOffset: [Double]
@@ -313,6 +317,7 @@ public struct MapOptions {
       textColor: UIColor = UIColor(rgb: 0x000000),
       textColorSelected: UIColor = UIColor(rgb: 0x000000),
       textOpacity: Double = 1.0,
+      textOpacitySelected: Double = 1.0,
       textIgnorePlacement: Bool = false,
       textAnchor: String = TEXT_ANCHOR_CENTER,
       textOffset: [Double] = [0.0, 0.0],
@@ -324,6 +329,7 @@ public struct MapOptions {
       self.textColor = textColor
       self.textColorSelected = textColorSelected
       self.textOpacity = textOpacity
+      self.textOpacitySelected = textOpacitySelected
       self.textIgnorePlacement = textIgnorePlacement
       self.textAnchor = textAnchor
       self.textOffset = textOffset
@@ -346,11 +352,13 @@ public struct MapOptions {
     public let color: UIColor
     public let colorSelected: UIColor
     public let alpha: Double
+    public let alphaSelected: Double
 
-    public init(color: UIColor = UIColor(rgb: 0xFFFFFF), colorSelected: UIColor = UIColor(rgb: 0x1097EC), alpha: Double = 0.45) {
+    public init(color: UIColor = UIColor(rgb: 0xFFFFFF), colorSelected: UIColor = UIColor(rgb: 0x1097EC), alpha: Double = 0.45, alphaSelected: Double = 1.0) {
       self.color = color
       self.colorSelected = colorSelected
       self.alpha = alpha
+      self.alphaSelected = alphaSelected
     }
   }
 

@@ -21,6 +21,8 @@ public protocol IPathfinder {
     /// Publisher for  path update
     var pathUpdatedPublisher: CurrentValueSubject<Path?, Never> { get }
 
+    var currentGoal: Goal? { get }
+    var sortedGoals: [Goal]? { get }
     /// Publisher for  path checking if goal exists
     var hasGoal: Bool { get }
 

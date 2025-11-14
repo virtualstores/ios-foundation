@@ -63,12 +63,12 @@ public protocol IZoneController {
     func showAll()
     func hideAll()
 
-    func show(zone: Zone)
-    func hide(zone: Zone)
-    func select(zone: Zone)
-    func select(zones: [Zone])
-    func deselect(zone: Zone)
-    func deselect(zones: [Zone])
+    func show(zoneId: String)
+    func hide(zoneId: String)
+    func select(zoneId: String)
+    func select(zoneIds: [String])
+    func deselect(zoneId: String)
+    func deselect(zoneIds: [String])
     func deselectAll()
 
     func updateLocation(newLocation: CGPoint)

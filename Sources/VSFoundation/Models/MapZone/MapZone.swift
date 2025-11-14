@@ -52,6 +52,7 @@ public struct PointProperties {
   public let textColorSelected: String?
   public let textSize: Double?
   public let textOpacity: Double?
+  public let textOpacitySelected: Double?
   public let textAllowOverLap: Bool?
   public let textAnchor: String?
   public let textIgnorePlacement: Bool?
@@ -61,6 +62,7 @@ public struct PointProperties {
     textColorSelected: String? = nil,
     textSize: Double? = nil,
     textOpacity: Double? = nil,
+    textOpacitySelected: Double? = nil,
     textAllowOverLap: Bool? = nil,
     textAnchor: String? = nil,
     textIgnorePlacement: Bool? = nil
@@ -69,6 +71,7 @@ public struct PointProperties {
     self.textColorSelected = textColorSelected
     self.textSize = textSize
     self.textOpacity = textOpacity
+    self.textOpacitySelected = textOpacitySelected
     self.textAllowOverLap = textAllowOverLap
     self.textAnchor = textAnchor
     self.textIgnorePlacement = textIgnorePlacement
@@ -83,20 +86,24 @@ public struct ZoneProperties {
   public let entryPoints: [NSDictionary]?
   public let triggerPolygon: [[[Double]]]?
   public let parentId: String?
+  public let zoneType: String?
 
   public let fillColor: String?
   public let fillColorSelected: String?
   public let fillAlpha: Double?
+  public let fillAlphaSelected: Double?
 
   public let lineColor: String?
   public let lineColorSelected: String?
   public let lineOpacity: Double?
+  public let lineOpacitySelected: Double?
   public let lineWidth: Double?
 
   public let textColor: String?
   public let textColorSelected: String?
   public let textSize: Double?
   public let textOpacity: Double?
+  public let textOpacitySelected: Double?
   public let textAllowOverLap: Bool?
   public let textAnchor: String?
   public let textIgnorePlacement: Bool?
@@ -109,17 +116,21 @@ public struct ZoneProperties {
     entryPoints: [NSDictionary]? = nil,
     triggerPolygon: [[[Double]]]? = nil,
     parentId: String? = nil,
+    zoneType: String? = nil,
     fillColor: String? = nil,
     fillColorSelected: String? = nil,
     fillAlpha: Double? = nil,
+    fillAlphaSelected: Double? = nil,
     lineColor: String? = nil,
     lineColorSelected: String? = nil,
     lineOpacity: Double? = nil,
+    lineOpacitySelected: Double? = nil,
     lineWidth: Double? = nil,
     textColor: String? = nil,
     textColorSelected: String? = nil,
     textSize: Double? = nil,
     textOpacity: Double? = nil,
+    textOpacitySelected: Double? = nil,
     textAllowOverLap: Bool? = nil,
     textAnchor: String? = nil,
     textIgnorePlacement: Bool? = nil
@@ -131,20 +142,24 @@ public struct ZoneProperties {
     self.entryPoints = entryPoints
     self.triggerPolygon = triggerPolygon
     self.parentId = parentId
+    self.zoneType = zoneType
 
     self.fillColor = fillColor
     self.fillColorSelected = fillColorSelected
     self.fillAlpha = fillAlpha
+    self.fillAlphaSelected = fillAlphaSelected
 
     self.lineColor = lineColor
     self.lineColorSelected = lineColorSelected
     self.lineOpacity = lineOpacity
+    self.lineOpacitySelected = lineOpacitySelected
     self.lineWidth = lineWidth
 
     self.textColor = textColor
     self.textColorSelected = textColorSelected
     self.textSize = textSize
     self.textOpacity = textOpacity
+    self.textOpacitySelected = textOpacitySelected
     self.textAllowOverLap = textAllowOverLap
     self.textAnchor = textAnchor
     self.textIgnorePlacement = textIgnorePlacement
@@ -155,16 +170,19 @@ public struct SharedZoneProperties {
   public let fillColor: String?
   public let fillColorSelected: String?
   public let fillAlpha: Double?
+  public let fillAlphaSelected: Double?
 
   public let lineColor: String?
   public let lineColorSelected: String?
   public let lineOpacity: Double?
+  public let lineOpacitySelected: Double?
   public let lineWidth: Double?
 
   public let textColor: String?
   public let textColorSelected: String?
   public let textSize: Double?
   public let textOpacity: Double?
+  public let textOpacitySelected: Double?
   public let textAllowOverLap: Bool?
   public let textAnchor: String?
   public let textIgnorePlacement: Bool?
@@ -173,14 +191,17 @@ public struct SharedZoneProperties {
     fillColor: String? = nil,
     fillColorSelected: String? = nil,
     fillAlpha: Double? = nil,
+    fillAlphaSelected: Double? = nil,
     lineColor: String? = nil,
     lineColorSelected: String? = nil,
     lineOpacity: Double? = nil,
+    lineOpacitySelected: Double? = nil,
     lineWidth: Double? = nil,
     textColor: String? = nil,
     textColorSelected: String? = nil,
     textSize: Double? = nil,
     textOpacity: Double? = nil,
+    textOpacitySelected: Double? = nil,
     textAllowOverLap: Bool? = nil,
     textAnchor: String? = nil,
     textIgnorePlacement: Bool? = nil
@@ -188,16 +209,19 @@ public struct SharedZoneProperties {
     self.fillColor = fillColor
     self.fillColorSelected = fillColorSelected
     self.fillAlpha = fillAlpha
+    self.fillAlphaSelected = fillAlphaSelected
 
     self.lineColor = lineColor
     self.lineColorSelected = lineColorSelected
     self.lineOpacity = lineOpacity
+    self.lineOpacitySelected = lineOpacitySelected
     self.lineWidth = lineWidth
 
     self.textColor = textColor
     self.textColorSelected = textColorSelected
     self.textSize = textSize
     self.textOpacity = textOpacity
+    self.textOpacitySelected = textOpacitySelected
     self.textAllowOverLap = textAllowOverLap
     self.textAnchor = textAnchor
     self.textIgnorePlacement = textIgnorePlacement

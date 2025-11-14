@@ -59,3 +59,19 @@ public struct ItemPosition: Codable {
         self.isDisabled = isDisabled ?? false
     }
 }
+
+public struct ZonePosition {
+  public let floorLevelId: Int64
+  public let id: String
+  public let name: String
+  public let names: [String]
+  public let point: CGPoint
+
+  public init(floorLevelId: Int64, id: String, name: String, names: [String], point: CGPoint) {
+    self.floorLevelId = floorLevelId
+    self.id = id
+    self.name = name
+    self.names = names
+    self.point = point
+  }
+}
