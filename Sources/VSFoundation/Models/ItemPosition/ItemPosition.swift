@@ -66,12 +66,14 @@ public struct ZonePosition {
   public let name: String
   public let names: [String]
   public let point: CGPoint
+  public let identifier: String
 
-  public init(floorLevelId: Int64, id: String, name: String, names: [String], point: CGPoint) {
+  public init(floorLevelId: Int64, id: String, name: String, names: [String], point: CGPoint, identifier: String) {
     self.floorLevelId = floorLevelId
     self.id = id
     self.name = name
     self.names = names
     self.point = point
+    self.identifier = identifier
   }
 }
