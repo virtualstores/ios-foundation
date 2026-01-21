@@ -43,11 +43,13 @@ public struct TT2Settings {
     public let target: Int
     public let targetMLModelVersion: Int?
     public let targetNLModelVersion: Int?
+    public let targetNPModelVersion: Int?
 
-    public init(target: Int = 1, targetMLModelVersion: Int? = nil, targetNLModelVersion: Int? = nil) {
+    public init(target: Int = 1, targetMLModelVersion: Int? = nil, targetNLModelVersion: Int? = nil, targetNPModelVersion: Int? = nil) {
       self.target = target
       self.targetMLModelVersion = targetMLModelVersion
       self.targetNLModelVersion = targetNLModelVersion
+      self.targetNPModelVersion = targetNPModelVersion
     }
   }
 }

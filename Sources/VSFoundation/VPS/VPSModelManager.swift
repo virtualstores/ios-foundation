@@ -11,6 +11,7 @@ import CoreML
 public protocol VPSModelManager: Disposable {
   var mlModel: MLModel? { get }
   var nlModel: MLModel? { get }
+  var npModel: MLModel? { get }
   var mlParams: VPSMLModelParams? { get }
   var nlParams: VPSNLModelParams? { get }
 }
