@@ -133,8 +133,8 @@ public extension Zone {
   var name: String { properties.name }
   var names: [String] { properties.names }
 
-  func addChild(child: Zone) {
-    child.parent = self
+  func addChild(child: Zone, linkParent: Bool = true) {
+    if linkParent { child.parent = self }
     children[child.id] = child
   }
 

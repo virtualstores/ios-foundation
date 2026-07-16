@@ -11,9 +11,7 @@ let package = Package(
     .watchOS(.v6)
   ],
   products: [
-    .library(
-      name: "VSFoundation",
-      targets: ["VSFoundation"]),
+    .library(name: "VSFoundation", targets: ["VSFoundation"]),
   ],
   dependencies: [],
   targets: [
